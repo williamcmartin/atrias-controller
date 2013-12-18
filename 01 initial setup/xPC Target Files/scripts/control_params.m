@@ -1,23 +1,17 @@
+%% Parameters for control loops
+
 % Control loop start time
-control_start_time = 3.1;
+control_start_time = 3;
+sagittal_starting_time = 6;
+sagittal_torque_ramp_time = sagittal_starting_time+5;
+lateral_torque_ramp_time = control_start_time+2;
 
 % SEA control params
-k_leg_spring = 4118.3;
-f_cutoff_d = 300;
-f_cutoff_sd = 100;
-kp_sea_torque = 3*5e-4;
-td_sea_torque = 0;
-ki_sea_torque = 0;
-kd_sea_torque = td_sea_torque*kp_sea_torque;
-% SEA position control params
-kp_sea_position = 1.5*k_leg_spring;
-td_sea_position = 30e-3;
-kd_sea_position = kp_sea_position * td_sea_position;
-% SEA velocity control params
-kp_velocity = 1;
-td_velocity = 10e-3;
-kd_velocity = kp_velocity * td_velocity;
-
+max_sagittal_torque = 150; % Nm
+fcut_acceleration = 50; % Hz, Low pass filter cutoff frequency when calculating acceleration from velocity
+kp_sea_torque = 2.4;
+kd_sea_torque = 0.9*2*sqrt(k_sea*j_leg_reflected) / k_sea; % Critical damping / spring_stiffness
+k_ff = 0.11;
 
 % Sine Wave Walk Position params
 A_angle_h = 20*pi/180;                         % Hip angle wave amplitude
@@ -29,12 +23,11 @@ angle_midpoint_k = 120*pi/180;
 angle_midpoint_h = 180*pi/180;
 
 % Sine Wave Walk Behavior PD params
-kp_h_sine_walk = 400;                               % Proportional PD constant
+kp_h_sine_walk = 0.5*m_total*g;                               % Proportional PD constant
 td_h_sine_walk = 80e-3;
 kd_h_sine_walk = td_h_sine_walk*kp_h_sine_walk;                   % Derivative PD constant
-kp_k_sine_walk = 400;                       % Proportional PD constant
+kp_k_sine_walk = 0.5*m_total*g;                       % Proportional PD constant
 td_k_sine_walk = 80e-3;
-ki_k_sine_walk = 1;
 kd_k_sine_walk = td_k_sine_walk*kp_k_sine_walk;    % Derivative PD constant
 
 % Hip roll position params
@@ -47,3 +40,12 @@ kp_lat = 100;
 td_lat = 100e-3;
 kd_lat = td_lat*kp_lat;
 t_lat = 33; % seconds before diminishing lateral motors
+
+% Lateral hip PID control params
+hip_gravity_compensation = 20*9.8*0.2; % hip_mass * gravity * lever_distance
+max_torque_lateral = 3 * hip_gravity_compensation; 
+kp_lateral = hip_gravity_compensation / (1.25*pi/180); % gravitational force at 1.25 degrees error = weight(kg) * gravity(m/s) * lever_distance(m) / (rad_to_deg constant)
+kd_lateral = 0.9 * 2*sqrt(((2*pi*4)^2*(20*0.2^2))*(20*0.2^2)); % 90 percent of critical damping
+ti_lateral = 100e-3;
+ki_lateral = kp_lateral / ti_lateral;
+i_limit_lateral = 1.2*max_torque_lateral; % 120% of max output (double the amount of torque needed to compensate hip weight) 

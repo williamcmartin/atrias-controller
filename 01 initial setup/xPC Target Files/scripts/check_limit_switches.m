@@ -2,7 +2,7 @@
 f=xpctarget.fs;
 
 % Open the file, read the data, close the file.
-h=fopen(f,'E:\LIM_001.DAT');
+h=fopen(f,'E:\SUPR_001.DAT');
 limit_data=fread(f,h);
 fclose(f,h);
 
@@ -40,3 +40,6 @@ for i=1:number_of_signals
         fprintf('\tClear!\n');
     end
 end
+
+figure('name','Limit Switches');
+plot(limit.data(:, 1:4))

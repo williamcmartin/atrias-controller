@@ -1,6 +1,573 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root>
 	<SubSystem>
+		<Name>Actuator Control</Name>
+		<xPCName>initial_setup/Actuator Control</xPCName>
+		<SubSystem>
+			<Name>SEA Controller</Name>
+			<xPCName>initial_setup/Actuator Control/SEA Controller</xPCName>
+			<SubSystem>
+				<Name>filtered_derivative</Name>
+				<xPCName>initial_setup/Actuator Control/SEA Controller/filtered_derivative</xPCName>
+				<SubSystem>
+					<Name>difference</Name>
+					<xPCName>initial_setup/Actuator Control/SEA Controller/filtered_derivative/difference</xPCName>
+					<block>
+						<blkName>UD</blkName>
+						<xpcblkName>Actuator Control/SEA Controller/filtered_derivative/difference/UD</xpcblkName>
+						<SLblockPath>initial_setup/Actuator Control/SEA Controller/filtered_derivative/difference/UD</SLblockPath>
+						<isSrc>[0 1 1]</isSrc>
+						<parameter>
+							<paramName>InitialCondition</paramName>
+							<dim>[1, 1]</dim>
+						</parameter>
+					</block>
+					<signal>
+						<sigName>Diff</sigName>
+						<xpcsigName>Actuator Control/SEA Controller/filtered_derivative/difference/Diff</xpcsigName>
+						<sigWidth>4</sigWidth>
+						<sigDim>[4, 1]</sigDim>
+					</signal>
+					<signal>
+						<sigName>UD</sigName>
+						<xpcsigName>Actuator Control/SEA Controller/filtered_derivative/difference/UD</xpcsigName>
+						<sigWidth>4</sigWidth>
+						<sigDim>[4, 1]</sigDim>
+					</signal>
+				</SubSystem>
+				<block>
+					<blkName>Gain1</blkName>
+					<xpcblkName>Actuator Control/SEA Controller/filtered_derivative/Gain1</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/SEA Controller/filtered_derivative/Gain1</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>single_pole_filter</blkName>
+					<xpcblkName>Actuator Control/SEA Controller/filtered_derivative/single_pole_filter</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/SEA Controller/filtered_derivative/single_pole_filter</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Numerator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>Denominator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>InitialStates</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Gain1</sigName>
+					<xpcsigName>Actuator Control/SEA Controller/filtered_derivative/Gain1</xpcsigName>
+					<sigWidth>4</sigWidth>
+					<sigDim>[4, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>single_pole_filter</sigName>
+					<xpcsigName>Actuator Control/SEA Controller/filtered_derivative/single_pole_filter</xpcsigName>
+					<sigWidth>4</sigWidth>
+					<sigDim>[4, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<block>
+				<blkName>Constant</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Constant</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Constant</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Constant1</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Constant1</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Constant1</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Constant3</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Constant3</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Constant3</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>kp_gain</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/kp_gain</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/kp_gain</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Spring
+Stiffness</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Spring Stiffness</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Spring Stiffness</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Spring
+Stiffness1</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Spring Stiffness1</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Spring Stiffness1</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>j_motor</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/j_motor</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/j_motor</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>k_ff</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/k_ff</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/k_ff</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>kd_gain</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/kd_gain</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/kd_gain</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Torque 
+Limiter
+(outside)
+</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Torque  Limiter (outside) </xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Torque  Limiter (outside) </SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Torque 
+Limiter
+(outside)
+1</blkName>
+				<xpcblkName>Actuator Control/SEA Controller/Torque  Limiter (outside) 1</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/SEA Controller/Torque  Limiter (outside) 1</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>kp_gain</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/kp_gain</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Spring
+Stiffness</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Spring Stiffness</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Spring
+Stiffness1</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Spring Stiffness1</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>j_motor</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/j_motor</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>k_ff</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/k_ff</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>kd_gain</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/kd_gain</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Product</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Product</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Product1</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Product1</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Torque 
+Limiter
+(outside)
+</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Torque  Limiter (outside) </xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Torque 
+Limiter
+(outside)
+1</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Torque  Limiter (outside) 1</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum1</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum1</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum2</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum2</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum3</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum3</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum5</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum5</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum6</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum6</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum7</sigName>
+				<xpcsigName>Actuator Control/SEA Controller/Sum7</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>ramped_signal</Name>
+			<xPCName>initial_setup/Actuator Control/ramped_signal</xPCName>
+			<SubSystem>
+				<Name>Ramp</Name>
+				<xPCName>initial_setup/Actuator Control/ramped_signal/Ramp</xPCName>
+				<block>
+					<blkName>Constant</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp/Constant</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp/Constant</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Constant1</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp/Constant1</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp/Constant1</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Step</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp/Step</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp/Step</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Time</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>Before</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>After</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Clock</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp/Clock</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Product</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp/Product</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Step</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp/Step</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Output</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp/Output</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp/Sum</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>Ramp1</Name>
+				<xPCName>initial_setup/Actuator Control/ramped_signal/Ramp1</xPCName>
+				<block>
+					<blkName>Constant</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp1/Constant</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp1/Constant</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Constant1</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp1/Constant1</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp1/Constant1</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Step</blkName>
+					<xpcblkName>Actuator Control/ramped_signal/Ramp1/Step</xpcblkName>
+					<SLblockPath>initial_setup/Actuator Control/ramped_signal/Ramp1/Step</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Time</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>Before</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>After</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Clock</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp1/Clock</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Product</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp1/Product</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Step</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp1/Step</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Output</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp1/Output</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum</sigName>
+					<xpcsigName>Actuator Control/ramped_signal/Ramp1/Sum</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<block>
+				<blkName>Constant</blkName>
+				<xpcblkName>Actuator Control/ramped_signal/Constant</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/ramped_signal/Constant</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Saturation</blkName>
+				<xpcblkName>Actuator Control/ramped_signal/Saturation</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/ramped_signal/Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Saturation1</blkName>
+				<xpcblkName>Actuator Control/ramped_signal/Saturation1</xpcblkName>
+				<SLblockPath>initial_setup/Actuator Control/ramped_signal/Saturation1</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Product</sigName>
+				<xpcsigName>Actuator Control/ramped_signal/Product</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Product1</sigName>
+				<xpcsigName>Actuator Control/ramped_signal/Product1</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Saturation</sigName>
+				<xpcsigName>Actuator Control/ramped_signal/Saturation</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Saturation1</sigName>
+				<xpcsigName>Actuator Control/ramped_signal/Saturation1</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<block>
+			<blkName>tau_cmd
+[Nm] x6</blkName>
+			<xpcblkName>Actuator Control/tau_cmd [Nm] x6</xpcblkName>
+			<SLblockPath>initial_setup/Actuator Control/tau_cmd [Nm] x6</SLblockPath>
+			<isSrc>[0 1 0]</isSrc>
+			<parameter>
+				<paramName>InitialOutput</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>tau_desired_signals</blkName>
+			<xpcblkName>Actuator Control/tau_desired_signals</xpcblkName>
+			<SLblockPath>initial_setup/Actuator Control/tau_desired_signals</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Manual Switch</blkName>
+			<xpcblkName>Actuator Control/Manual Switch</xpcblkName>
+			<SLblockPath>initial_setup/Actuator Control/Manual Switch</SLblockPath>
+			<isSrc>[0 2 1]</isSrc>
+			<parameter>
+				<paramName>CurrentSetting</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<signal>
+			<sigName>tau_desired_signals</sigName>
+			<xpcsigName>Actuator Control/tau_desired_signals</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Manual Switch</sigName>
+			<xpcsigName>Actuator Control/Manual Switch</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
 		<Name>Compare To Constant</Name>
 		<xPCName>initial_setup/Compare To Constant</xPCName>
 		<block>
@@ -16,6 +583,26 @@
 		<signal>
 			<sigName>Compare</sigName>
 			<xpcsigName>Compare To Constant/Compare</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
+		<Name>Compare To Constant1</Name>
+		<xPCName>initial_setup/Compare To Constant1</xPCName>
+		<block>
+			<blkName>Constant</blkName>
+			<xpcblkName>Compare To Constant1/Constant</xpcblkName>
+			<SLblockPath>initial_setup/Compare To Constant1/Constant</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<signal>
+			<sigName>Compare</sigName>
+			<xpcsigName>Compare To Constant1/Compare</xpcsigName>
 			<sigWidth>1</sigWidth>
 			<sigDim>[1, 1]</sigDim>
 		</signal>
@@ -6365,6 +6952,16 @@
 				</parameter>
 			</block>
 			<block>
+				<blkName>reverse</blkName>
+				<xpcblkName>DAQ/OSU_to_CMU/reverse</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/OSU_to_CMU/reverse</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>signal</blkName>
 				<xpcblkName>DAQ/OSU_to_CMU/signal</xpcblkName>
 				<SLblockPath>initial_setup/DAQ/OSU_to_CMU/signal</SLblockPath>
@@ -6374,6 +6971,12 @@
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<signal>
+				<sigName>reverse</sigName>
+				<xpcsigName>DAQ/OSU_to_CMU/reverse</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
 			<signal>
 				<sigName>signal</sigName>
 				<xpcsigName>DAQ/OSU_to_CMU/signal</xpcsigName>
@@ -6964,12 +7567,12 @@
 			</signal>
 		</SubSystem>
 		<SubSystem>
-			<Name>mtr_current_cmd_to_pwm</Name>
-			<xPCName>initial_setup/DAQ/mtr_current_cmd_to_pwm</xPCName>
+			<Name>mtr_torque_cmd_to_medulla_signal</Name>
+			<xPCName>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal</xPCName>
 			<block>
-				<blkName>Constant</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant</SLblockPath>
+				<blkName>Constant10</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant10</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant10</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -6977,9 +7580,9 @@
 				</parameter>
 			</block>
 			<block>
-				<blkName>Constant1</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant1</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant1</SLblockPath>
+				<blkName>Constant11</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant11</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant11</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -6987,9 +7590,9 @@
 				</parameter>
 			</block>
 			<block>
-				<blkName>Constant2</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant2</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant2</SLblockPath>
+				<blkName>Constant12</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant12</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant12</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -6997,29 +7600,9 @@
 				</parameter>
 			</block>
 			<block>
-				<blkName>Constant3</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant3</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant3</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Value</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Constant4</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant4</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant4</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Value</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Constant5</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant5</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant5</SLblockPath>
+				<blkName>Constant13</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant13</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant13</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -7028,8 +7611,8 @@
 			</block>
 			<block>
 				<blkName>Constant6</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant6</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant6</SLblockPath>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant6</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant6</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -7038,8 +7621,8 @@
 			</block>
 			<block>
 				<blkName>Constant7</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant7</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant7</SLblockPath>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant7</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant7</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -7048,8 +7631,8 @@
 			</block>
 			<block>
 				<blkName>Constant8</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant8</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant8</SLblockPath>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant8</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant8</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -7058,31 +7641,371 @@
 			</block>
 			<block>
 				<blkName>Constant9</blkName>
-				<xpcblkName>DAQ/mtr_current_cmd_to_pwm/Constant9</xpcblkName>
-				<SLblockPath>initial_setup/DAQ/mtr_current_cmd_to_pwm/Constant9</SLblockPath>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Constant9</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Constant9</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<block>
+				<blkName>LEFT_MOTOR_HIP_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/LEFT_MOTOR_HIP_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/LEFT_MOTOR_HIP_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>LEG1_MOTOR_A_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/LEG1_MOTOR_A_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/LEG1_MOTOR_A_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>LEG1_MOTOR_B_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/LEG1_MOTOR_B_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/LEG1_MOTOR_B_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>LEG2_MOTOR_A_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/LEG2_MOTOR_A_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/LEG2_MOTOR_A_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>LEG2_MOTOR_B_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/LEG2_MOTOR_B_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/LEG2_MOTOR_B_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>RIGHT_MOTOR_HIP_DIRECTION</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/RIGHT_MOTOR_HIP_DIRECTION</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/RIGHT_MOTOR_HIP_DIRECTION</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Hip Motor Current Saturation</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Hip Motor Current Saturation</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Hip Motor Current Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Lateral Motor Saturation</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Lateral Motor Saturation</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Lateral Motor Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Leg Motor Current Saturation</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Leg Motor Current Saturation</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Leg Motor Current Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Sagittal Motor Saturation</blkName>
+				<xpcblkName>DAQ/mtr_torque_cmd_to_medulla_signal/Sagittal Motor Saturation</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/mtr_torque_cmd_to_medulla_signal/Sagittal Motor Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<signal>
 				<sigName>Divide</sigName>
-				<xpcsigName>DAQ/mtr_current_cmd_to_pwm/Divide</xpcsigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Divide</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>Divide1</sigName>
-				<xpcsigName>DAQ/mtr_current_cmd_to_pwm/Divide1</xpcsigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Divide1</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
 			<signal>
+				<sigName>Divide2</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Divide2</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Divide3</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Divide3</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
 				<sigName>Product</sigName>
-				<xpcsigName>DAQ/mtr_current_cmd_to_pwm/Product</xpcsigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Product</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Hip Motor Current Saturation</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Hip Motor Current Saturation</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Lateral Motor Saturation</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Lateral Motor Saturation</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Leg Motor Current Saturation</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Leg Motor Current Saturation</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sagittal Motor Saturation</sigName>
+				<xpcsigName>DAQ/mtr_torque_cmd_to_medulla_signal/Sagittal Motor Saturation</xpcsigName>
+				<sigWidth>4</sigWidth>
+				<sigDim>[4, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>remove_encoder_dropouts</Name>
+			<xPCName>initial_setup/DAQ/remove_encoder_dropouts</xPCName>
+			<SubSystem>
+				<Name>Compare
+To Zero1</Name>
+				<xPCName>initial_setup/DAQ/remove_encoder_dropouts/Compare To Zero1</xPCName>
+				<block>
+					<blkName>Constant</blkName>
+					<xpcblkName>DAQ/remove_encoder_dropouts/Compare To Zero1/Constant</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Compare To Zero1/Constant</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Compare</sigName>
+					<xpcsigName>DAQ/remove_encoder_dropouts/Compare To Zero1/Compare</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>check_error</Name>
+				<xPCName>initial_setup/DAQ/remove_encoder_dropouts/check_error</xPCName>
+				<SubSystem>
+					<Name>Compare
+To Constant</Name>
+					<xPCName>initial_setup/DAQ/remove_encoder_dropouts/check_error/Compare To Constant</xPCName>
+					<block>
+						<blkName>Constant</blkName>
+						<xpcblkName>DAQ/remove_encoder_dropouts/check_error/Compare To Constant/Constant</xpcblkName>
+						<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/check_error/Compare To Constant/Constant</SLblockPath>
+						<isSrc>[1 0 1]</isSrc>
+						<parameter>
+							<paramName>Value</paramName>
+							<dim>[1, 1]</dim>
+						</parameter>
+					</block>
+					<signal>
+						<sigName>Compare</sigName>
+						<xpcsigName>DAQ/remove_encoder_dropouts/check_error/Compare To Constant/Compare</xpcsigName>
+						<sigWidth>13</sigWidth>
+						<sigDim>[13, 1]</sigDim>
+					</signal>
+				</SubSystem>
+				<block>
+					<blkName>acceptable?</blkName>
+					<xpcblkName>DAQ/remove_encoder_dropouts/check_error/acceptable?</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/check_error/acceptable?</SLblockPath>
+					<isSrc>[0 1 0]</isSrc>
+					<parameter>
+						<paramName>InitialOutput</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+			</SubSystem>
+			<block>
+				<blkName>Constant</blkName>
+				<xpcblkName>DAQ/remove_encoder_dropouts/Constant</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Constant</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Gain2</blkName>
+				<xpcblkName>DAQ/remove_encoder_dropouts/Gain2</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Gain2</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Discrete
+Single Pole
+Lowpass Filter</blkName>
+				<xpcblkName>DAQ/remove_encoder_dropouts/Discrete Single Pole Lowpass Filter</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Discrete Single Pole Lowpass Filter</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Numerator</paramName>
+					<dim>[1, 2]</dim>
+				</parameter>
+				<parameter>
+					<paramName>Denominator</paramName>
+					<dim>[1, 2]</dim>
+				</parameter>
+				<parameter>
+					<paramName>InitialStates</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay
+phi_(n-1)</blkName>
+				<xpcblkName>DAQ/remove_encoder_dropouts/Unit Delay phi_(n-1)</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Unit Delay phi_(n-1)</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>InitialCondition</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay
+phi_(n-2)</blkName>
+				<xpcblkName>DAQ/remove_encoder_dropouts/Unit Delay phi_(n-2)</xpcblkName>
+				<SLblockPath>initial_setup/DAQ/remove_encoder_dropouts/Unit Delay phi_(n-2)</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>InitialCondition</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Abs</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Abs</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Clock</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Clock</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Gain2</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Gain2</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Sum</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+				<sigLabel>phi'</sigLabel>
+			</signal>
+			<signal>
+				<sigName>Sum2</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Sum2</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum3</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Sum3</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+				<sigLabel>error</sigLabel>
+			</signal>
+			<signal>
+				<sigName>Switch</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Switch</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Discrete
+Single Pole
+Lowpass Filter</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Discrete Single Pole Lowpass Filter</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay
+phi_(n-1)</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Unit Delay phi_(n-1)</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay
+phi_(n-2)</sigName>
+				<xpcsigName>DAQ/remove_encoder_dropouts/Unit Delay phi_(n-2)</xpcsigName>
+				<sigWidth>13</sigWidth>
+				<sigDim>[13, 1]</sigDim>
 			</signal>
 		</SubSystem>
 		<SubSystem>
@@ -7300,6 +8223,438 @@ phi_(n-1)</sigName>
 					<sigName>Unit Delay
 phi_(n-2)</sigName>
 					<xpcsigName>DAQ/unwrap_encoders/unwrap_boom_yaw_encoder/Unit Delay phi_(n-2)</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>unwrap_lateral_absolute_encoders Left</Name>
+				<xPCName>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left</xPCName>
+				<SubSystem>
+					<Name>Compare
+To Zero</Name>
+					<xPCName>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Compare To Zero</xPCName>
+					<block>
+						<blkName>Constant</blkName>
+						<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Compare To Zero/Constant</xpcblkName>
+						<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Compare To Zero/Constant</SLblockPath>
+						<isSrc>[1 0 1]</isSrc>
+						<parameter>
+							<paramName>Value</paramName>
+							<dim>[1, 1]</dim>
+						</parameter>
+					</block>
+					<signal>
+						<sigName>Compare</sigName>
+						<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Compare To Zero/Compare</xpcsigName>
+						<sigWidth>1</sigWidth>
+						<sigDim>[1, 1]</sigDim>
+					</signal>
+				</SubSystem>
+				<block>
+					<blkName>const</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/const</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/const</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>no</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/no</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/no</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>yes</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/yes</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/yes</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>1//HIP_ABS_MAX_ENCODER_TICKS</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/1//HIP_ABS_MAX_ENCODER_TICKS</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/1//HIP_ABS_MAX_ENCODER_TICKS</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Gain2</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Gain2</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Gain2</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>HIP_ABS_MAX_ENCODER_TICKS</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/HIP_ABS_MAX_ENCODER_TICKS</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/HIP_ABS_MAX_ENCODER_TICKS</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Discrete
+Single Pole
+Lowpass Filter</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Discrete Single Pole Lowpass Filter</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Discrete Single Pole Lowpass Filter</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Numerator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>Denominator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>InitialStates</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Unit Delay
+phi_(n-1)</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-1)</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-1)</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>InitialCondition</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Unit Delay
+phi_(n-2)</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-2)</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-2)</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>InitialCondition</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Abs</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Abs</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>1//HIP_ABS_MAX_ENCODER_TICKS</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/1//HIP_ABS_MAX_ENCODER_TICKS</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Gain2</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Gain2</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>HIP_ABS_MAX_ENCODER_TICKS</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/HIP_ABS_MAX_ENCODER_TICKS</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Product</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Product</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Rounding
+Function</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Rounding Function</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Sum</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum1</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Sum1</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum2</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Sum2</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum3</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Sum3</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Switch</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Switch</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Discrete
+Single Pole
+Lowpass Filter</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Discrete Single Pole Lowpass Filter</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Unit Delay
+phi_(n-1)</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-1)</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Unit Delay
+phi_(n-2)</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Left/Unit Delay phi_(n-2)</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>unwrap_lateral_absolute_encoders Right</Name>
+				<xPCName>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right</xPCName>
+				<SubSystem>
+					<Name>Compare
+To Zero</Name>
+					<xPCName>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Compare To Zero</xPCName>
+					<block>
+						<blkName>Constant</blkName>
+						<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Compare To Zero/Constant</xpcblkName>
+						<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Compare To Zero/Constant</SLblockPath>
+						<isSrc>[1 0 1]</isSrc>
+						<parameter>
+							<paramName>Value</paramName>
+							<dim>[1, 1]</dim>
+						</parameter>
+					</block>
+					<signal>
+						<sigName>Compare</sigName>
+						<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Compare To Zero/Compare</xpcsigName>
+						<sigWidth>1</sigWidth>
+						<sigDim>[1, 1]</sigDim>
+					</signal>
+				</SubSystem>
+				<block>
+					<blkName>const</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/const</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/const</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>no</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/no</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/no</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>yes</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/yes</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/yes</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>1//HIP_ABS_MAX_ENCODER_TICKS</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/1//HIP_ABS_MAX_ENCODER_TICKS</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/1//HIP_ABS_MAX_ENCODER_TICKS</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Gain2</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Gain2</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Gain2</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>HIP_ABS_MAX_ENCODER_TICKS</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/HIP_ABS_MAX_ENCODER_TICKS</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/HIP_ABS_MAX_ENCODER_TICKS</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Discrete
+Single Pole
+Lowpass Filter</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Discrete Single Pole Lowpass Filter</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Discrete Single Pole Lowpass Filter</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Numerator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>Denominator</paramName>
+						<dim>[1, 2]</dim>
+					</parameter>
+					<parameter>
+						<paramName>InitialStates</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Unit Delay
+phi_(n-1)</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-1)</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-1)</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>InitialCondition</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Unit Delay
+phi_(n-2)</blkName>
+					<xpcblkName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-2)</xpcblkName>
+					<SLblockPath>initial_setup/DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-2)</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>InitialCondition</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Abs</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Abs</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>1//HIP_ABS_MAX_ENCODER_TICKS</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/1//HIP_ABS_MAX_ENCODER_TICKS</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Gain2</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Gain2</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>HIP_ABS_MAX_ENCODER_TICKS</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/HIP_ABS_MAX_ENCODER_TICKS</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Product</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Product</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Rounding
+Function</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Rounding Function</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Sum</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum1</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Sum1</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum2</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Sum2</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum3</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Sum3</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Switch</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Switch</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Discrete
+Single Pole
+Lowpass Filter</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Discrete Single Pole Lowpass Filter</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Unit Delay
+phi_(n-1)</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-1)</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Unit Delay
+phi_(n-2)</sigName>
+					<xpcsigName>DAQ/unwrap_encoders/unwrap_lateral_absolute_encoders Right/Unit Delay phi_(n-2)</xpcsigName>
 					<sigWidth>1</sigWidth>
 					<sigDim>[1, 1]</sigDim>
 				</signal>
@@ -7742,9 +9097,19 @@ phi_(n-2)</sigName>
 			<xPCName>initial_setup/DAQ/Supervisory</xPCName>
 		</SubSystem>
 		<block>
-			<blkName>raw_signals</blkName>
-			<xpcblkName>DAQ/raw_signals</xpcblkName>
-			<SLblockPath>initial_setup/DAQ/raw_signals</SLblockPath>
+			<blkName>q_signals</blkName>
+			<xpcblkName>DAQ/q_signals</xpcblkName>
+			<SLblockPath>initial_setup/DAQ/q_signals</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>raw_encoder_signals</blkName>
+			<xpcblkName>DAQ/raw_encoder_signals</xpcblkName>
+			<SLblockPath>initial_setup/DAQ/raw_encoder_signals</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
@@ -7762,16 +9127,12 @@ phi_(n-2)</sigName>
 			</parameter>
 		</block>
 		<block>
-			<blkName>Motor Saturation</blkName>
-			<xpcblkName>DAQ/Motor Saturation</xpcblkName>
-			<SLblockPath>initial_setup/DAQ/Motor Saturation</SLblockPath>
+			<blkName>tau_cmd_signals</blkName>
+			<xpcblkName>DAQ/tau_cmd_signals</xpcblkName>
+			<SLblockPath>initial_setup/DAQ/tau_cmd_signals</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
-				<paramName>UpperLimit</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-			<parameter>
-				<paramName>LowerLimit</paramName>
+				<paramName>Gain</paramName>
 				<dim>[1, 1]</dim>
 			</parameter>
 		</block>
@@ -8010,6 +9371,24 @@ phi_(n-2)</sigName>
 		<signal>
 			<sigName>Supervisory/p32</sigName>
 			<xpcsigName>DAQ/Supervisory/p32</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Supervisory/p33</sigName>
+			<xpcsigName>DAQ/Supervisory/p33</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Supervisory/p34</sigName>
+			<xpcsigName>DAQ/Supervisory/p34</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Supervisory/p35</sigName>
+			<xpcsigName>DAQ/Supervisory/p35</xpcsigName>
 			<sigWidth>1</sigWidth>
 			<sigDim>[1, 1]</sigDim>
 		</signal>
@@ -8836,8 +10215,14 @@ phi_(n-2)</sigName>
 			<sigDim>[1, 1]</sigDim>
 		</signal>
 		<signal>
-			<sigName>raw_signals</sigName>
-			<xpcsigName>DAQ/raw_signals</xpcsigName>
+			<sigName>q_signals</sigName>
+			<xpcsigName>DAQ/q_signals</xpcsigName>
+			<sigWidth>13</sigWidth>
+			<sigDim>[13, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>raw_encoder_signals</sigName>
+			<xpcsigName>DAQ/raw_encoder_signals</xpcsigName>
 			<sigWidth>15</sigWidth>
 			<sigDim>[15, 1]</sigDim>
 		</signal>
@@ -8848,8 +10233,8 @@ phi_(n-2)</sigName>
 			<sigDim>[10, 1]</sigDim>
 		</signal>
 		<signal>
-			<sigName>Motor Saturation</sigName>
-			<xpcsigName>DAQ/Motor Saturation</xpcsigName>
+			<sigName>tau_cmd_signals</sigName>
+			<xpcsigName>DAQ/tau_cmd_signals</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
@@ -8882,1074 +10267,8 @@ phi_(n-2)</sigName>
 		<Name>Simple Sinusoidal Motion</Name>
 		<xPCName>initial_setup/Simple Sinusoidal Motion</xPCName>
 		<SubSystem>
-			<Name>Left Lateral Sine Wave</Name>
-			<xPCName>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave</xPCName>
-			<SubSystem>
-				<Name>Diminish</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish</xPCName>
-				<SubSystem>
-					<Name>Ramp</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp</xPCName>
-					<block>
-						<blkName>Constant</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Constant</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Constant</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Constant1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Constant1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Constant1</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Step</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Step</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Step</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Time</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>Before</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>After</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Clock</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Clock</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Product</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Product</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Step</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Step</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Output</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Output</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Ramp1</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1</xPCName>
-					<block>
-						<blkName>Constant</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Constant</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Constant</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Constant1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Constant1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Constant1</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Step</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Step</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Step</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Time</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>Before</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>After</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Clock</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Clock</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Product</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Product</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Step</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Step</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Output</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Output</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Ramp1/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<block>
-					<blkName>Position Saturation</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Position Saturation</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Position Saturation</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Switch</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Switch</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Switch</SLblockPath>
-					<isSrc>[0 3 1]</isSrc>
-					<parameter>
-						<paramName>Threshold</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Clock</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Clock</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Divide</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Divide</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Position Saturation</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Position Saturation</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Sum</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Switch</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Diminish/Switch</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<SubSystem>
-				<Name>Hip Roll PD</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD</xPCName>
-				<block>
-					<blkName>Gain4</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain4</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain4</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Gain5</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain5</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain5</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Gain5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Gain5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum6</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Hip Roll PD/Sum6</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<block>
-				<blkName>Constant1</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Constant1</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Constant1</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Value</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>qLatSignal</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/qLatSignal</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/qLatSignal</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Left Theta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Left Theta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Left Theta Desired</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>dTheta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/dTheta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/dTheta Desired</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Manual Switch</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Manual Switch</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Lateral Sine Wave/Manual Switch</SLblockPath>
-				<isSrc>[0 2 1]</isSrc>
-				<parameter>
-					<paramName>CurrentSetting</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<signal>
-				<sigName>qLatSignal</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/qLatSignal</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Left Theta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Left Theta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>dTheta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/dTheta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Manual Switch</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Lateral Sine Wave/Manual Switch</xpcsigName>
-				<sigWidth>2</sigWidth>
-				<sigDim>[2, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
-			<Name>Left Leg Sagittal Sine Wave</Name>
-			<xPCName>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave</xPCName>
-			<SubSystem>
-				<Name>Hip PD Torque Control</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control</xPCName>
-				<block>
-					<blkName>Gain4</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Gain5</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Gain5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum6</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Hip PD Torque Control/Sum6</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<SubSystem>
-				<Name>Knee PD Torque Control</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control</xPCName>
-				<block>
-					<blkName>Gain6</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain6</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain6</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Gain7</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain7</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain7</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain6</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain6</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Gain7</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Gain7</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum7</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Sum7</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum8</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Sum8</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum9</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Knee PD Torque Control/Sum9</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<block>
-				<blkName>constant1</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/constant1</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/constant1</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Value</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Gain</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Gain1</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain1</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain1</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>HipL</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/HipL</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/HipL</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>L Hip Theta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Desired</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>L Hip Theta Dot Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Dot Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Dot Desired</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>L Knee Theta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Desired</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>L Knee Theta Dot Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Dot Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Dot Desired</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<signal>
-				<sigName>Gain</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Gain1</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Gain1</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>HipL</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/HipL</xpcsigName>
-				<sigWidth>2</sigWidth>
-				<sigDim>[2, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>L Hip Theta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>L Hip Theta Dot Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Hip Theta Dot Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>L Knee Theta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>L Knee Theta Dot Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/L Knee Theta Dot Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Sum</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Sum</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Sum1</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Sum1</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Sum2</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Sum2</xpcsigName>
-				<sigWidth>2</sigWidth>
-				<sigDim>[2, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Sum3</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Sum3</xpcsigName>
-				<sigWidth>2</sigWidth>
-				<sigDim>[2, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Sum4</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Left Leg Sagittal Sine Wave/Sum4</xpcsigName>
-				<sigWidth>2</sigWidth>
-				<sigDim>[2, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
-			<Name>Right Lateral Sine Wave</Name>
-			<xPCName>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave</xPCName>
-			<SubSystem>
-				<Name>Diminish</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish</xPCName>
-				<SubSystem>
-					<Name>Ramp</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp</xPCName>
-					<block>
-						<blkName>Constant</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Constant</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Constant</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Constant1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Constant1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Constant1</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Step</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Step</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Step</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Time</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>Before</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>After</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Clock</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Clock</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Product</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Product</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Step</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Step</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Output</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Output</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Ramp1</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1</xPCName>
-					<block>
-						<blkName>Constant</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Constant</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Constant</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Constant1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Constant1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Constant1</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Value</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Step</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Step</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Step</SLblockPath>
-						<isSrc>[1 0 1]</isSrc>
-						<parameter>
-							<paramName>Time</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>Before</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-						<parameter>
-							<paramName>After</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Clock</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Clock</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Product</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Product</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Step</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Step</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Output</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Output</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Ramp1/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<block>
-					<blkName>Position Saturation</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Position Saturation</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Position Saturation</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Switch</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Switch</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Switch</SLblockPath>
-					<isSrc>[0 3 1]</isSrc>
-					<parameter>
-						<paramName>Threshold</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Clock</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Clock</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Divide</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Divide</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Position Saturation</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Position Saturation</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Sum</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Switch</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Diminish/Switch</xpcsigName>
-					<sigWidth>2</sigWidth>
-					<sigDim>[2, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<SubSystem>
-				<Name>Hip Roll PD</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD</xPCName>
-				<block>
-					<blkName>Gain4</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain4</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain4</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Gain5</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain5</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain5</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Gain5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Gain5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum6</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Hip Roll PD/Sum6</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<block>
-				<blkName>Constant1</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Constant1</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Constant1</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>Value</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>qLatSignal</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/qLatSignal</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/qLatSignal</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>Right Theta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Right Theta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/Right Theta Desired</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>dTheta Desired</blkName>
-				<xpcblkName>Simple Sinusoidal Motion/Right Lateral Sine Wave/dTheta Desired</xpcblkName>
-				<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Lateral Sine Wave/dTheta Desired</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Amplitude</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Bias</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Frequency</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>Phase</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<signal>
-				<sigName>qLatSignal</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/qLatSignal</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Right Theta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/Right Theta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>dTheta Desired</sigName>
-				<xpcsigName>Simple Sinusoidal Motion/Right Lateral Sine Wave/dTheta Desired</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
 			<Name>Right Leg Sagittal Sine Wave</Name>
 			<xPCName>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave</xPCName>
-			<SubSystem>
-				<Name>Hip PD Torque Control</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control</xPCName>
-				<block>
-					<blkName>Gain4</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Gain5</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Gain5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Gain5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum6</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Hip PD Torque Control/Sum6</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
 			<SubSystem>
 				<Name>Knee PD Torque Control</Name>
 				<xPCName>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Knee PD Torque Control</xPCName>
@@ -10000,6 +10319,60 @@ phi_(n-2)</sigName>
 				<signal>
 					<sigName>Sum9</sigName>
 					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Knee PD Torque Control/Sum9</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>Leg Angle PD Torque Control</Name>
+				<xPCName>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control</xPCName>
+				<block>
+					<blkName>Gain4</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain4</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain4</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Gain5</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain5</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain5</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Gain4</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain4</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Gain5</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Gain5</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum4</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Sum4</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum5</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Sum5</xpcsigName>
+					<sigWidth>1</sigWidth>
+					<sigDim>[1, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum6</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/Right Leg Sagittal Sine Wave/Leg Angle PD Torque Control/Sum6</xpcsigName>
 					<sigWidth>1</sigWidth>
 					<sigDim>[1, 1]</sigDim>
 				</signal>
@@ -10206,940 +10579,211 @@ phi_(n-2)</sigName>
 			</signal>
 		</SubSystem>
 		<SubSystem>
-			<Name>SEA Controllers (Left Leg)</Name>
-			<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)</xPCName>
+			<Name>lateral_PID_control</Name>
+			<xPCName>initial_setup/Simple Sinusoidal Motion/lateral_PID_control</xPCName>
 			<SubSystem>
-				<Name>SEA Controller (Position) back</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back</xPCName>
-				<SubSystem>
-					<Name>Position PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD</xPCName>
-					<SubSystem>
-						<Name>filtered_derivative</Name>
-						<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative</xPCName>
-						<SubSystem>
-							<Name>difference</Name>
-							<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference</xPCName>
-							<block>
-								<blkName>UD</blkName>
-								<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</xpcblkName>
-								<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</SLblockPath>
-								<isSrc>[0 1 1]</isSrc>
-								<parameter>
-									<paramName>InitialCondition</paramName>
-									<dim>[1, 1]</dim>
-								</parameter>
-							</block>
-							<signal>
-								<sigName>Diff</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/Diff</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-							<signal>
-								<sigName>UD</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-						</SubSystem>
-						<block>
-							<blkName>Gain1</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Gain</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<block>
-							<blkName>single_pole_filter</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Numerator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>Denominator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>InitialStates</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<signal>
-							<sigName>Gain1</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-						<signal>
-							<sigName>single_pole_filter</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-					</SubSystem>
-					<block>
-						<blkName>Proportional
+				<Name>Lateral Hip PID</Name>
+				<xPCName>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID</xPCName>
+				<block>
+					<blkName>Discrete-Time Integrator</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Discrete-Time Integrator</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Discrete-Time Integrator</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>gainval</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>InitialCondition</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>UpperSaturationLimit</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+					<parameter>
+						<paramName>LowerSaturationLimit</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Proportional
 Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Proportional
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Proportional
 Gain1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain1</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain1</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Proportional
+Gain2</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain2</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain2</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Discrete-Time Integrator</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Discrete-Time Integrator</xpcsigName>
+					<sigWidth>2</sigWidth>
+					<sigDim>[2, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Proportional
 Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Proportional
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain</xpcsigName>
+					<sigWidth>2</sigWidth>
+					<sigDim>[2, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Proportional
 Gain1</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Position PD/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Torque PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque PD</xPCName>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain1</xpcsigName>
+					<sigWidth>2</sigWidth>
+					<sigDim>[2, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Proportional
+Gain2</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Proportional Gain2</xpcsigName>
+					<sigWidth>2</sigWidth>
+					<sigDim>[2, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Sum</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Lateral Hip PID/Sum</xpcsigName>
+					<sigWidth>2</sigWidth>
+					<sigDim>[2, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>spherical_correction_angle</Name>
+				<xPCName>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle</xPCName>
 				<block>
-					<blkName>Gain2</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Gain2</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Gain2</SLblockPath>
+					<blkName>boom_mount_angle</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/boom_mount_angle</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/boom_mount_angle</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>lateral_correction</blkName>
+					<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/lateral_correction</xpcblkName>
+					<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/lateral_correction</SLblockPath>
 					<isSrc>[0 1 1]</isSrc>
 					<parameter>
 						<paramName>Gain</paramName>
 						<dim>[1, 1]</dim>
 					</parameter>
 				</block>
-				<block>
-					<blkName>Spring
-Stiffness</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Spring Stiffness</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Spring Stiffness</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Torque 
-Limiter
-(outside)
-</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
 				<signal>
-					<sigName>Gain2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Gain2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Spring
-Stiffness</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Spring Stiffness</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Torque 
-Limiter
-(outside)
-</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </xpcsigName>
+					<sigName>lateral_correction</sigName>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/lateral_correction</xpcsigName>
 					<sigWidth>1</sigWidth>
 					<sigDim>[1, 1]</sigDim>
 				</signal>
 				<signal>
 					<sigName>Sum1</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Sum1</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Sum2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum3</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Sum3</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) back/Sum5</xpcsigName>
+					<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/spherical_correction_angle/Sum1</xpcsigName>
 					<sigWidth>1</sigWidth>
 					<sigDim>[1, 1]</sigDim>
 				</signal>
 			</SubSystem>
-			<SubSystem>
-				<Name>SEA Controller (Position) front</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front</xPCName>
-				<SubSystem>
-					<Name>Position PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD</xPCName>
-					<SubSystem>
-						<Name>filtered_derivative</Name>
-						<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative</xPCName>
-						<SubSystem>
-							<Name>difference</Name>
-							<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference</xPCName>
-							<block>
-								<blkName>UD</blkName>
-								<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</xpcblkName>
-								<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</SLblockPath>
-								<isSrc>[0 1 1]</isSrc>
-								<parameter>
-									<paramName>InitialCondition</paramName>
-									<dim>[1, 1]</dim>
-								</parameter>
-							</block>
-							<signal>
-								<sigName>Diff</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/Diff</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-							<signal>
-								<sigName>UD</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-						</SubSystem>
-						<block>
-							<blkName>Gain1</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Gain</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<block>
-							<blkName>single_pole_filter</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Numerator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>Denominator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>InitialStates</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<signal>
-							<sigName>Gain1</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-						<signal>
-							<sigName>single_pole_filter</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-					</SubSystem>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Proportional
-Gain1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Proportional
-Gain1</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Position PD/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Torque PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque PD</xPCName>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<block>
-					<blkName>Gain2</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Gain2</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Gain2</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Spring
-Stiffness</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Spring Stiffness</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Spring Stiffness</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Torque 
-Limiter
-(outside)
-</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Gain2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Spring
-Stiffness</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Spring Stiffness</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Torque 
-Limiter
-(outside)
-</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum1</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Sum1</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Sum2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum3</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Sum3</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Left Leg)/SEA Controller (Position) front/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-		</SubSystem>
-		<SubSystem>
-			<Name>SEA Controllers (Right Leg)</Name>
-			<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)</xPCName>
-			<SubSystem>
-				<Name>SEA Controller (Position) back</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back</xPCName>
-				<SubSystem>
-					<Name>Position PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD</xPCName>
-					<SubSystem>
-						<Name>filtered_derivative</Name>
-						<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative</xPCName>
-						<SubSystem>
-							<Name>difference</Name>
-							<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference</xPCName>
-							<block>
-								<blkName>UD</blkName>
-								<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</xpcblkName>
-								<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</SLblockPath>
-								<isSrc>[0 1 1]</isSrc>
-								<parameter>
-									<paramName>InitialCondition</paramName>
-									<dim>[1, 1]</dim>
-								</parameter>
-							</block>
-							<signal>
-								<sigName>Diff</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/Diff</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-							<signal>
-								<sigName>UD</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/difference/UD</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-						</SubSystem>
-						<block>
-							<blkName>Gain1</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Gain</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<block>
-							<blkName>single_pole_filter</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Numerator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>Denominator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>InitialStates</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<signal>
-							<sigName>Gain1</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/Gain1</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-						<signal>
-							<sigName>single_pole_filter</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/filtered_derivative/single_pole_filter</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-					</SubSystem>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Proportional
-Gain1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Proportional
-Gain1</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Proportional Gain1</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Position PD/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Torque PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque PD</xPCName>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<block>
-					<blkName>Gain2</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Gain2</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Gain2</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Spring
-Stiffness</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Spring Stiffness</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Spring Stiffness</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Torque 
-Limiter
-(outside)
-</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Gain2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Spring
-Stiffness</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Spring Stiffness</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Torque 
-Limiter
-(outside)
-</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Torque  Limiter (outside) </xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum1</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Sum1</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Sum2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum3</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Sum3</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) back/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
-			<SubSystem>
-				<Name>SEA Controller (Position) front</Name>
-				<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front</xPCName>
-				<SubSystem>
-					<Name>Position PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD</xPCName>
-					<SubSystem>
-						<Name>filtered_derivative</Name>
-						<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative</xPCName>
-						<SubSystem>
-							<Name>difference</Name>
-							<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference</xPCName>
-							<block>
-								<blkName>UD</blkName>
-								<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</xpcblkName>
-								<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</SLblockPath>
-								<isSrc>[0 1 1]</isSrc>
-								<parameter>
-									<paramName>InitialCondition</paramName>
-									<dim>[1, 1]</dim>
-								</parameter>
-							</block>
-							<signal>
-								<sigName>Diff</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/Diff</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-							<signal>
-								<sigName>UD</sigName>
-								<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/difference/UD</xpcsigName>
-								<sigWidth>1</sigWidth>
-								<sigDim>[1, 1]</sigDim>
-							</signal>
-						</SubSystem>
-						<block>
-							<blkName>Gain1</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Gain</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<block>
-							<blkName>single_pole_filter</blkName>
-							<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</xpcblkName>
-							<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</SLblockPath>
-							<isSrc>[0 1 1]</isSrc>
-							<parameter>
-								<paramName>Numerator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>Denominator</paramName>
-								<dim>[1, 2]</dim>
-							</parameter>
-							<parameter>
-								<paramName>InitialStates</paramName>
-								<dim>[1, 1]</dim>
-							</parameter>
-						</block>
-						<signal>
-							<sigName>Gain1</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/Gain1</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-						<signal>
-							<sigName>single_pole_filter</sigName>
-							<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/filtered_derivative/single_pole_filter</xpcsigName>
-							<sigWidth>1</sigWidth>
-							<sigDim>[1, 1]</sigDim>
-						</signal>
-					</SubSystem>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<block>
-						<blkName>Proportional
-Gain1</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Proportional
-Gain1</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Proportional Gain1</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-					<signal>
-						<sigName>Sum</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Position PD/Sum</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<SubSystem>
-					<Name>Torque PD</Name>
-					<xPCName>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque PD</xPCName>
-					<block>
-						<blkName>Proportional
-Gain</blkName>
-						<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</xpcblkName>
-						<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</SLblockPath>
-						<isSrc>[0 1 1]</isSrc>
-						<parameter>
-							<paramName>Gain</paramName>
-							<dim>[1, 1]</dim>
-						</parameter>
-					</block>
-					<signal>
-						<sigName>Proportional
-Gain</sigName>
-						<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque PD/Proportional Gain</xpcsigName>
-						<sigWidth>1</sigWidth>
-						<sigDim>[1, 1]</sigDim>
-					</signal>
-				</SubSystem>
-				<block>
-					<blkName>Gain2</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Gain2</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Gain2</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Spring
-Stiffness</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Spring Stiffness</xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Spring Stiffness</SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>Gain</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<block>
-					<blkName>Torque 
-Limiter
-(outside)
-</blkName>
-					<xpcblkName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </xpcblkName>
-					<SLblockPath>initial_setup/Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </SLblockPath>
-					<isSrc>[0 1 1]</isSrc>
-					<parameter>
-						<paramName>UpperLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-					<parameter>
-						<paramName>LowerLimit</paramName>
-						<dim>[1, 1]</dim>
-					</parameter>
-				</block>
-				<signal>
-					<sigName>Gain2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Gain2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Spring
-Stiffness</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Spring Stiffness</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Torque 
-Limiter
-(outside)
-</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Torque  Limiter (outside) </xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum1</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Sum1</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum2</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Sum2</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum3</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Sum3</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum4</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Sum4</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-				<signal>
-					<sigName>Sum5</sigName>
-					<xpcsigName>Simple Sinusoidal Motion/SEA Controllers (Right Leg)/SEA Controller (Position) front/Sum5</xpcsigName>
-					<sigWidth>1</sigWidth>
-					<sigDim>[1, 1]</sigDim>
-				</signal>
-			</SubSystem>
+			<block>
+				<blkName>desired_velocity</blkName>
+				<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/desired_velocity</xpcblkName>
+				<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/desired_velocity</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>feedforward_torque 
+(gravity compensation)</blkName>
+				<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/feedforward_torque  (gravity compensation)</xpcblkName>
+				<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/feedforward_torque  (gravity compensation)</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Gain</blkName>
+				<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Gain</xpcblkName>
+				<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Gain</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Motor Saturation</blkName>
+				<xpcblkName>Simple Sinusoidal Motion/lateral_PID_control/Motor Saturation</xpcblkName>
+				<SLblockPath>initial_setup/Simple Sinusoidal Motion/lateral_PID_control/Motor Saturation</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>UpperLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>LowerLimit</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Gain</sigName>
+				<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Gain</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Motor Saturation</sigName>
+				<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Motor Saturation</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum1</sigName>
+				<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Sum1</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum2</sigName>
+				<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Sum2</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Sum4</sigName>
+				<xpcsigName>Simple Sinusoidal Motion/lateral_PID_control/Sum4</xpcsigName>
+				<sigWidth>2</sigWidth>
+				<sigDim>[2, 1]</sigDim>
+			</signal>
 		</SubSystem>
 		<block>
 			<blkName>motor_torque_cmd</blkName>
@@ -11182,16 +10826,22 @@ Limiter
 			</parameter>
 		</block>
 		<block>
-			<blkName>Motor Saturation</blkName>
-			<xpcblkName>Simple Sinusoidal Motion/Motor Saturation</xpcblkName>
-			<SLblockPath>initial_setup/Simple Sinusoidal Motion/Motor Saturation</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
+			<blkName>Constant3</blkName>
+			<xpcblkName>Simple Sinusoidal Motion/Constant3</xpcblkName>
+			<SLblockPath>initial_setup/Simple Sinusoidal Motion/Constant3</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
 			<parameter>
-				<paramName>UpperLimit</paramName>
+				<paramName>Value</paramName>
 				<dim>[1, 1]</dim>
 			</parameter>
+		</block>
+		<block>
+			<blkName>Constant4</blkName>
+			<xpcblkName>Simple Sinusoidal Motion/Constant4</xpcblkName>
+			<SLblockPath>initial_setup/Simple Sinusoidal Motion/Constant4</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
 			<parameter>
-				<paramName>LowerLimit</paramName>
+				<paramName>Value</paramName>
 				<dim>[1, 1]</dim>
 			</parameter>
 		</block>
@@ -11222,10 +10872,16 @@ Limiter
 			<sigDim>[1, 1]</sigDim>
 		</signal>
 		<signal>
-			<sigName>Motor Saturation</sigName>
-			<xpcsigName>Simple Sinusoidal Motion/Motor Saturation</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigName>Constant3</sigName>
+			<xpcsigName>Simple Sinusoidal Motion/Constant3</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Constant4</sigName>
+			<xpcsigName>Simple Sinusoidal Motion/Constant4</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Sum</sigName>
@@ -11256,10 +10912,36 @@ Limiter
 			<dim>[1, 1]</dim>
 		</parameter>
 	</block>
+	<block>
+		<blkName>Motor Torque Saturation</blkName>
+		<xpcblkName>Motor Torque Saturation</xpcblkName>
+		<SLblockPath>initial_setup/Motor Torque Saturation</SLblockPath>
+		<isSrc>[0 1 1]</isSrc>
+		<parameter>
+			<paramName>UpperLimit</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+		<parameter>
+			<paramName>LowerLimit</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
 	<signal>
 		<sigName>Clock</sigName>
 		<xpcsigName>Clock</xpcsigName>
 		<sigWidth>1</sigWidth>
 		<sigDim>[1, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Clock1</sigName>
+		<xpcsigName>Clock1</xpcsigName>
+		<sigWidth>1</sigWidth>
+		<sigDim>[1, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Motor Torque Saturation</sigName>
+		<xpcsigName>Motor Torque Saturation</xpcsigName>
+		<sigWidth>6</sigWidth>
+		<sigDim>[6, 1]</sigDim>
 	</signal>
 </Root>
