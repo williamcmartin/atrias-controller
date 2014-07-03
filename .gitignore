@@ -1,6 +1,7 @@
 # Logs #
 ########
 *.fig
+*.mat
 
 # Simulink things #
 ###################
@@ -8,8 +9,8 @@ slprj/
 02 UMich 2D Walking/
 *.pdf
 *.r2012b
+*.r2013a
 *.png
-*.mat
 *.mexmaci64
 *rtw/
 *.c
@@ -42,6 +43,10 @@ slprj/
 *.mol
 *.manifest
 *.tlh
+*bio.m
+*pt.m
+*ref.m
+
 # Videos #
 ##########
 *.mp4
@@ -87,3 +92,8 @@ Icon?
 ehthumbs.db
 Thumbs.db
 desktop.ini
+
+01 initial setup/xPC Target Files/initial_setupbio.m
+01 initial setup/xPC Target Files/initial_setuppt.m
+01 initial setup/xPC Target Files/initial_setupref.m
+01 initial setup/xPC Target Files/matlab.mat
