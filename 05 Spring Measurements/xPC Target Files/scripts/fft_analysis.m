@@ -1,9 +1,9 @@
 % t : time vector
 % deflections : spring deflection vector (4 columns - backR frontR backL frontL)
 
-Fs = 1000;                    % Sampling frequency
+Fs = 250;                    % Sampling frequency
 T = 1/Fs;                    % Sample time
-range = t>20 & t<100;
+range = t>20 & t<40;
 t_shortened = t(range);
 y = spring_forces(range,1);
 L = length(t_shortened);
