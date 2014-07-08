@@ -15,7 +15,7 @@ close all; clear all; path(pathdef); clc;
 
 % Add all lower directories to path
 addpath(genpath(pwd));
-addpath('../../00 Global Files');
+addpath(genpath('../../00 Global Files'));
 
 % Simulation parameters
 update_freq = 1000; %Hz
