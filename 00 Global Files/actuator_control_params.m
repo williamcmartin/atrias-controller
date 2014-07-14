@@ -51,9 +51,9 @@ A2_notch_f3 = 1;
 K_notch_f3 = (1+B1_notch_f3+B2_notch_f3)/(1+A1_notch_f3+A2_notch_f3);
 %-- PD gains
 kp_sea_torque_flight = 0.3;
-kp_sea_torque_stance = 8;
+kp_sea_torque_stance = 8.0 - kp_sea_torque_flight;
 kd_sea_torque_flight = 0.3*sqrt(2)/2*2*sqrt(k_sea.*j_segments) ./ k_sea; % Critical damping / spring_stiffness
-kd_sea_torque_stance = sqrt(2)/2*2*sqrt(k_sea.*(4.4)) ./ k_sea; % Critical damping / spring_stiffness
+kd_sea_torque_stance = (sqrt(2)/2*2*sqrt(k_sea.*(4.4)) ./ k_sea) - kd_sea_torque_flight; % Critical damping / spring_stiffness
 %-- Feedforward
 sea_sliding_friction = [0 0 0 0]; % Nm/(rad/s)
 sea_extra_sliding_friction = 0.001*ones(1,4); % Nm/(rad/s)
@@ -62,5 +62,5 @@ sea_coulomb_friction = [18.69 26.08 25.95 26.8+5]; % Nm
 sea_coulomb_friction_direction_switch_sensitivity = [15 5 15 15];
 k_ff = 1; % amount of feedforward to use
 %-- Thresholds for activating SEA control
-stance_flight_torque_threshold = 40*ones(1,4); % Nm, minimum measured torque to use large PD gains
+stance_flight_torque_threshold = 65*ones(1,4); % Nm, minimum measured torque to use large PD gains
 sea_control_torque_cmd_small_threshold = 1*ones(1,4); %Nm, minimum commanded torque to activate sea control

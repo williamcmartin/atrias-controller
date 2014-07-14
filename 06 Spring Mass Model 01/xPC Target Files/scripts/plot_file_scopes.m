@@ -66,7 +66,8 @@ plot_fscope('Lateral Position',{t}, {[pos.data(:,9:10)*180/pi desired_lateral -d
 % 7-12: desired output torques
 
 % contacts
-contact_shading = {2000*(right_left&contact), 2000*(~right_left&contact)};
+contact_right_left = {100000*(right_left&contact), 100000*(~right_left&contact)};
+contact_all = {100000*contact, 100000*contact};
 % spring deflections
 deflections = [pos.data(:,4)-pos.data(:,3) pos.data(:,2)-pos.data(:,1) pos.data(:,8)-pos.data(:,7) pos.data(:,6)-pos.data(:,5)];
 % torques desired vs measured
@@ -74,12 +75,12 @@ spring_forces = bsxfun(@times, deflections, k_sea);
 desired_forces = [torq.data(:,7:8) torq.data(:,10:11)];
 plot_fscope('Leg Torques',{t,t}, {[torq.data(:,7:8) spring_forces(:,1:2)],[torq.data(:,10:11) spring_forces(:,3:4)]}, ...
     {{'Contact','Back Desired','Front Desired','Back Measured','Front Measured'},{'Contact','Back Desired','Front Desired','Back Measured','Front Measured'}},...
-    {'Right Leg Torques','Left Leg Torques'}, {'Time (sec)','Time (sec)'}, {'Torque (Nm)','Torque (Nm)'}, {[-400 400],[-400 400]}, 2, contact_shading);
+    {'Right Leg Torques','Left Leg Torques'}, {'Time (sec)','Time (sec)'}, {'Torque (Nm)','Torque (Nm)'}, {[-400 400],[-400 400]}, 2, contact_right_left);
 % commanded motor torques
 commanded_forces = [torq.data(:,1:2) torq.data(:,4:5)];
 plot_fscope('Motor Torques',{t,t}, {torq.data(:,1:2),torq.data(:,4:5)}, ...
     {{'Back Commanded','Front Commanded'},{'Back Commanded','Front Commanded'}},...
-    {'Right Leg Torques','Left Leg Torques'}, {'Time (sec)','Time (sec)'}, {'Torque (Nm)','Torque (Nm)'}, {[-180 180],[-180 180]}, 2, []);
+    {'Right Leg Torques','Left Leg Torques'}, {'Time (sec)','Time (sec)'}, {'Torque (Nm)','Torque (Nm)'}, {[-400 400],[-400 400]}, 2, []);
 % leg force
     right_leg_force_measured = (spring_forces(:,2)-spring_forces(:,1)) ./ sin((pos.data(:,3)-pos.data(:,1))/2);
     right_leg_force_desired = (torq.data(:,8)-torq.data(:,7)) ./ sin((pos.data(:,3)-pos.data(:,1))/2);
@@ -87,49 +88,56 @@ plot_fscope('Motor Torques',{t,t}, {torq.data(:,1:2),torq.data(:,4:5)}, ...
     left_leg_force_desired = (torq.data(:,11)-torq.data(:,10)) ./ sin((pos.data(:,7)-pos.data(:,5))/2);
 plot_fscope('Leg Forces',{t,t}, {[right_leg_force_measured right_leg_force_desired], [left_leg_force_measured left_leg_force_desired]}, ...
     {{'Contact','Measured','Desired'},{'Contact','Measured','Desired'}},...
-    {'Right Leg Force','Left Leg Force'}, {'Time (sec)','Time (sec)'}, {'Force (N)','Force (N)'}, {[-20 1400],[-20 1400]}, 2, contact_shading);
+    {'Right Leg Force','Left Leg Force'}, {'Time (sec)','Time (sec)'}, {'Force (N)','Force (N)'}, {[-20 1400],[-20 1400]}, 2, contact_right_left);
 
 %% Plot controller data
-figure('Name','Desired Leg Angle');
-hold on;
-area(t,360*contact,'LineStyle','none','FaceColor',0.9*[1 1 1]);
-plot(t,cont.data(:,8)*180/pi)
-plot(t,left_leg_angle,'m')
-plot(t,right_leg_angle,'g')
-legend('contact','desired leg angle','left leg angle','right leg angle');
-hold off;
-
-
-figure('Name','Filtered Velocities');
-hold on;
-plot(t,cont.data(:,4));
-plot(t,cont.data(:,5),'r');
-plot(t,cont.data(:,6),'g');
-legend('dx','dy','dy_{TO}');
-hold off;
-
-figure('Name','Time to Apex');
-plot(t,cont.data(:,6)/g_reduced,'g');
-
-
-figure('Name','System Energy');
-hold on;
-plot(t,cont.data(:,7));
-hold off;
-
+% desired leg angles
+raibert_angle = cont.data(:,9)*180/pi;
+smm_angle = cont.data(:,10)*180/pi;
 alpha_r = pos.data(:,13)*180/pi + right_leg_angle - 90;
 alpha_l = pos.data(:,13)*180/pi + left_leg_angle - 90;
-figure('Name','Alpha Target');
-hold on;
-area(t,360*contact,'LineStyle','none','FaceColor',0.9*[1 1 1]);
-plot(t,cont.data(:,13)*180/pi);
-plot(t,alpha_r,'r');
-plot(t,alpha_l,'g');
-legend('Contact','Alpha Target', 'Right Alpha', 'Left Alpha');
-hold off;
+plot_fscope('Desired Leg Angle',{t,t}, {[raibert_angle right_leg_angle left_leg_angle], [smm_angle alpha_r alpha_l]}, ...
+    {{'Contact','Desired','Right','Left'},{'Contact','Desired','Right','Left'}},...
+    {'Raibert Hopping','SMM Alpha Target'}, {'Time (sec)','Time (sec)'}, {'Leg Angle (degrees)','Alpha (degrees)'}, {[120,280],[20,160]}, 2, contact_all);
+
+% translational velocities
+dx_filtered = cont.data(:,4);
+dy_filtered = cont.data(:,5);
+dy_takeoff = cont.data(:,6);
+dx_TO_est = cont.data(:,18);
+dy_TO_est = cont.data(:,19);
+plot_fscope('Filtered Translational Velocities',{t,t}, {[dx_filtered dx_TO_est], [dy_filtered dy_takeoff dy_TO_est]}, ...
+    {{'Contact','dx_{boom}','dx_{atrias} TO'},{'Contact','dy_{boom}','dy_{boom} TO','dy_{atrias} TO'}},...
+    {'dx','dy'}, {'Time (sec)','Time (sec)'}, {'Velocity (m/s)','Velocity (m/s)'}, {[-2,2],[-2,2]}, 2, contact_all);
+
+% system energy
+smm_com_y = cont.data(:,8);
+y_TO_est = cont.data(:,17);
+system_energy = m_total_real * ( 0.5*(dx_filtered.^2 + dy_filtered.^2) + g_reduced*smm_com_y);
+takeoff_system_energy = cont.data(:,7);
+plot_fscope('System Energy',{t}, {[system_energy takeoff_system_energy]}, ...
+    {{'Contact','System Energy','Energy at Takeoff'}},...
+    {'Energy'}, {'Time (sec)'}, {'Energy (J)'}, {[0,500]}, 1, contact_all);
+
+% virtual spring
+plot_fscope('Virtual Spring Stiffness',{t}, {[cont.data(:,11)]}, ...
+    {{'Contact','Spring Stiffness'}},...
+    {'Spring Constant'}, {'Time (sec)'}, {'K (N/m)'}, {[13000,33000]}, 1, contact_all);
+
+% enabled controllers
+plot_fscope('Active Controllers',{t}, {[cont.data(:,15) cont.data(:,16)]}, ...
+    {{'Contact','Hopping','SMM'}},...
+    {'Active Controllers'}, {'Time (sec)'}, {'Enabled (1 or 0)'}, {[-0.5,1.5]}, 1, contact_all);
+
+
+% misc
+figure('Name','Time to Apex');
+plot(t,dy_takeoff/g_reduced,'g');
+
+
 
 % save data
 %hfigs = get(0, 'children');        %Get list of figures
 %hgsave(hfigs,sprintf('figures/%s.fig',datestr(clock,'mmmm_dd_yyyy HH_MM_SS_AM')));
-save(sprintf('data/%s',datestr(clock,'mmmm_dd_yyyy HH_MM_SS_AM')), 'pos', 'torq','cont');
+save(sprintf('data/%s',datestr(clock,'mmmm_dd_yyyy HH_MM_SS_AM')), 'pos', 'torq', 'cont');
 

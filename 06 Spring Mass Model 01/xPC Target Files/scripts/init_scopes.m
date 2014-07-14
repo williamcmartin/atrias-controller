@@ -159,18 +159,31 @@ fscopes(3).addsignal(getsignalid(tg,'DAQ/error_flags/s7'));
 
 % Controller Data
 set(fscopes(4),'FileName','E:\CONT_<%%%>.dat');
+% contact
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/flight')); % opposite of stance phase
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/right_left/s1')); % Right or Left as primary
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/F_vertical/s1')); % Vertical Force
+% translational velocity
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/dx_avg/s1'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/dy_avg/s1'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/dy_TO/s1'));
-fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/energy/s1'));
-fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/Leg Placement Torque/phi_desired/s1'));
+% energy
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/takeoff_energy/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/y_hip/s1'));
+% desired angles
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/phi_desired/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/SMM 01/AlphaRef/s1'));
+% SMM params
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/SMM 01/k_virtual/s1'));
+% controller states
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/thrust'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/posture'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/placement'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/hopping/s1'));
-fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/AlphaRef/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/SMM_on/s1'));
+% estimations
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/y_TO_est/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/dx_TO_est/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/dy_TO_est/s1'));
 
 fscopes.start();
