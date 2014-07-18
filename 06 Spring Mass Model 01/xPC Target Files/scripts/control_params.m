@@ -26,16 +26,6 @@ kp_leg_length_secondary = 3000;
 td_leg_length_secondary = 80e-3;
 kd_leg_length_secondary = td_leg_length_secondary*kp_leg_length_secondary;
 
-% virtual spring law
-l0_virtual = 0.95;
-l_retract = 0.92;
-kp_virtual = 23000; % dimensionless stiffness: k*l_0 / m*g
-kd_virtual = 0*kp_virtual;
-kd_flight = 750;
-kp_flight_max = 30000;
-kp_flight_min = 3000;
-extra_leg_damping = 300;
-
 % contact estimation
 fcut_contact = 600;
 contact_threshold = 0.20;
@@ -47,16 +37,29 @@ kp_torso = 150;
 td_torso = 200e-3;
 kd_torso = td_torso*kp_torso;
 
-% raibert hopper params
+% virtual spring law
 l_max = 0.96;
 l_min = 0.4;
+l0_virtual = 0.95;
+l_retract_escape = 0.92;
+l_retract_swing = 0.75;
+l0_max_angle_error = 25*pi/180;
+l0_min_angle_error = 10*pi/180;
+kp_virtual = 23000; % dimensionless stiffness: k*l_0 / m*g
+kd_virtual = 0*kp_virtual;
+kd_flight = 750;
+kp_flight_max = 30000;
+kp_flight_min = 3000;
+extra_leg_damping = 300;
+
+% raibert hopper params
 t_flight = 0.025;
 dt_thrust = 0.120;
 F_thrust = 400;
-raibert_energy_injection = 30;
+raibert_energy_injection = 20;
 alpha_min = 50*pi/180;
 x_limit = l0_virtual*cos(alpha_min);
-dx_avg_desired = 0.4;
+dx_avg_desired = 0.5;
 k_placement = 0.2;
 velocity_avg_samples = 0.100/sample_time;
 initial_dt = 0.200;
@@ -65,11 +68,13 @@ initial_dt = 0.200;
 TO_threshold = 0.70;
 initial_com_height = 0.95;
 initial_dx = 0;
-target_energy = 327; % J
+target_energy = 350.8509 + 40; % J
 c_energy = 70; % energy correction gain
-ff_energy_r = 70;
-ff_energy_l = 100;
+ff_energy_r = 60;
+ff_energy_l = 60;
 k0_virtual = kp_virtual;
+l0_virtual_min = 0.7;
+l0_min_flight_time = 0.050;
 max_k_virtual = k0_virtual*1.4;
 min_k_virtual = k0_virtual*0.6;
 

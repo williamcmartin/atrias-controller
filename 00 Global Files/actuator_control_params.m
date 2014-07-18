@@ -51,7 +51,7 @@ A2_notch_f3 = 1;
 K_notch_f3 = (1+B1_notch_f3+B2_notch_f3)/(1+A1_notch_f3+A2_notch_f3);
 %-- PD gains
 kp_sea_torque_flight = 0.3;
-kp_sea_torque_stance = 8.0 - kp_sea_torque_flight;
+kp_sea_torque_stance = 6.0 - kp_sea_torque_flight;
 kd_sea_torque_flight = 0.3*sqrt(2)/2*2*sqrt(k_sea.*j_segments) ./ k_sea; % Critical damping / spring_stiffness
 kd_sea_torque_stance = (sqrt(2)/2*2*sqrt(k_sea.*(4.4)) ./ k_sea) - kd_sea_torque_flight; % Critical damping / spring_stiffness
 %-- Feedforward

@@ -15,10 +15,6 @@ close all; clear all; path(pathdef); clc;
 addpath(genpath(pwd));
 addpath(genpath('../../00 Global Files'));
 
-% Simulation parameters
-update_freq = 1000; %Hz
-sample_time = 1/update_freq; % seconds
-
 % Sensor and motor calibration and numerical derivative constants
 daq_params;
 

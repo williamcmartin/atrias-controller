@@ -1,3 +1,7 @@
+# Other Git repos #
+###################
+atrias-common/
+
 # Logs #
 ########
 *.fig
@@ -5,6 +9,7 @@
 
 # Simulink things #
 ###################
+[^atrias_boom].xml
 slprj/
 02 UMich 2D Walking/
 *.pdf

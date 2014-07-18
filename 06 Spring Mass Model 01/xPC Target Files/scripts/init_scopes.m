@@ -170,6 +170,7 @@ fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimatio
 % energy
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/takeoff_energy/s1'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/y_hip/s1'));
+fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Velocity Estimation/y_com/s1'));
 % desired angles
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/phi_desired/s1'));
 fscopes(4).addsignal(getsignalid(tg,'Control/Behavior Control/Primary Leg Behavior/SMM 01/AlphaRef/s1'));

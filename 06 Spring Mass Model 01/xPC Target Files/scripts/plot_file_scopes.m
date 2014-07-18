@@ -92,8 +92,8 @@ plot_fscope('Leg Forces',{t,t}, {[right_leg_force_measured right_leg_force_desir
 
 %% Plot controller data
 % desired leg angles
-raibert_angle = cont.data(:,9)*180/pi;
-smm_angle = cont.data(:,10)*180/pi;
+raibert_angle = cont.data(:,10)*180/pi;
+smm_angle = cont.data(:,11)*180/pi;
 alpha_r = pos.data(:,13)*180/pi + right_leg_angle - 90;
 alpha_l = pos.data(:,13)*180/pi + left_leg_angle - 90;
 plot_fscope('Desired Leg Angle',{t,t}, {[raibert_angle right_leg_angle left_leg_angle], [smm_angle alpha_r alpha_l]}, ...
@@ -104,15 +104,15 @@ plot_fscope('Desired Leg Angle',{t,t}, {[raibert_angle right_leg_angle left_leg_
 dx_filtered = cont.data(:,4);
 dy_filtered = cont.data(:,5);
 dy_takeoff = cont.data(:,6);
-dx_TO_est = cont.data(:,18);
-dy_TO_est = cont.data(:,19);
+dx_TO_est = cont.data(:,19);
+dy_TO_est = cont.data(:,20);
 plot_fscope('Filtered Translational Velocities',{t,t}, {[dx_filtered dx_TO_est], [dy_filtered dy_takeoff dy_TO_est]}, ...
     {{'Contact','dx_{boom}','dx_{atrias} TO'},{'Contact','dy_{boom}','dy_{boom} TO','dy_{atrias} TO'}},...
     {'dx','dy'}, {'Time (sec)','Time (sec)'}, {'Velocity (m/s)','Velocity (m/s)'}, {[-2,2],[-2,2]}, 2, contact_all);
 
 % system energy
 smm_com_y = cont.data(:,8);
-y_TO_est = cont.data(:,17);
+y_TO_est = cont.data(:,18);
 system_energy = m_total_real * ( 0.5*(dx_filtered.^2 + dy_filtered.^2) + g_reduced*smm_com_y);
 takeoff_system_energy = cont.data(:,7);
 plot_fscope('System Energy',{t}, {[system_energy takeoff_system_energy]}, ...
@@ -120,12 +120,12 @@ plot_fscope('System Energy',{t}, {[system_energy takeoff_system_energy]}, ...
     {'Energy'}, {'Time (sec)'}, {'Energy (J)'}, {[0,500]}, 1, contact_all);
 
 % virtual spring
-plot_fscope('Virtual Spring Stiffness',{t}, {[cont.data(:,11)]}, ...
+plot_fscope('Virtual Spring Stiffness',{t}, {[cont.data(:,12)]}, ...
     {{'Contact','Spring Stiffness'}},...
     {'Spring Constant'}, {'Time (sec)'}, {'K (N/m)'}, {[13000,33000]}, 1, contact_all);
 
 % enabled controllers
-plot_fscope('Active Controllers',{t}, {[cont.data(:,15) cont.data(:,16)]}, ...
+plot_fscope('Active Controllers',{t}, {[cont.data(:,16) cont.data(:,17)]}, ...
     {{'Contact','Hopping','SMM'}},...
     {'Active Controllers'}, {'Time (sec)'}, {'Enabled (1 or 0)'}, {[-0.5,1.5]}, 1, contact_all);
 
@@ -134,6 +134,17 @@ plot_fscope('Active Controllers',{t}, {[cont.data(:,15) cont.data(:,16)]}, ...
 figure('Name','Time to Apex');
 plot(t,dy_takeoff/g_reduced,'g');
 
+figure('Name','Vertical Height');
+plot(t,smm_com_y);
+
+figure('Name','State Machine');
+clf;
+hold on;
+plot(t,cont.data(:,1)); % flight
+plot(t,cont.data(:,13),'r'); % thrust 
+plot(t,cont.data(:,14),'g'); % posture
+plot(t,cont.data(:,15),'m'); % placement
+legend({'flight';'thrust';'posture';'placement'})
 
 
 % save data
