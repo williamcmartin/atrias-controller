@@ -118,10 +118,10 @@ plot_fscope('Desired Leg Angle',{t,t}, {[raibert_angle right_leg_angle left_leg_
     {{'Contact','Desired','Right','Left'},{'Contact','Desired','Right','Left','Virtual'}},...
     {'Raibert Hopping','SMM Alpha Target'}, {'Time (sec)','Time (sec)'}, {'Leg Angle (degrees)','Alpha (degrees)'}, {[120,280],[20,160]}, 2, contact_all);
 
-% desired touchdown leg lengths
-desired_leg_lengths = (d_y_com^2 + l0_virtual^2 - 2*d_y_com*l0_virtual*cosd(torso_pitch - smm_angle + 90)).^0.5;
-plot_fscope('Desired Leg Length at Touchdown',{t}, {[desired_leg_lengths]},{{'Desired Leg Length'}},...
-    {'Desired Leg Length at Touchdown'},{'Time (sec)'},{'Length (meters)'},{[0 1.3]},1,[]);
+% % desired touchdown leg lengths
+% desired_leg_lengths = (d_y_com^2 + l0_virtual^2 - 2*d_y_com*l0_virtual*cosd(torso_pitch - smm_angle + 90)).^0.5;
+% plot_fscope('Desired Leg Length at Touchdown',{t}, {[desired_leg_lengths]},{{'Desired Leg Length'}},...
+%     {'Desired Leg Length at Touchdown'},{'Time (sec)'},{'Length (meters)'},{[0 1.3]},1,[]);
 
 % translational velocities
 dx_filtered = cont.data(:,4);
@@ -137,11 +137,11 @@ plot_fscope('Filtered Translational Velocities',{t,t}, {[dx_filtered dx_TO_est],
 y_com = cont.data(:,9);
 y_hip = cont.data(:,8);
 y_TO_est = cont.data(:,18);
-system_energy = m_total_real * ( 0.5*(dx_filtered.^2 + dy_filtered.^2) + g_reduced*y_com);
+system_energy = m_total_real * ( 0.5*(dx_filtered.^2 + dy_filtered.^2) + g*y_com);
 takeoff_system_energy = cont.data(:,7);
 plot_fscope('System Energy',{t}, {[system_energy takeoff_system_energy]}, ...
     {{'Contact','System Energy','Energy at Takeoff'}},...
-    {'Energy'}, {'Time (sec)'}, {'Energy (J)'}, {[0,500]}, 1, contact_all);
+    {'Energy'}, {'Time (sec)'}, {'Energy (J)'}, {'auto'}, 1, contact_all);
 
 % virtual spring
 plot_fscope('Virtual Spring Stiffness',{t}, {[cont.data(:,12)]}, ...
@@ -162,13 +162,13 @@ plot_fscope('Vertical Height',{t}, {[y_hip y_com]}, ...
     {{'Contact','Hip Height','COM Height'}},...
     {'Vertical Heights'}, {'Time (sec)'}, {'Height (meters)'}, {[0 1.6]}, 1, contact_all);
 
-% GRFs from inverse dynamics
-GRFx_desired = cont.data(:,23) .* contact;
-GRFy_desired = cont.data(:,24) .* contact;
-GRF_angle_desired = cont.data(:,25)*180/pi;
-plot_fscope('Desired GRFs from Inverse Dynamics',{t,t}, {[GRFx_desired] [GRFy_desired]}, ...
-    {{'Contact','Desired GRFx'},{'Contact','Desired GRFy'}},...
-    {'Desired GRFx','Desired GRFy'}, {'Time (sec)','Time (sec)'}, {'Force (N)','Force (N)'}, {[-1000 1000],[0,4000]}, 2, contact_all);
+% % GRFs from inverse dynamics
+% GRFx_desired = cont.data(:,23) .* contact;
+% GRFy_desired = cont.data(:,24) .* contact;
+% GRF_angle_desired = cont.data(:,25)*180/pi;
+% plot_fscope('Desired GRFs from Inverse Dynamics',{t,t}, {[GRFx_desired] [GRFy_desired]}, ...
+%     {{'Contact','Desired GRFx'},{'Contact','Desired GRFy'}},...
+%     {'Desired GRFx','Desired GRFy'}, {'Time (sec)','Time (sec)'}, {'Force (N)','Force (N)'}, {[-1000 1000],[0,4000]}, 2, contact_all);
 
 % GRFs from inverse dynamics - raibert
 GRFx_desired_raibert = cont.data(:,32) .* contact;
@@ -193,22 +193,22 @@ plot(t,cont.data(:,15),'m'); % placement
 legend({'flight';'thrust';'posture';'placement'})
 
 
-figure('Name','Desired Leg Length');
-hold on;
-%area(t,contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1]);
-%area(t,-contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
-plot(t,cont.data(:,26),'r');
-plot(t,cont.data(:,27),'g');
-plot(t,cont.data(:,28),'b');
-
-
-figure('Name','Desired Leg Angle');
-hold on;
-%area(t,contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1]);
-%area(t,-contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
-plot(t,cont.data(:,29)*180/pi,'r');
-plot(t,cont.data(:,30)*180/pi,'g');
-plot(t,cont.data(:,31)*180/pi,'b');
+% figure('Name','Desired Leg Length');
+% hold on;
+% %area(t,contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1]);
+% %area(t,-contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
+% plot(t,cont.data(:,26),'r');
+% plot(t,cont.data(:,27),'g');
+% plot(t,cont.data(:,28),'b');
+% 
+% 
+% figure('Name','Desired Leg Angle');
+% hold on;
+% %area(t,contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1]);
+% %area(t,-contact_all{1},'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
+% plot(t,cont.data(:,29)*180/pi,'r');
+% plot(t,cont.data(:,30)*180/pi,'g');
+% plot(t,cont.data(:,31)*180/pi,'b');
 
 
 figure(808); hold on; subplot(311); plot(t,cont.data(:,35));subplot(312); plot(t,cont.data(:,36));subplot(313); plot(t,cont.data(:,37));

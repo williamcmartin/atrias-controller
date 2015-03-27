@@ -1201,6 +1201,10 @@ Function</sigName>
 						</signal>
 					</SubSystem>
 					<SubSystem>
+						<Name>Scope </Name>
+						<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Scope </xPCName>
+					</SubSystem>
+					<SubSystem>
 						<Name>Spring Rest Length</Name>
 						<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Spring Rest Length</xPCName>
 						<SubSystem>
@@ -3384,8 +3388,26 @@ Towards Alpha Apex Target/p6</sigName>
 					<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Velocity Estimation/Scope </xPCName>
 				</SubSystem>
 				<SubSystem>
+					<Name>Scope 1</Name>
+					<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Velocity Estimation/Scope 1</xPCName>
+				</SubSystem>
+				<SubSystem>
+					<Name>Scope 2</Name>
+					<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Velocity Estimation/Scope 2</xPCName>
+				</SubSystem>
+				<SubSystem>
 					<Name>Signal During Escape</Name>
 					<xPCName>smm_with_grf_tilting_2d/Control/Behavior Control/Velocity Estimation/Signal During Escape</xPCName>
+					<block>
+						<blkName>signal at escape</blkName>
+						<xpcblkName>Control/Behavior Control/Velocity Estimation/Signal During Escape/signal at escape</xpcblkName>
+						<SLblockPath>smm_with_grf_tilting_2d/Control/Behavior Control/Velocity Estimation/Signal During Escape/signal at escape</SLblockPath>
+						<isSrc>[0 1 0]</isSrc>
+						<parameter>
+							<paramName>InitialOutput</paramName>
+							<dim>[1, 3]</dim>
+						</parameter>
+					</block>
 					<signal>
 						<sigName>signal</sigName>
 						<xpcsigName>Control/Behavior Control/Velocity Estimation/Signal During Escape/signal</xpcsigName>

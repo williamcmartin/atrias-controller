@@ -79,7 +79,7 @@ min_kp_raibert = 0.6*kp_raibert;
 t_flight = 0.025;
 dx_avg_desired = 0;
 y_com_desired = 1.05;
-raibert_target_energy = y_com_desired*m_total*g + 0.5*m_total*dx_avg_desired^2;
+raibert_target_energy = y_com_desired*m_total_real*g + 0.5*m_total_real*dx_avg_desired^2;
 
 
 k_placement = 0.2;
