@@ -13,12 +13,12 @@ close all; clear all; path(pathdef); clc;
 
 % Add all lower directories to path
 addpath(genpath(pwd));
-addpath('../00 Global Files/atrias-common/scripts/');
-addpath('../00 Global Files/atrias-common/functions/');
-addpath('../00 Global Files/atrias-common/models/');
-addpath('../00 Global Files/atrias-common/gui/');
-addpath('../00 Global Files/atrias-matlab/gui/');
-addpath('../00 Global Files/atrias-matlab/atrias-robot/');
+addpath('../../atrias-common/scripts/');
+addpath('../../atrias-common/functions/');
+addpath('../../atrias-common/models/');
+addpath('../../atrias-common/gui/');
+addpath('../../atrias-matlab/gui/');
+addpath('../../atrias-matlab/atrias-robot/');
 
 % Sensor and motor calibration and numerical derivative constants
 daq_params;
