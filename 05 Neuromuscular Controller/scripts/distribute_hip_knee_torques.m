@@ -1,4 +1,4 @@
-function [tauF,tauB, Jinv] =...
+function [tauF,tauB, Jinv, constraint_error_flag] =...
     distribute_hip_knee_torques(tau12,tau23,l_seg,l_v,v12,v23,phi12,phi23,lambda1,lambda2,s)
 
 j11 = -l_seg*cos(v12/2-v23+phi23)/(l_v*cos(v12/2));
@@ -18,7 +18,7 @@ u7 = lambda1;
 u8 = lambda2;
 u9 = s;
 
-tauKpossible = ...
+tauKpossible = real(...
 [u1;
 (u1*u6^2*u7+u5*u8*(-u2*u6+u9))/(u6^2*u7+u5^2*u8);
 (u1*u4^2*u7+u3*u8*(-u2*u4+u9))/(u4^2*u7+u3^2*u8);
@@ -27,9 +27,9 @@ tauKpossible = ...
 ((u4 + u6)*u9)/(u4*u5-u3*u6);
 ((u4 - u6)*u9)/(-u4*u5+u3*u6);
 ((u4 - u6)*u9)/(u4*u5-u3*u6);
-((u4 + u6)*u9)/(-u4*u5+u3*u6)];
+((u4 + u6)*u9)/(-u4*u5+u3*u6)]);
 
-tauHpossible = ...
+tauHpossible = real(...
 [u2;
 (u2*u5^2*u8+u6*u7*(-u1*u5+u9))/(u6^2*u7+u5^2*u8);
 (u2*u3^2*u8+u4*u7*(-u1*u3+u9))/(u4^2*u7+u3^2*u8);
@@ -38,7 +38,7 @@ tauHpossible = ...
 ((u3+u5)*u9)/(-u4*u5+u3*u6);
 ((-u3+u5)*u9)/(-u4*u5+u3*u6);
 ((u3-u5)*u9)/(-u4*u5+u3*u6);
-((u3+u5)*u9)/(-u4*u5+u3*u6)];
+((u3+u5)*u9)/(-u4*u5+u3*u6)]);
 
 tauFpossible = j11*tauKpossible + j12*tauHpossible;
 tauBpossible = j21*tauKpossible + j22*tauHpossible;
@@ -59,12 +59,18 @@ if ~isempty(satisfied)
     tauH = tauHpossible(satisfied(I));
     tauF = tauFpossible(satisfied(I));
     tauB = tauBpossible(satisfied(I));
+    constraint_error_flag = 0;
 else
     disp('No possible torques found, using u2 = J * u1');
-    tauK = tauKpossible(1);
-    tauH = tauHpossible(1);
-    tauF = tauFpossible(1);
-    tauB = tauBpossible(1);
+%     tauK = tauKpossible(1);
+%     tauH = tauHpossible(1);
+%     tauF = tauFpossible(1);
+%     tauB = tauBpossible(1);
+    constraint_error_flag = 1;
+    tauK = 0;
+    tauH = 0;
+    tauF = 0;
+    tauB = 0;
 end
 
 end
