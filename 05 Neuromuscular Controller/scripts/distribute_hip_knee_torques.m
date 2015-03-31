@@ -64,7 +64,7 @@ else
     disp('No possible torques found, using u2 = J * u1');
 %     tauK = tauKpossible(1);
 %     tauH = tauHpossible(1);
-%     tauF = tauFpossible(1);
+%     tauF = tauFpossible(1); 
 %     tauB = tauBpossible(1);
     constraint_error_flag = 1;
     tauK = 0;
