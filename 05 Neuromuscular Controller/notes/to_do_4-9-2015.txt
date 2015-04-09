@@ -1,0 +1,19 @@
+To Do (4/9/2015):
+
+Muscle Block:
+-Test continous muscle block on hardware...
+-Test backward euler muscle block on hardware...
+-Test forward euler muscle block on hardware...
+
+
+NMM/Robot interface:
+-Test gear angles/motor torques 
+-load angles/SEA torques
+
+
+
+
+
+
+NOTES:
+-CPU Overload error when running atrias_nmm_hardware

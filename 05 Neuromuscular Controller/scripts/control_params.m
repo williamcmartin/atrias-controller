@@ -1,19 +1,29 @@
 %% control parameters--specific to neuromuscular controller
 
 % Manual Control
+
+R_force_ctrl_switch = 0;
+L_force_ctrl_switch = 0;
+R_sea_input_switch = 0;
+L_sea_input_switch = 0;
+R_distribution_switch = 0;
+L_distribution_switch = 0;
 R_stim_switch = 0;
 L_stim_switch = 0;
 
-R_distribution_switch = 0;
-L_distribution_switch = 0;
+kp_phi12 = 0;
+kd_phi12 = 0;
+kp_phi23 = 0;
+kd_phi23 = 0;
+Lphi12_des = 170*pi/180;
+Lphi23_des = 170*pi/180;
+Rphi12_des = 150*pi/180;
+Rphi23_des = 170*pi/180;
+
 R_knee_trq_desired = 0;
 R_hip_trq_desired = 0;
 L_knee_trq_desired = 0;
 L_hip_trq_desired = 0;
-
-R_sea_ctrl_switch = 0;
-L_sea_ctrl_switch = 0;
-
 
 RStim_Constant = [0.25; %HFL
                   0.25; %GLU
