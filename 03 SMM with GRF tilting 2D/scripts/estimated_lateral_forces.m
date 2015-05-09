@@ -2,8 +2,8 @@
 
 % Constants
 l_star = 1.978;
-r = 0.2;
-k_sea = [4255.0 4525.3 4372.1 4322.4];
+r = 0.1831;
+k_sea = [3343, 3825, 3476, 3905];
 m = 18;
 g = 9.803;
 th_mnt = 7.2824 * pi/180;
@@ -19,8 +19,8 @@ spring_deflections = [pos.data(:,4)-pos.data(:,3) pos.data(:,2)-pos.data(:,1) po
 spring_forces = bsxfun(@times, spring_deflections, k_sea);
 F_leg_r = (spring_forces(:,2)-spring_forces(:,1)) ./ sin((pos.data(:,3)-pos.data(:,1))/2);
 F_leg_l = (spring_forces(:,4)-spring_forces(:,3)) ./ sin((pos.data(:,7)-pos.data(:,5))/2);
-r_contact = F_leg_r > 400;
-l_contact = F_leg_l > 400;
+r_contact = F_leg_r > 200;
+l_contact = F_leg_l > 200;
 % Lateral angles
 th = pos.data(:,11);
 dth = pos.data(:,24);
@@ -29,8 +29,10 @@ dphi_r = pos.data(:,22);
 phi_l = pos.data(:,32);
 dphi_l = pos.data(:,23);
 % Lateral torques
-tau_m_r = max(min(torq.data(:,3),10),-10);
-tau_m_l = max(min(torq.data(:,6),10),-10);
+%tau_m_r = max(min(torq.data(:,3),10),-10);
+tau_m_r = 0*torq.data(:,3);
+%tau_m_l = max(min(torq.data(:,6),10),-10);
+tau_m_l = torq.data(:,6);
 tau_g_r = 35;%m*g*r*cos(phi_r);
 tau_g_l = 35;%m*g*r*cos(phi_l);
 % Jacobians
@@ -39,19 +41,26 @@ J_l_theta = l_leg_l                                         ./ (l_leg_l.*l_star.
 J_r_phi =  (l_leg_r - l_star*sin(phi_r - th_off + th_mnt)) ./ (l_leg_r.*l_star.*cos(phi_r - th_off + th_mnt) - l_star*r*sin(phi_r - th_off + th_mnt));
 J_r_theta = l_leg_r                                         ./ (l_leg_r.*l_star.*cos(phi_r - th_off + th_mnt) - l_star*r*sin(phi_r - th_off + th_mnt));
 % Lateral force
-F_orthogonal_r = -(F_leg_r.*(J_r_phi - r) -  tau_m_r + tau_g_r) ./ l_leg_r;
+F_orthogonal_r = -(F_leg_r.*(J_r_phi - r) +  tau_m_r - tau_g_r) ./ l_leg_r;
 F_orthogonal_l = (F_leg_l.*(J_l_phi - r) -  tau_m_l + tau_g_l) ./ l_leg_l;
+F_orthogonal_r = F_orthogonal_r .* r_contact;
+F_orthogonal_l = F_orthogonal_l .* l_contact;
 t = pos.data(:,end);
-figure('Name', 'Orthogonal leg forces on boom');
+h = figure('Name', 'Orthogonal leg forces on boom');
 hold on;
-t_select = t>20 & t <100;
-area(t(t_select), double(r_contact(t_select))*500,'LineStyle','none','FaceColor',0.9*[1 1 0.2]);
-area(t(t_select), -double(r_contact(t_select))*500,'LineStyle','none','FaceColor',0.9*[1 1 0.2]);
-area(t(t_select), double(l_contact(t_select))*500,'LineStyle','none','FaceColor',0.9*[0.2 1 1]);
-area(t(t_select), -double(l_contact(t_select))*500,'LineStyle','none','FaceColor',0.9*[0.2 1 1]);
-plot(t(t_select),F_orthogonal_r(t_select));
-plot(t(t_select),F_orthogonal_l(t_select));
-
+t_select = t>=10 & t <=50;
+right_left = cont.data(t_select,7);
+% area(t(t_select), double(r_contact(t_select))*150,'LineStyle','none','FaceColor',0.9*[1 1 0.2]);
+% area(t(t_select), -double(r_contact(t_select))*400,'LineStyle','none','FaceColor',0.9*[1 1 0.2]);
+% area(t(t_select), double(l_contact(t_select))*150,'LineStyle','none','FaceColor',0.9*[0.2 1 1]);
+% area(t(t_select), -double(l_contact(t_select))*400,'LineStyle','none','FaceColor',0.9*[0.2 1 1]);
+plot(t(t_select),F_orthogonal_r(t_select).*right_left);
+plot(t(t_select),F_orthogonal_l(t_select).*~right_left);
+set(findall(h,'-property','FontSize'),'FontSize',16);
+set(findall(gca, 'Type', 'Line'),'LineWidth',2);
+legend('Right','Left');
+xlabel('Time (sec)');
+ylabel('Force (N)');
 
 %% Predicted foot positions
 x_foot_l = l_star*cos(th-th_off) + (l_leg_l.*sin(phi_l+th-th_mnt) + r.*cos(phi_l+th-th_mnt));

@@ -1,8 +1,8 @@
 %% Compute relationship between virtual spring constant, system energy, and max motor torques
 
 % system params
-max_allowed_torque = 650;
-m = 60;
+max_allowed_torque = 600;
+m = 64;
 %m_counter = 24.05;
 g_real = 9.803;
 g = g_real;%(m-m_counter)/m*g_real;
@@ -12,8 +12,8 @@ phi0 = 130*pi/180;
 l0_virtual = 1.01;%sqrt(d^2+l0_leg^2-2*d*l0_leg*cos(phi0));
 
 % search space
-k_virtual = 1000:100:60000;
-delta_y = 0.03:0.001:0.25;
+k_virtual = 1000:100:30000;
+delta_y = 0.01:0.001:0.1;
 motor_torque = zeros(length(k_virtual),length(delta_y));
 spring_deflection = zeros(length(k_virtual),length(delta_y));
 % compute max motor torques
@@ -49,7 +49,7 @@ hold off;
 % plot contour at max allowed torque
 figure(101);
 contours = max_allowed_torque*[0.75 0.8 0.85 0.9 0.95 1.00];
-contour(delta_y, k_virtual, motor_torque);%, contours);
+contour(delta_y, k_virtual, motor_torque, 10);
 %title(sprintf('Spring stiffness and compression at max torque = %f',max_allowed_torque));
 xlabel('Ground Clearance (m)');
 ylabel('Spring Stiffness (kN/m)');

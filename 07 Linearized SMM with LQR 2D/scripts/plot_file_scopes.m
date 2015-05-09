@@ -31,7 +31,7 @@ save(sprintf('data/%s',datestr(clock,'mmmm_dd_yyyy HH_MM_SS_AM')), 'pos','torq',
 % Pick subset of data
 t = pos.data(:,end);
 t_start = 5;
-t_end = t(end);
+t_end =  t(end);
 position = pos.data(t>=t_start & t<=t_end,:);
 torque = torq.data(t>=t_start & t<=t_end,:);
 controller = cont.data(t>=t_start & t<=t_end,:);
@@ -41,6 +41,8 @@ close all;
 t = position(:,end);
 contact = ~controller(:,5);
 right_left = controller(:,6);
+contact_right_left = {100000*(right_left&contact), 100000*(~right_left&contact)};
+contact_all = {100000*contact, 100000*contact};
 
 % Plot position data
 % 1-13: encoder positions
@@ -51,6 +53,7 @@ plot_fscope('Leg Position',{t,t}, {position(:,1:4)*180/pi, position(:,5:8)*180/p
     {{'qFront';'qFrontGear';'qBack';'qBackGear'},{'qFront';'qFrontGear';'qBack';'qBackGear'}},...
     {'Right Leg Position','Left Leg Position'},{'Time (sec)','Time (sec)'},{'Angle (degrees)','Angle (degrees)'},{[0 350],[0 350]});
 incremental_gear_positions = position(:,27:30); % rFront rBack lFront lBack 
+kalman_filtered_gear_positions = controller(:,38:41);
 
 % Leg Segment Velocities
 plot_fscope('Leg Velocity',{t,t}, {position(:,14:17)*180/pi, position(:,18:21)*180/pi},...
@@ -80,10 +83,13 @@ plot_fscope('Virtual Leg Angle',{t,t}, {right_leg_angle*180/pi, left_leg_angle*1
 % Toros pitch
 torso_pitch = position(:,13);
 torso_pitch_velocity = position(:,26);
-plot_fscope('Torso Pitch',{t}, {[torso_pitch*180/pi, torso_pitch_velocity*180/pi]},{{'Pitch','Velocity'}},...
-    {'Torso Pitch'},{'Time (sec)'},{'Angle (degrees)'},{[-30 30]},1,[]);
+plot_fscope('Torso Pitch',{t}, {[torso_pitch*180/pi, torso_pitch_velocity*180/pi]},{{'Contact','Pitch','Velocity'}},...
+    {'Torso Pitch'},{'Time (sec)'},{'Angle (degrees)'},{[-60 60]},1,[contact_all]);
 % Lateral Positions
 boom_roll = position(:,11);
+torso_roll = boom_roll - boom_mount_angle + torso_centerline_roll_offset_angle;
+plot_fscope('Torso Roll',{t}, {[torso_roll*180/pi]},{{'Contact','Pitch'}},...
+    {'Torso Roll'},{'Time (sec)'},{'Angle (degrees)'},{[-60 60]},1,[contact_all]);
 plot_fscope('Lateral Position',{t}, {[position(:,31:32)*180/pi, position(:,9:10)*180/pi]},{{'Right Measured';'Left Measured'}},...
     {'Lateral Leg Angles'},{'Time (sec)'},{'Angle (degrees)'},{[-30 30]},1,[]);
 right_lateral_global = (position(:,31)-boom_roll+boom_mount_angle);
@@ -91,12 +97,10 @@ left_lateral_global = (position(:,32)+boom_roll-boom_mount_angle);
 plot_fscope('Lateral Global Orientation',{t}, {[right_lateral_global*180/pi, left_lateral_global*180/pi]},{{'Right Measured', 'Left Measured'}},...
     {'Lateral Leg Global Angles'},{'Time (sec)'},{'Angle (degrees)'},{[-30 30]},1,[]);
 % Raw encoder data
-if size(position,2) > 39
-    raw_encoder_signals = position(:,39:46);
-    raw_binary_values = dec2bin(raw_encoder_signals);
-    plot_fscope('Raw Encoder Signals',{t}, {[raw_encoder_signals]},{{'1','2','3','4','5','6','7','8'}},...
-        {'Renishaw Optical Encoders'},{'Time (sec)'},{'Ticks'},{['auto']},1,[]);
-end
+raw_encoder_signals = position(:,39:46);
+raw_binary_values = dec2bin(raw_encoder_signals);
+plot_fscope('Raw Encoder Signals',{t}, {[raw_encoder_signals]},{{'1','2','3','4','5','6','7','8'}},...
+    {'Renishaw Optical Encoders'},{'Time (sec)'},{'Ticks'},{['auto']},1,[]);
 
 
 % Plot IMU data
@@ -104,19 +108,22 @@ end
 % 4-6: IMU accelerometers
 imu_gyros = imu_signals(:, 1:3);
 imu_accelerometers = imu_signals(:, 4:6);
+imu_angular_positions = imu_signals(:, 7:9);
+imu_angular_velocities = imu_signals(:, 10:12);
 plot_fscope('IMU Raw Data',{t,t}, {imu_gyros.*180/pi, imu_accelerometers},...
     {{'X','Y','Z'},{'X','Y','Z'}},...
     {'Gyros','Accelerometers'},{'Time (sec)','Time (sec)'},...
     {'Radians','m/s^2'},{'auto','auto'});
-
+plot_fscope('IMU Angular Data',{t,t}, {imu_angular_positions.*180/pi, imu_angular_velocities*180/pi},...
+    {{'Roll','Yaw','Pitch'},{'Roll','Yaw','Pitch'}},...
+    {'Positions','Velocities'},{'Time (sec)','Time (sec)'},...
+    {'Radians','Radians/s'},{'auto','auto'});
 
 % Plot torque data
 % 1-6: commanded motor torques
 % 7-12: desired output torques
 
-% contacts
-contact_right_left = {100000*(right_left&contact), 100000*(~right_left&contact)};
-contact_all = {100000*contact, 100000*contact};
+
 % spring deflections
 deflections = [position(:,4)-position(:,3) position(:,2)-position(:,1) position(:,8)-position(:,7) position(:,6)-position(:,5)];
 % torques desired vs measured
@@ -186,60 +193,61 @@ dd_torso_pitch = dd_torso_pitch.Data;
 % State Machine
 state_machine = controller(:,1:5);
 estimated_vertical_grf_for_state_machine = controller(:,7);
-% Estimated GRFs
-right_estimated_grf = controller(:,42:43);
-left_estimated_grf = controller(:,44:45);
 % COM position and velocity using boom
-x_com = controller(:,8);
-dx_com = controller(:,9);
-y_com = controller(:,10);
-dy_com = controller(:,11);
+x_com_boom = controller(:,8);
+dx_com_boom = controller(:,9);
+z_com_boom = controller(:,10);
+dz_com_boom = controller(:,11);
 % COM position and velocity using robot geometery
-x_com_robot = controller(:,32);
-dx_com_robot = controller(:,33);
-y_com_robot = controller(:,34);
-dy_com_robot = controller(:,35);
+x_com_robot = controller(:,12);
+dx_com_robot = controller(:,13);
+y_com_robot = controller(:,14);
+dy_com_robot = controller(:,15);
+z_com_robot = controller(:,16);
+dz_com_robot = controller(:,17);
 % COM state from kalman filter
-dx_com_kalman = controller(:,36);
-y_com_kalman = controller(:,37);
-dy_com_kalman = controller(:,38);
-dx_kalman_uncertainty = controller(:,45);
-y_kalman_uncertainty = controller(:,46);
-dy_kalman_uncertainty = controller(:,47);
+dx_com_kalman = controller(:,18);
+z_com_kalman = controller(:,19);
+dz_com_kalman = controller(:,20);
+dx_kalman_uncertainty = controller(:,21);
+z_dz_kalman_uncertainty_eigen_1 = controller(:,22);
+z_dz_kalman_uncertainty_eigen_2 = controller(:,23);
 % Active controller
-hopping_active = controller(:,12);
-deadbeat_active = controller(:,13);
-% Stance
-virtual_spring_stiffness = controller(:,14);
-virtual_spring_rest_length = controller(:,15);
-inverse_dynamics_GRFx_target = controller(:,17);
-inverse_dynamics_GRFy_target = controller(:,18);
-inverse_dynamics_GRF_angle_target = controller(:,19);
+hopping_active = controller(:,24);
+deadbeat_active = controller(:,25);
+% GRFs
+inverse_dynamics_GRFx_target = controller(:,26);
+inverse_dynamics_GRFz_target = controller(:,27);
+right_estimated_grf = controller(:,28:29);
+left_estimated_grf = controller(:,30:31);
 % Flight
-fourbar_back_desired_position = controller(:,19);
-fourbar_front_desired_position = controller(:,20);
-fourbar_back_desired_velocity = controller(:,21);
-fourbar_front_desired_velocity = controller(:,22);
-fourbar_back_desired_acceleration = controller(:,23);
-fourbar_front_desired_acceleration = controller(:,24);
-% Raibert
-desired_raibert_leg_angle_position = controller(:,25);
-desired_raibert_leg_angle_velocity = controller(:,26);
-desired_raibert_horizontal_direction = controller(:,27);
-desired_raibert_forward_velocity  = controller(:,28);
-desired_flight_primary_leg_length_position = controller(:,29);
-desired_flight_primary_leg_length_velocity = controller(:,30);
-desired_flight_primary_leg_length_acceleration = controller(:,31);
-% Virtual spring length
-virtual_spring_length = controller(:,39);
-virtual_spring_velocity = controller(:,40);
-% Target energy
-desired_system_energy_signal = controller(:,48);
+fourbar_back_desired_position = controller(:,32);
+fourbar_front_desired_position = controller(:,33);
+fourbar_back_desired_velocity = controller(:,34);
+fourbar_front_desired_velocity = controller(:,35);
+fourbar_back_desired_acceleration = controller(:,36);
+fourbar_front_desired_acceleration = controller(:,37);
 % Kalman filter on gear position
-kalman_gear_position_uncertainty = controller(:,57:64);
-kalman_gear_position = controller(:,49:52);
-kalman_gear_velocity = controller(:,53:56);
+kalman_gear_position = controller(:,38:41);
+kalman_gear_velocity = controller(:,42:45);
+kalman_gear_position_uncertainty = controller(:,46:53);
+% Deadbeat
+z_reference_during_stance = controller(:,54:56);
+x_reference_during_stance = controller(:,57:58);
+x_touchdown_target = controller(:,59);
+y_touchdown_target = controller(:,60);
+desired_foot_position_x = controller(:,61:63);
+desired_foot_position_y = controller(:,64:66);
+desired_foot_position_z = controller(:,67:69);
+deadbeat_primary_leg_roll_target = controller(:,70:72);
+adaptive_x_foot_compensation = controller(:,73);
 
+
+
+flight_nan = ones(length(contact),1);
+flight_nan(~contact) = nan;
+contact_nan = ones(length(contact),1);
+contact_nan(contact) = nan;
 % Plot state machine
 plot_fscope('State Machine',{t}, {[state_machine, right_left]}, ...
     {{'Touch Down','Locked Contact','Unloading','Takeoff','Flight','Right/Left'}},...
@@ -248,162 +256,49 @@ plot_fscope('GRF estimates',{t,t,t}, {[estimated_vertical_grf_for_state_machine,
     {{'Vertical GRF','Right/Left'},{'Horizontal GRF','Vertical GRF'},{'Horizontal GRF','Vertical GRF'}},...
     {'Primary GRF','Right Leg GRF','Left Leg GRF'}, {'Time (sec)','Time (sec)','Time (sec)'}, {'N / Body Weight','N','N'}, {'auto','auto','auto'});
 % Plot COM position/velocity
-plot_fscope('Center of Mass',{t,t}, {[y_com, y_com_robot, y_com_kalman], [dy_com, dy_com_robot, dy_com_kalman]}, ...
+plot_fscope('Center of Mass',{t,t}, {[z_com_boom, z_com_robot, z_com_kalman], [dz_com_boom, dz_com_robot, dz_com_kalman]}, ...
     {{'z_{true}','z_{measured}','z_{kalman}'},{'dz_{true}','dz_{measured}','dz_{kalman}'}},...
     {'COM Z Position','COM Z Velocity'}, {'Time (sec)','Time (sec)'}, {'m','m/s'}, {'auto','auto'});
-plot_fscope('Center of Mass',{t,t}, {[x_com, x_com_robot], [dx_com, dx_com_robot, dx_com_kalman]}, ...
+plot_fscope('Center of Mass',{t,t}, {[x_com_boom, x_com_robot], [dx_com_boom, dx_com_robot, dx_com_kalman]}, ...
     {{'x_{boom}','x_{robot}'},{'dx_{true}','dx_{measured}','dx_{kalman}'}},...
     {'COM X Position','COM X Velocity'}, {'Time (sec)','Time (sec)'}, {'m','m/s'}, {'auto','auto'});
-plot_fscope('Kalman Filter Uncertainty',{t,t}, {[dx_kalman_uncertainty], [dy_kalman_uncertainty]}, ...
+plot_fscope('Kalman Filter Uncertainty',{t,t}, {[dx_kalman_uncertainty], [z_dz_kalman_uncertainty_eigen_1, z_dz_kalman_uncertainty_eigen_2]}, ...
     {{''},{''}},...
     {'X Uncertainty','Z Uncertainty'}, {'Time (sec)','Time (sec)'}, {'',''}, {'auto','auto'});
 % Plot active controller
 plot_fscope('Active controller',{t}, {[hopping_active, deadbeat_active]}, ...
     {{'Hopping','Deadbeat'}},...
     {'Active controller'}, {'Time (sec)'}, {'Active (true/false)'}, {'auto'});
-% Plot virtual spring state
-plot_fscope('Virtual Spring',{t,t}, {[virtual_spring_stiffness], [virtual_spring_length, virtual_spring_rest_length]}, ...
-    {{'Stiffness'},{'Measured Length','Rest Length'}},...
-    {'Virtual Stiffness','Virtual Length'}, {'Time (sec)','Time (sec)'}, {'N/m','m'}, {'auto','auto'});
 % Plot inverse dynamics
-%%%%% ADD IN MEASUREMENTS
-GRFx_measured = -(right_estimated_grf(:,1) + left_estimated_grf(:,1)).*contact;
-GRFy_measured = (right_estimated_grf(:,2) + left_estimated_grf(:,2)).*contact;
-plot_fscope('Inverse Dynamics',{t,t,t}, {[inverse_dynamics_GRFx_target.*contact, GRFx_measured], [inverse_dynamics_GRFy_target.*contact, GRFy_measured], [inverse_dynamics_GRF_angle_target.*180/pi].*contact}, ...
-    {{'GRFx Target'},{'GRFy Target'},{'GRF Angle Target'}},...
-    {'Ground Reaction Force X','Ground Reaction Force Y','Ground Reaction Force Angle'}, ...
-    {'Time (sec)','Time (sec)','Time (sec)'}, {'N','N','Degrees'}, {'auto','auto','auto'});
-
-
-
-
-% Plot force plate data if available
-% F_force_plate = plot_force_plate_data('April_20_2015  2_00_48_PM.txt',false);
-% t_shift = 16.445;
-% t_compare = t_shift:1/200:(t_shift+(size(F_force_plate,1)-1)/200);
-% subplot(312);
-% hold on;
-% plot(t_compare,F_force_plate(:,3));
-% subplot(311);
-% hold on;
-% plot(t_compare,-F_force_plate(:,1));
-
-
+GRFx_feedforward_1 = inverse_dynamics_GRFz_target.*x_reference_during_stance(:,1)./z_com_kalman.*flight_nan;
+GRFx_feedforward_2 = ((right_estimated_grf(:,2)+left_estimated_grf(:,2)).*contact).*x_reference_during_stance(:,1)./z_com_kalman.*flight_nan;
+plot_fscope('Inverse Dynamics',{t,t}, {[inverse_dynamics_GRFx_target.*contact, (right_estimated_grf(:,1)+left_estimated_grf(:,1)).*contact, GRFx_feedforward_1, GRFx_feedforward_2], [inverse_dynamics_GRFz_target.*contact, (right_estimated_grf(:,2)+left_estimated_grf(:,2)).*contact]}, ...
+    {{'Target','Estimated','Feedforward','Feedforward'},{'Target','Estimated'}},...
+    {'Ground Reaction Force X','Ground Reaction Force Z'}, ...
+    {'Time (sec)','Time (sec)'}, {'N','N'}, {'auto','auto'});
 % Plot primary leg four bar tracking during flight
-%%%%% ADD IN MEASUREMENTS
 plot_fscope('Primary Flight Fourbar Tracking',{t,t,t}, ...
-    {[fourbar_back_desired_position, primary_back_motor_positions, fourbar_front_desired_position, primary_front_motor_positions].*180/pi, [fourbar_back_desired_velocity, fourbar_front_desired_velocity].*180/pi, [fourbar_back_desired_acceleration, fourbar_front_desired_acceleration].*180/pi}, ...
+    {[fourbar_back_desired_position.*contact_nan, primary_back_motor_positions, fourbar_front_desired_position.*contact_nan, primary_front_motor_positions].*180/pi, [fourbar_back_desired_velocity.*contact_nan, fourbar_front_desired_velocity.*contact_nan].*180/pi, [fourbar_back_desired_acceleration.*contact_nan, fourbar_front_desired_acceleration.*contact_nan].*180/pi}, ...
     {{'Back Commanded', 'Back Measured', 'Front Commanded','Front Measured'},{'dBack Commanded', 'dFront Commanded'},{'ddBack Commanded', 'ddFront Commanded'}},...
     {'Position','Velocity','Acceleration'}, ...
-    {'Time (sec)','Time (sec)','Time (sec)'}, {'Degrees','Degrees/s','Degrees/s'}, {'auto','auto','auto'});
-% Plot system energy
-% virtual_spring_deflection_measured = controller(:,38);
-% virtual_spring_length = sqrt(d_y_com^2 + primary_leg_length.^2 - 2.*d_y_com.*primary_leg_length.*cos(primary_leg_angle));
-% y_com = controller(:,9);
-% y_hip = controller(:,8);
-% y_TO_est = controller(:,18);
-system_energy = m_total_real * ( 0.5*(dx_com.^2 + dy_com.^2) + g*y_com) + 0.5*k0_virtual.*(virtual_spring_rest_length - virtual_spring_length).^2.*contact;
-plot_fscope('System Energy',{t}, {[system_energy, desired_system_energy_signal]}, ...
-    {{'Contact','System Energy', 'Desired'}},...
-    {'Energy'}, {'Time (sec)'}, {'Energy (J)'}, {[0 1000]}, 1, contact_all);
-
-% Plot Raibert placement signals
-%%%%% ADD IN MEASUREMENTS
-plot_fscope('Raibert Leg Placement',{t,t}, {[desired_raibert_leg_angle_position, primary_leg_angle].*180/pi, [desired_raibert_leg_angle_velocity, primary_leg_angle_velocity].*180/pi}, ...
-    {{'Desired','Measured'},{'Desired','Measured'}},...
-    {'Position','Velocity'}, {'Time (sec)','Time (sec)'}, {'Degrees','Degrees/s'}, {'auto','auto'});
-plot_fscope('Raibert System Velocity',{t,t}, {[desired_raibert_forward_velocity, dx_com_kalman], [desired_raibert_horizontal_direction]}, ...
-    {{'Desired','COM Measured'},{'Desired'}},...
-    {'Velocity','Direction'}, {'Time (sec)','Time (sec)'}, {'m/s','Sign'}, {'auto','auto'});
-%%%%% ADD IN MEASUREMENTS
-plot_fscope('Primary Leg Length Extension',{t,t,t}, {[desired_flight_primary_leg_length_position], [desired_flight_primary_leg_length_velocity], [desired_flight_primary_leg_length_acceleration]}, ...
-    {{'Commanded'},{'Commanded'},{'Commanded'}},...
+    {'Time (sec)','Time (sec)','Time (sec)'}, {'Degrees','Degrees/s','Degrees/s^2'}, {'auto','auto','auto'});
+% Plot deadbeat signals
+plot_fscope('Stance: Z Reference Signals',{t,t,t}, {[z_reference_during_stance(:,1).*flight_nan, z_com_kalman], [z_reference_during_stance(:,2).*flight_nan, dz_com_kalman], [z_reference_during_stance(:,3).*flight_nan]}, ...
+    {{'Commanded','Measured'},{'Commanded','Measured'},{'Commanded'}},...
     {'Position','Velocity','Acceleration'}, ...
     {'Time (sec)','Time (sec)','Time (sec)'}, {'m','m/s','m/s^2'}, {'auto','auto','auto'});
+plot_fscope('Stance: X Reference Signals',{t,t}, {[x_reference_during_stance(:,1).*flight_nan, x_com_robot], [x_reference_during_stance(:,2).*flight_nan, dx_com_kalman]}, ...
+    {{'Commanded','Measured'},{'Commanded','Measured'}},...
+    {'Position','Velocity'}, ...
+    {'Time (sec)','Time (sec)'}, {'m','m/s'}, {'auto','auto'});
+plot_fscope('Flight: Foot Position Reference Signals',{t,t,t}, {[desired_foot_position_x(:,1).*contact_nan, x_com_robot, x_touchdown_target.*contact_nan], [desired_foot_position_y(:,1).*contact_nan, y_com_robot, y_touchdown_target.*contact_nan], [desired_foot_position_z(:,1).*contact_nan, z_com_robot]}, ...
+    {{'Commanded','Measured','Touchdown Target'},{'Commanded','Measured','Touchdown Target'},{'Commanded','Measured'}},...
+    {'X','Y','Z'}, ...
+    {'Time (sec)','Time (sec)','Time (sec)'}, {'m','m','m'}, {'auto','auto','auto'});
+plot_fscope('Foot Placement Adaptive Compensation',{t}, {[adaptive_x_foot_compensation]}, ...
+    {{'X'}},...
+    {'Foot Correction'}, ...
+    {'Time (sec)'}, {'m'}, {'auto'});
 
-
-
-
-% % desired leg angles
-% raibert_angle = controller(:,10)*180/pi;
-% smm_angle = controller(:,11)*180/pi;
-% alpha_r = torso_pitch + right_leg_angle - 90;
-% alpha_l = torso_pitch + left_leg_angle - 90;
-% alpha_v = controller(:,21)*180/pi;
-
-% % desired touchdown leg lengths
-% desired_leg_lengths = (d_y_com^2 + l0_virtual^2 - 2*d_y_com*l0_virtual*cosd(torso_pitch - smm_angle + 90)).^0.5;
-% plot_fscope('Desired Leg Length at Touchdown',{t}, {[desired_leg_lengths]},{{'Desired Leg Length'}},...
-%     {'Desired Leg Length at Touchdown'},{'Time (sec)'},{'Length (meters)'},{[0 1.3]},1,[]);
-
-% % misc
-% figure('Name','Time to Apex');
-% plot(t,dy_takeoff/g_reduced,'g');
-
-% figure('Name','Leg Extension'); hold on; subplot(311); plot(t,controller(:,35));subplot(312); plot(t,controller(:,36));subplot(313); plot(t,controller(:,37));
-
-% % virtual raibert spring
-% figure('Name','Spring Compression and constant');
-% subplot(211); hold on; 
-% area(t,contact,'LineStyle','none','FaceColor',0.9*[1 1 1]);
-% area(t,-contact,'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
-% plot(t,virtual_spring_deflection_measured);
-% subplot(212);  hold on;
-% area(t,contact*700,'LineStyle','none','FaceColor',0.9*[1 1 1]);
-% area(t,-contact*700,'LineStyle','none','FaceColor',0.9*[1 1 1],'HandleVisibility','off');
-% virtual_spring_force = k_virtual_raibert_measured.*virtual_spring_deflection_measured;
-% plot(t,k_virtual_raibert_measured);
-
-% force-length curve
-%figure('Name','Force-Length Raibert');
-%plot3(t,virtual_spring_length, virtual_spring_force_raibert);
-
-% %% Compare GRFs
-% 
-%  
-% % GRF commands for inverse dynamics
-% GRFx_desired = controller(:,32) .* contact;
-% GRFy_desired = controller(:,33) .* contact;
-% GRF_angle_desired = controller(:,34)*180/pi;
-% 
-% % GRF estimation from Jacobian transpose
-% robot_mass = 64;
-% GRFx_measured = -robot_mass.*(d_y_com.*sin(torso_pitch).*d_torso_pitch.^2 - primary_leg_length.*sin(primary_leg_global_angle).*d_primary_leg_global_angle.^2 + 2.*d_primary_leg_length.*cos(primary_leg_global_angle).*d_primary_leg_global_angle + dd_primary_leg_length.*sin(primary_leg_global_angle) - d_y_com.*dd_torso_pitch.*cos(torso_pitch) + dd_primary_leg_global_angle.*primary_leg_length.*cos(primary_leg_global_angle));
-% GRFy_measured = robot_mass*g + -m_total_real.*(d_y_com.*cos(torso_pitch).*d_torso_pitch.^2 - primary_leg_length.*cos(primary_leg_global_angle).*d_primary_leg_global_angle.^2 - 2.*d_primary_leg_length.*sin(primary_leg_global_angle).*d_primary_leg_global_angle + dd_primary_leg_length.*cos(primary_leg_global_angle) + d_y_com.*dd_torso_pitch.*sin(torso_pitch) - dd_primary_leg_global_angle.*primary_leg_length.*sin(primary_leg_global_angle));
-% 
-% plot_fscope('Desired GRFs from Inverse Dynamics',{t,t}, {[GRFx_measured.*contact GRFx_desired] [GRFy_measured.*contact GRFy_desired]}, ...
-%     {{'Contact','Jacobian GRFx','Desired GRFx'},{'Contact','Jacobian GRFy','Desired GRFy'}},...
-%     {'Desired GRFx','Desired GRFy'}, {'Time (sec)','Time (sec)'}, {'Force (N)','Force (N)'}, {[-500 500],[0,3000]}, 2, contact_all);
-% 
-% % Include boom and force plate
-% low_pass_cutoff = 7;
-% y_com = controller(:,9);
-% x_com = controller(:,40);
-% dy_com = [diff(y_com); 0]/scope_sample_time;
-% dy_com = idealfilter(timeseries(dy_com , t),[0 low_pass_cutoff], 'pass');
-% dy_com = dy_com.Data;
-% ddy_com = [0; diff(dy_com)]/scope_sample_time;
-% ddy_com = idealfilter(timeseries(ddy_com , t),[0 low_pass_cutoff], 'pass');
-% ddy_com = ddy_com.Data;
-% GRFy_measured_boom = robot_mass*(ddy_com + g);
-% 
-% F_force_plate = plot_force_plate_data('April_12_2015 11_14_12_PM.txt');
-% t_shift = 18.41;
-% t_compare = t_shift:1/200:(t_shift+(size(F_force_plate,1)-1)/200); 
-% force_plate_compare = F_force_plate(:,3);
-% 
-% figure('Name','GRF comparison');
-% hold on;
-% plot(t, GRFy_measured_boom.*contact);
-% %plot(t, GRFy_measured.*contact);
-% plot(t, GRFy_desired.*contact);
-% %plot(t_compare, force_plate_compare);
-
-
-
-
-%% save data
-%hfigs = get(0, 'children');        %Get list of figures
-%hgsave(hfigs,sprintf('figures/%s.fig',datestr(clock,'mmmm_dd_yyyy HH_MM_SS_AM')));
 
 
