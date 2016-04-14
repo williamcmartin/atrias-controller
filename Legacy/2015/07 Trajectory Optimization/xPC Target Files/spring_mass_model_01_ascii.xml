@@ -1,0 +1,6785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+
+          <SubSystem>
+    <Name>Compare To Constant</Name>
+    <xPCName>spring_mass_model_01/Compare To Constant</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Compare To Constant/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Control</Name>
+    <xPCName>spring_mass_model_01/Control</xPCName>
+        <SubSystem>
+    <Name>Behavior Control</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control</xPCName>
+        <SubSystem>
+    <Name>Compare
+To Constant</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Compare To Constant</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Compare To Constant/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant1</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Compare To Constant1</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Compare To Constant1/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant2</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Compare To Constant2</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Compare To Constant2/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Contact Estimation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation</xPCName>
+        <SubSystem>
+    <Name>Compare
+To Constant</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Compare To Constant</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Compare To Constant/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant1</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Compare To Constant1</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Compare To Constant1/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Contact Time</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Contact Time</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>ts
+[s]</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Contact Time/ts [s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Contact Time/ts [s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Contact Time/Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Contact Time/Constant</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Discrete-Time
+Integrator</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Contact Time/Discrete-Time Integrator</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Contact Time/Discrete-Time Integrator</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>gainval</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Discrete-Time
+Integrator</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Contact Time/Discrete-Time Integrator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Detect
+Decrease</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Detect Decrease</xPCName>
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>FixPt
+Relational
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Detect Decrease/FixPt Relational Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Delay Input1</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Detect Decrease/Delay Input1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>U(k-1)</sigLabel>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Last Contact Time</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Last Contact Time</xPCName>
+    
+    
+
+ 
+            <block>
+            <blkName>Ts
+[s]</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Last Contact Time/Ts [s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Last Contact Time/Ts [s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>ts
+[s]</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Last Contact Time/ts [s]</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Leg Torque Measurements</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Leg Torque Measurements</xPCName>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Spring
+Stiffness3</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Spring Stiffness3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Spring
+Stiffness4</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Spring Stiffness4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Spring
+Stiffness5</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Spring Stiffness5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Spring
+Stiffness6</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Spring Stiffness6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Sum2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum3</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Sum3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum6</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Sum6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Switch</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Leg Torque Measurements/Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Vertical Spring Force</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Vertical Spring Force</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Vertical Spring Force/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Vertical Spring Force/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Vertical Spring Force/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Vertical Spring Force/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Vertical Spring Force/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric
+Function</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Vertical Spring Force/Trigonometric Function</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Compare
+To Constant1</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Compare To Constant1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Compare To Constant1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>const</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Detect
+Decrease</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Detect Decrease</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Detect Decrease</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>vinit</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+ 
+            <block>
+            <blkName>Gain3</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/Gain3</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/Gain3</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+ 
+            <block>
+            <blkName>two_pole_filter</blkName>
+            <xpcblkName>Control/Behavior Control/Contact Estimation/two_pole_filter</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Contact Estimation/two_pole_filter</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Numerator</paramName>
+          <dim>[1, 3]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>Denominator</paramName>
+          <dim>[1, 3]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>InitialStates</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+
+
+    
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain3</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Gain3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Divide</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Divide</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Divide1</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Divide1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>two_pole_filter</sigName>
+              <xpcsigName>Control/Behavior Control/Contact Estimation/two_pole_filter</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>L Leg Calculator</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/L Leg Calculator</xPCName>
+    
+    
+
+
+ 
+            <block>
+            <blkName>Gain3</blkName>
+            <xpcblkName>Control/Behavior Control/L Leg Calculator/Gain3</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/L Leg Calculator/Gain3</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain4</blkName>
+            <xpcblkName>Control/Behavior Control/L Leg Calculator/Gain4</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/L Leg Calculator/Gain4</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain5</blkName>
+            <xpcblkName>Control/Behavior Control/L Leg Calculator/Gain5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/L Leg Calculator/Gain5</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain6</blkName>
+            <xpcblkName>Control/Behavior Control/L Leg Calculator/Gain6</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/L Leg Calculator/Gain6</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain2</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain3</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain4</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain5</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain5</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain6</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Gain6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Sum4</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum5</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Sum5</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric Function</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Trigonometric Function</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric Function1</sigName>
+              <xpcsigName>Control/Behavior Control/L Leg Calculator/Trigonometric Function1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Lateral PID Control</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Lateral PID Control</xPCName>
+        <SubSystem>
+    <Name>Lateral Hip PID</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/Lateral Hip PID</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Discrete-Time Integrator</blkName>
+            <xpcblkName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/Discrete-Time Integrator</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/Lateral Hip PID/Discrete-Time Integrator</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>gainval</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Discrete-Time Integrator</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/Discrete-Time Integrator</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kd_lateral</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/kd_lateral</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>ki_lateral</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/ki_lateral</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kp_lateral</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/kp_lateral</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Lateral Hip PID/Sum</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>spherical_correction_angle</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/spherical_correction_angle</xPCName>
+    
+    
+
+ 
+            <block>
+            <blkName>lateral_correction</blkName>
+            <xpcblkName>Control/Behavior Control/Lateral PID Control/spherical_correction_angle/lateral_correction</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/spherical_correction_angle/lateral_correction</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>lateral_correction</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/spherical_correction_angle/lateral_correction</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/spherical_correction_angle/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+ 
+            <block>
+            <blkName>90deg</blkName>
+            <xpcblkName>Control/Behavior Control/Lateral PID Control/90deg</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/90deg</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>desired_velocity</blkName>
+            <xpcblkName>Control/Behavior Control/Lateral PID Control/desired_velocity</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/desired_velocity</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Lateral PID Control/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Lateral PID Control/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>-mgd</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/-mgd</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Motor Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Motor Saturation</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Sum2</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum3</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Sum3</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/Sum4</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>sin</sigName>
+              <xpcsigName>Control/Behavior Control/Lateral PID Control/sin</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Primary Leg Behavior</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior</xPCName>
+        <SubSystem>
+    <Name>Raibert Hopping</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping</xPCName>
+        <SubSystem>
+    <Name>Leg Placement Torque</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque</xPCName>
+        <SubSystem>
+    <Name>Leg Angle PD</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD</xPCName>
+    
+    
+
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kd_leg_angle</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD/kd_leg_angle</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kp_leg_angle</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD/kp_leg_angle</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum7</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD/Sum7</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum8</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD/Sum8</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum9</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle PD/Sum9</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+ 
+            <block>
+            <blkName>T_placement
+[Nm]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/T_placement [Nm]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/T_placement [Nm]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gamma Target [rad rad//s]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Gamma Target [rad rad//s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Gamma Target [rad rad//s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+ 
+            <block>
+            <blkName>Constant11</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant11</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant11</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant2</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant2</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant2</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Constant4</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant4</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant4</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant5</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant5</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant6</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant6</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Constant6</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+ 
+            <block>
+            <blkName>Gain1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Gain1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Gain1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>desired_angle</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/desired_angle</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/desired_angle</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>phi_desired</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/phi_desired</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/phi_desired</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>dx Saturation</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/dx Saturation</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/dx Saturation</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>LowerLimit</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>Manual Switch</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>CurrentSetting</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Manual Switch1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch1</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>CurrentSetting</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>desired_angle</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/desired_angle</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>k_placement</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/k_placement</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>phi_desired</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/phi_desired</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>simbicon_c1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/simbicon_c1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>simbicon_c2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/simbicon_c2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Divide</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Divide</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Product1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Alpha Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Alpha Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Leg Angle Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Leg Angle Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dx Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/dx Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>phi_desired</sigLabel>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum4</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum6</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Sum6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch On Raibert Placement</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Switch On Raibert Placement</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Manual Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Manual Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Manual Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>alpha</sigLabel>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric
+Function</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Trigonometric Function</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>alpha</sigLabel>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric
+Function1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Placement Torque/Trigonometric Function1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Leg Thrust</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust</xPCName>
+        <SubSystem>
+    <Name>Thrust Timer</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>timer
+[s]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/timer [s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/timer [s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/Constant</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Discrete-Time
+Integrator</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/Discrete-Time Integrator</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/Discrete-Time Integrator</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>gainval</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Discrete-Time
+Integrator</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust Timer/Discrete-Time Integrator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>thrust period?</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/thrust period?</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/thrust period?/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+ 
+            <block>
+            <blkName>Thrust
+[N]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust [N]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/Thrust [N]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>F_thrust</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Leg Thrust/F_thrust</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Nonlinear Spring Stiffness</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness</xPCName>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness/Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness/Sum2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Nonlinear Spring Stiffness/Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Trunk Balance
+PD Compensation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Torque
+[Nm]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Torque [Nm]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Torque [Nm]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant2</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Constant2</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Constant2</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+ 
+            <block>
+            <blkName>Gain1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Gain1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Gain1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Derivative
+Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Derivative Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Proportional
+Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Proportional Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Sum4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Trunk Balance PD Compensation/Sum5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Leg Force and Swing Leg Retraction</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Virtual Leg Force and Swing Leg Retraction</xPCName>
+        <SubSystem>
+    <Name>Virtual Spring Force</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Virtual Leg Force and Swing Leg Retraction/Virtual Spring Force</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Spring Force</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Virtual Leg Force and Swing Leg Retraction/Virtual Spring Force</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert Hopping/Sum3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>SMM 01</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01</xPCName>
+        <SubSystem>
+    <Name>Primary Stance Phase</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase</xPCName>
+        <SubSystem>
+    <Name>Nonlinear Spring Stiffness</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Nonlinear Spring Stiffness</xPCName>
+    
+    
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Nonlinear Spring Stiffness/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Saturation</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Nonlinear Spring Stiffness/Saturation</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Nonlinear Spring Stiffness/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Trunk Balance
+PD Compensation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Torque
+[Nm]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Torque [Nm]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Torque [Nm]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant2</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Constant2</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Constant2</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+ 
+            <block>
+            <blkName>Gain1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Gain1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Gain1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Derivative
+Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Derivative Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Proportional
+Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Proportional Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Sum4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Trunk Balance PD Compensation/Sum5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Leg Force and Swing Leg Retraction</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Virtual Leg Force and Swing Leg Retraction</xPCName>
+        <SubSystem>
+    <Name>Virtual Spring Force</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Virtual Leg Force and Swing Leg Retraction/Virtual Spring Force</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Spring Force</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Virtual Leg Force and Swing Leg Retraction/Virtual Spring Force</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>k_virtual</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/k_virtual</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/k_virtual</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+    
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>k_virtual</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/k_virtual</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Sum3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Sum4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Stance Phase/Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Primary Swing Phase</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase</xPCName>
+        <SubSystem>
+    <Name>Back//Front Motor PD</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD</xPCName>
+        <SubSystem>
+    <Name>Friction Compensation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation</xPCName>
+    
+    
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation/Product</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sign</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation/Sign</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation/Switch</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Friction Compensation/Switch1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kd</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/kd</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kp</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/kp</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Product</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Sum2</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum7</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Sum7</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum8</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Sum8</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum9</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Sum9</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Back//Front Motor PD/Switch</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Leg Trajectory Generator (Level Ground)</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)</xPCName>
+        <SubSystem>
+    <Name>Alpha Target Law
+l0 = 1.037112 m
+k = 23000 N//m
+target height = 1.137112 m
+target speed = 0.5 m//s
+m = 60.4120 kg
+g = 5.9004 m//s^2
+E = 412.882588 J</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J</xPCName>
+        <SubSystem>
+    <Name>Alpha Target Polynomials</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Alpha Target Polynomials</xPCName>
+    
+    
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>AlphaRef(t) Control Law</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Alpha Target Polynomials/AlphaRef(t) Control Law</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>acceleration of AlphaRef(t) Control Law</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Alpha Target Polynomials/acceleration of AlphaRef(t) Control Law</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>velocity of AlphaRef(t) Control Law</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Alpha Target Polynomials/velocity of AlphaRef(t) Control Law</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant1</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Compare To Constant1</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Compare To Constant1/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Compare
+To Constant1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Compare To Constant1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Compare To Constant1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>const</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>AlphaRef1</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/AlphaRef1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/AlphaRef1</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 3]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Ignore Negatives</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Ignore Negatives</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target Law l0 = 1.037112 m k = 23000 N//m target height = 1.137112 m target speed = 0.5 m//s m = 60.4120 kg g = 5.9004 m//s^2 E = 412.882588 J/Switch</xpcsigName>
+              <sigWidth>3</sigWidth>
+              <sigDim>[3, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Compare To Constant</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Compare To Constant/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Detect
+Change</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Detect Change</xPCName>
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>FixPt
+Relational
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Detect Change/FixPt Relational Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Delay Input1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Detect Change/Delay Input1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>U(k-1)</sigLabel>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Signal During Escape</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Signal During Escape</xPCName>
+    
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>time</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Signal During Escape/time</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Alpha Target to
+ Leg Length and Leg Angle</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle</xPCName>
+    
+    
+    </SubSystem>
+    <SubSystem>
+    <Name>Retracted Leg Trajectory</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Compare
+To Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Compare To Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Compare To Constant</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>const</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Detect
+Change</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Detect Change</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Detect Change</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>vinit</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+ 
+            <block>
+            <blkName>AlphaRef</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/AlphaRef</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/AlphaRef</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Alpha Target to
+ Leg Length and Leg Angle/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Alpha Target to  Leg Length and Leg Angle/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Retracted Leg Trajectory/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Retracted Leg Trajectory/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Clock</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Clock</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>AlphaRef</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/AlphaRef</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Leg Trajectory Generator (Level Ground)/Switch</xpcsigName>
+              <sigWidth>6</sigWidth>
+              <sigDim>[6, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Avoid Hitting Mechanical Limits</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits</xPCName>
+    
+    
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Leg to Four Bar</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Avoid Hitting Mechanical Limits/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Primary Swing Phase/Virtual Leg to Four Bar/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/SMM 01/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Raibert  Hopper State Machine</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+
+ 
+            <block>
+            <blkName>Constant5</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Constant5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Constant5</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>F_vertical</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/F_vertical</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/F_vertical</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>flight</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/flight</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/flight</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>placement</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/placement</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/placement</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>posture</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/posture</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/posture</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>thrust</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/thrust</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/thrust</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+ 
+            <block>
+            <blkName>Unit Delay</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Leg Behavior/Unit Delay</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Leg Behavior/Unit Delay</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Raibert  Hopper State Machine/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Raibert  Hopper State Machine/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Raibert  Hopper State Machine/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Raibert  Hopper State Machine/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Raibert  Hopper State Machine/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Raibert  Hopper State Machine/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>F_vertical</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/F_vertical</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>flight</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/flight</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>placement</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/placement</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>posture</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/posture</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>thrust</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/thrust</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Logical Operator1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch2</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Switch2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch3</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Switch3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Unit Delay</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Leg Behavior/Unit Delay</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Primary Secondary Leg Swap</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap</xPCName>
+        <SubSystem>
+    <Name>Toggle</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Toggle</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>[1//0]</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Secondary Leg Swap/Toggle/[1//0]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Toggle/[1//0]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Memory</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Secondary Leg Swap/Toggle/Memory</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Toggle/Memory</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>X0</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Secondary Leg Swap/Toggle/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Memory</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Secondary Leg Swap/Toggle/Memory</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Select Leg</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Secondary Leg Swap/Select Leg</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Select Leg</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Memory</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Secondary Leg Swap/Memory</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Memory</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>X0</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Manual Switch</blkName>
+            <xpcblkName>Control/Behavior Control/Primary Secondary Leg Swap/Manual Switch</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Primary Secondary Leg Swap/Manual Switch</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>CurrentSetting</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Memory</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Secondary Leg Swap/Memory</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Manual Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Primary Secondary Leg Swap/Manual Switch</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>R Leg Calculator</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/R Leg Calculator</xPCName>
+    
+    
+
+
+ 
+            <block>
+            <blkName>Gain3</blkName>
+            <xpcblkName>Control/Behavior Control/R Leg Calculator/Gain3</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/R Leg Calculator/Gain3</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain4</blkName>
+            <xpcblkName>Control/Behavior Control/R Leg Calculator/Gain4</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/R Leg Calculator/Gain4</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain5</blkName>
+            <xpcblkName>Control/Behavior Control/R Leg Calculator/Gain5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/R Leg Calculator/Gain5</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain6</blkName>
+            <xpcblkName>Control/Behavior Control/R Leg Calculator/Gain6</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/R Leg Calculator/Gain6</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain2</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain3</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain4</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain5</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain5</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain6</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Gain6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Sum4</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum5</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Sum5</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric Function</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Trigonometric Function</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Trigonometric Function1</sigName>
+              <xpcsigName>Control/Behavior Control/R Leg Calculator/Trigonometric Function1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Raibert Initiated</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Raibert Initiated</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Hopping?</blkName>
+            <xpcblkName>Control/Behavior Control/Raibert Initiated/Hopping?</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Raibert Initiated/Hopping?</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Raibert Initiated/Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Raibert Initiated/Constant</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Constant</sigName>
+              <xpcsigName>Control/Behavior Control/Raibert Initiated/Constant</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>S-R
+Flip-Flop</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/S-R Flip-Flop</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Logic</blkName>
+            <xpcblkName>Control/Behavior Control/S-R Flip-Flop/Logic</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/S-R Flip-Flop/Logic</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>TruthTable</paramName>
+          <dim>[8, 2]</dim>  
+          </parameter>
+          </block>
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logic</sigName>
+              <xpcsigName>Control/Behavior Control/S-R Flip-Flop/Logic</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Memory</sigName>
+              <xpcsigName>Control/Behavior Control/S-R Flip-Flop/Memory</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Secondary Leg Behavior</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior</xPCName>
+        <SubSystem>
+    <Name>Back//Front Motor PD</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD</xPCName>
+        <SubSystem>
+    <Name>Friction Compensation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation</xPCName>
+    
+    
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation/Product</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sign</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation/Sign</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation/Switch</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Friction Compensation/Switch1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kd</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/kd</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>kp</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/kp</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Product</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Sum1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum2</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Sum2</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum7</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Sum7</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum8</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Sum8</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum9</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Sum9</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Back//Front Motor PD/Switch</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Detect
+Change</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Detect Change</xPCName>
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>FixPt
+Relational
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Detect Change/FixPt Relational Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Delay Input1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Detect Change/Delay Input1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+                <sigLabel>U(k-1)</sigLabel>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Avoid Hitting Mechanical Limits</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits</xPCName>
+    
+    
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Leg Trajectory 
+Towards Alpha Apex Target</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target</xPCName>
+    
+    
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Leg to Four Bar</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Detect
+Change</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Detect Change</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Detect Change</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>vinit</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>Constant2</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Constant2</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Constant2</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant3</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Constant3</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Constant3</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant4</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Constant4</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Constant4</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant5</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Constant5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Constant5</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Gain5</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/Gain5</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/Gain5</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>k_virtual6</blkName>
+            <xpcblkName>Control/Behavior Control/Secondary Leg Behavior/k_virtual6</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Secondary Leg Behavior/k_virtual6</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Avoid Hitting Mechanical Limits/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Avoid Hitting Mechanical Limits/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg Trajectory 
+Towards Alpha Apex Target/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg Trajectory  Towards Alpha Apex Target/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p5</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p5</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Leg to Four Bar/p6</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Virtual Leg to Four Bar/p6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Clock</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Clock</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Fcn2</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Fcn2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain5</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Gain5</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>k_virtual6</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/k_virtual6</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Sum4</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Secondary Leg Behavior/Switch</xpcsigName>
+              <sigWidth>6</sigWidth>
+              <sigDim>[6, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Torque Distribution Left</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Torque Distribution Left</xPCName>
+        <SubSystem>
+    <Name>Motor Torque Saturation Optimization</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Torque Distribution Left/Motor Torque Saturation Optimization</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Torque Distribution Left/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Torque Distribution Left/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain1</blkName>
+            <xpcblkName>Control/Behavior Control/Torque Distribution Left/Gain1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Torque Distribution Left/Gain1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Motor Torque Saturation Optimization/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Motor Torque Saturation Optimization/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Motor Torque Saturation Optimization/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Motor Torque Saturation Optimization/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Left/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Torque Distribution Right</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Torque Distribution Right</xPCName>
+        <SubSystem>
+    <Name>Motor Torque Saturation Optimization</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Torque Distribution Right/Motor Torque Saturation Optimization</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Torque Distribution Right/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Torque Distribution Right/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Gain1</blkName>
+            <xpcblkName>Control/Behavior Control/Torque Distribution Right/Gain1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Torque Distribution Right/Gain1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Motor Torque Saturation Optimization/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Motor Torque Saturation Optimization/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Motor Torque Saturation Optimization/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Motor Torque Saturation Optimization/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Gain1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Product</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Product</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum1</sigName>
+              <xpcsigName>Control/Behavior Control/Torque Distribution Right/Sum1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Velocity Estimation</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation</xPCName>
+        <SubSystem>
+    <Name>Recursive Moving Average</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Recursive Moving Average</xPCName>
+    
+    
+ 
+            <block>
+            <blkName>Gain</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Gain</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Gain</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Delay</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Delay</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Delay</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>DelayLength</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+ 
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Unit Delay</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Unit Delay</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Unit Delay</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Gain</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Sum</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Delay</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Delay</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Unit Delay</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Recursive Moving Average/Unit Delay</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Signal During Escape</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Signal During Escape</xPCName>
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>signal</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Signal During Escape/signal</xpcsigName>
+              <sigWidth>3</sigWidth>
+              <sigDim>[3, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>time</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Signal During Escape/time</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Takeoff</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff</xPCName>
+        <SubSystem>
+    <Name>Compare
+To Constant</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff/Compare To Constant</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff/Compare To Constant/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Compare
+To Constant1</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff/Compare To Constant1</xPCName>
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Compare</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff/Compare To Constant1/Compare</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+
+
+
+ 
+            <block>
+            <blkName>Unit Delay1</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Takeoff/Unit Delay1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff/Unit Delay1</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>InitialCondition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Unit Delay1</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff/Unit Delay1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Takeoff Velocity</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff Velocity</xPCName>
+        <SubSystem>
+    <Name>vertical_velocity</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff Velocity/vertical_velocity</xPCName>
+    
+    
+    </SubSystem>
+
+    
+ 
+            <block>
+            <blkName>y_TO
+[m]</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/y_TO [m]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff Velocity/y_TO [m]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dx_TO
+[m//s]</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/dx_TO [m//s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff Velocity/dx_TO [m//s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dy_TO
+[m//s]</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/dy_TO [m//s]</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Takeoff Velocity/dy_TO [m//s]</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>vertical_velocity/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/vertical_velocity/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>vertical_velocity/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/vertical_velocity/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>vertical_velocity/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Takeoff Velocity/vertical_velocity/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>dx_and_dy_from_yaw_and_roll</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/dx_and_dy_from_yaw_and_roll</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>Enable</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/Enable</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/Enable</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+ 
+            <block>
+            <blkName>dx_TO_est</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/dx_TO_est</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/dx_TO_est</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dy_TO</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/dy_TO</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/dy_TO</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dy_TO_est</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/dy_TO_est</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/dy_TO_est</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>takeoff_energy</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/takeoff_energy</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/takeoff_energy</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>y_TO_est</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/y_TO_est</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/y_TO_est</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>y_com</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/y_com</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/y_com</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>y_hip</blkName>
+            <xpcblkName>Control/Behavior Control/Velocity Estimation/y_hip</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Velocity Estimation/y_hip</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+    
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dx_and_dy_from_yaw_and_roll/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dx_and_dy_from_yaw_and_roll/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>dx_and_dy_from_yaw_and_roll/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dx_and_dy_from_yaw_and_roll/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>dx_and_dy_from_yaw_and_roll/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dx_and_dy_from_yaw_and_roll/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>dx_and_dy_from_yaw_and_roll/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dx_and_dy_from_yaw_and_roll/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Clock</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Clock</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>system_energy</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/system_energy</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Gain</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Gain</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dx_TO_est</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dx_TO_est</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dy_TO</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dy_TO</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dy_TO_est</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/dy_TO_est</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>takeoff_energy</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/takeoff_energy</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>y_TO_est</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/y_TO_est</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>y_com</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/y_com</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>y_hip</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/y_hip</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum4</sigName>
+              <xpcsigName>Control/Behavior Control/Velocity Estimation/Sum4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+    <SubSystem>
+    <Name>Virtual Spring Calculator</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Virtual Spring Calculator</xPCName>
+        <SubSystem>
+    <Name>Virtual Spring Calculations</Name>
+    <xPCName>spring_mass_model_01/Control/Behavior Control/Virtual Spring Calculator/Virtual Spring Calculations</xPCName>
+    
+    
+    </SubSystem>
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Virtual Spring Calculations/p1</sigName>
+              <xpcsigName>Control/Behavior Control/Virtual Spring Calculator/Virtual Spring Calculations/p1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Spring Calculations/p2</sigName>
+              <xpcsigName>Control/Behavior Control/Virtual Spring Calculator/Virtual Spring Calculations/p2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Spring Calculations/p3</sigName>
+              <xpcsigName>Control/Behavior Control/Virtual Spring Calculator/Virtual Spring Calculations/p3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>Virtual Spring Calculations/p4</sigName>
+              <xpcsigName>Control/Behavior Control/Virtual Spring Calculator/Virtual Spring Calculations/p4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+ 
+            <block>
+            <blkName>Compare
+To Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Compare To Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Compare To Constant</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>const</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>Compare
+To Constant2</blkName>
+            <xpcblkName>Control/Behavior Control/Compare To Constant2</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Compare To Constant2</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>const</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>S-R
+Flip-Flop</blkName>
+            <xpcblkName>Control/Behavior Control/S-R Flip-Flop</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/S-R Flip-Flop</SLblockPath>
+            <isSrc>[0 2 2]</isSrc>
+          <parameter>
+          <paramName>initial_condition</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>Constant</blkName>
+            <xpcblkName>Control/Behavior Control/Constant</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Constant</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Constant1</blkName>
+            <xpcblkName>Control/Behavior Control/Constant1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Constant1</SLblockPath>
+            <isSrc>[1 0 1]</isSrc>
+          <parameter>
+          <paramName>Value</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+ 
+            <block>
+            <blkName>SMM_on</blkName>
+            <xpcblkName>Control/Behavior Control/SMM_on</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/SMM_on</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dx_avg</blkName>
+            <xpcblkName>Control/Behavior Control/dx_avg</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/dx_avg</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>dy_avg</blkName>
+            <xpcblkName>Control/Behavior Control/dy_avg</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/dy_avg</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>hopping</blkName>
+            <xpcblkName>Control/Behavior Control/hopping</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/hopping</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>right_left</blkName>
+            <xpcblkName>Control/Behavior Control/right_left</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/right_left</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>virtual_spring_alpha</blkName>
+            <xpcblkName>Control/Behavior Control/virtual_spring_alpha</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/virtual_spring_alpha</SLblockPath>
+            <isSrc>[0 1 1]</isSrc>
+          <parameter>
+          <paramName>Gain</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+
+
+
+
+
+ 
+            <block>
+            <blkName>Manual Switch</blkName>
+            <xpcblkName>Control/Behavior Control/Manual Switch</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Manual Switch</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>CurrentSetting</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+ 
+            <block>
+            <blkName>Manual Switch1</blkName>
+            <xpcblkName>Control/Behavior Control/Manual Switch1</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/Behavior Control/Manual Switch1</SLblockPath>
+            <isSrc>[0 2 1]</isSrc>
+          <parameter>
+          <paramName>CurrentSetting</paramName>
+          <dim>[1, 1]</dim>  
+          </parameter>
+          </block>
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Clock</sigName>
+              <xpcsigName>Control/Behavior Control/Clock</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>SMM_on</sigName>
+              <xpcsigName>Control/Behavior Control/SMM_on</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dx_avg</sigName>
+              <xpcsigName>Control/Behavior Control/dx_avg</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>dy_avg</sigName>
+              <xpcsigName>Control/Behavior Control/dy_avg</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>hopping</sigName>
+              <xpcsigName>Control/Behavior Control/hopping</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>right_left</sigName>
+              <xpcsigName>Control/Behavior Control/right_left</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>virtual_spring_alpha</sigName>
+              <xpcsigName>Control/Behavior Control/virtual_spring_alpha</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator</sigName>
+              <xpcsigName>Control/Behavior Control/Logical Operator</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator1</sigName>
+              <xpcsigName>Control/Behavior Control/Logical Operator1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator2</sigName>
+              <xpcsigName>Control/Behavior Control/Logical Operator2</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator3</sigName>
+              <xpcsigName>Control/Behavior Control/Logical Operator3</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Logical
+Operator4</sigName>
+              <xpcsigName>Control/Behavior Control/Logical Operator4</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Sum</sigName>
+              <xpcsigName>Control/Behavior Control/Sum</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Switch</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Switch1</xpcsigName>
+              <sigWidth>2</sigWidth>
+              <sigDim>[2, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Manual Switch</sigName>
+              <xpcsigName>Control/Behavior Control/Manual Switch</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Manual Switch1</sigName>
+              <xpcsigName>Control/Behavior Control/Manual Switch1</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+    
+ 
+            <block>
+            <blkName>tau_cmd [Nm] x6</blkName>
+            <xpcblkName>Control/tau_cmd [Nm] x6</xpcblkName>
+            <SLblockPath>spring_mass_model_01/Control/tau_cmd [Nm] x6</SLblockPath>
+            <isSrc>[0 1 0]</isSrc>
+          <parameter>
+          <paramName>InitialOutput</paramName>
+          <dim>[1, 6]</dim>  
+          </parameter>
+          </block>
+
+
+
+
+         <mdlref>
+             <mdlrefName>Actuator_Control</mdlrefName>
+             <xpcblkName>Control/Actuator Control</xpcblkName>
+             <refblkName>Actuator Control</refblkName>
+             <root>
+                   <!-- here insert before this node referencedmodel.xml -->
+             </root>
+         </mdlref>
+    
+    
+
+       
+              <signal>
+              <sigName>Actuator Control</sigName>
+              <xpcsigName>Control/Actuator Control</xpcsigName>
+              <sigWidth>6</sigWidth>
+              <sigDim>[6, 1]</sigDim>
+            </signal>
+
+    </SubSystem>
+
+      
+
+
+
+
+
+    
+
+
+    
+    
+
+       
+              <signal>
+              <sigName>Clock</sigName>
+              <xpcsigName>Clock</xpcsigName>
+              <sigWidth>1</sigWidth>
+              <sigDim>[1, 1]</sigDim>
+            </signal>
+
+
+         <mdlref>
+             <mdlrefName>DAQ</mdlrefName>
+             <xpcblkName>DAQ</xpcblkName>
+             <refblkName>DAQ</refblkName>
+             <root>
+                   <!-- here insert before this node referencedmodel.xml -->
+             </root>
+         </mdlref>
+    
+    
+
+       
+              <signal>
+              <sigName>DAQ/p1</sigName>
+              <xpcsigName>DAQ/p1</xpcsigName>
+              <sigWidth>13</sigWidth>
+              <sigDim>[13, 1]</sigDim>
+            </signal>
+       
+              <signal>
+              <sigName>DAQ/p2</sigName>
+              <xpcsigName>DAQ/p2</xpcsigName>
+              <sigWidth>13</sigWidth>
+              <sigDim>[13, 1]</sigDim>
+            </signal>
+
+<block>
+   <blkName>Model Parameters</blkName>
+   <xpcblkName>Model Parameters</xpcblkName>
+   <SLblockPath>. </SLblockPath>
+   <isSrc>[0 1 1]</isSrc>
+              
+   <parameter>
+      <paramName>BOOM_MAX_ENCODER_TICKS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_PITCH_CAL_VALUE_RAD</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_PITCH_CAL_VALUE_TICKS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_PITCH_ENCODER_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_ROLL_CAL_VALUE_RAD</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_ROLL_CAL_VALUE_TICKS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_ROLL_ENCODER_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>BOOM_YAW_ENCODER_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_ABS_ENCODER_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_ABS_MAX_ENCODER_TICKS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_INC_ENCODER_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_INC_MAX_ENCODER_TICKS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_MOTOR_CONSTANT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_MTR_GEAR_RATIO</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>HIP_MTR_MAX_TORQUE</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>INC_ENC_DIRS</paramName>
+          <dim>[4,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>INC_ENC_RAD_PER_TICK</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEFT_HIP_CALIB_POS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEFT_HIP_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEFT_MOTOR_HIP_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_LEG_A_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_LEG_A_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_LEG_B_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_LEG_B_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_MOTOR_A_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_MOTOR_B_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_TRAN_A_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_TRAN_A_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_TRAN_B_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG1_TRAN_B_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_LEG_A_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_LEG_A_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_LEG_B_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_LEG_B_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_MOTOR_A_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_MOTOR_B_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_TRAN_A_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_TRAN_A_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_TRAN_B_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG2_TRAN_B_RAD_PER_CNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG_A_CALIB_LOC</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG_B_CALIB_LOC</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG_MOTOR_CONSTANT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG_MTR_GEAR_RATIO</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>LEG_MTR_MAX_TORQUE</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MEDULLA_ADC_MAX_VOLTS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MEDULLA_ADC_OFFSET_COUNTS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MEDULLA_TIMER_FREQ</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MTR_HIP_MAX_CURRENT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MTR_MAX_COUNT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>MTR_MAX_CURRENT</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>RIGHT_HIP_CALIB_POS</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>RIGHT_HIP_CALIB_VAL</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>RIGHT_MOTOR_HIP_DIRECTION</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>TO_threshold</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>alpha_apex</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>alpha_max</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>alpha_min</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>boom_mount_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>c_energy</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>contact_threshold</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>control_start_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>d_y_boom_com_offset</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>d_y_boom_hip_offset</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>d_y_com</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>d_y_mount_to_com</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>desired_torso_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>dt_thrust</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>dx_avg_desired</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>extra_leg_damping</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>ff_energy_l</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>ff_energy_r</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>g</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>g_reduced</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>h_boom</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>i_limit_lateral</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>j_segments</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>k0_virtual</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>k_ff</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>k_placement</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>k_sea</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_flight</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_lateral</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_leg_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_motor</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_sea_torque_flight</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_sea_torque_stance</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_torso</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kd_virtual</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>ki_lateral</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_flight_max</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_flight_min</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_lateral</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_leg_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_motor</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_sea_torque_flight</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_sea_torque_stance</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>kp_torso</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l0_leg</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l0_max_angle_error</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l0_min_angle_error</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l0_virtual</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_boom</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_boom_projected</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_max</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_min</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_retract_escape</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_retract_swing</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>l_seg</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>lambda1</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>lambda2</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>lateral_offset</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>lateral_torque_ramp_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>loaded_threshold</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>m_leg_motor</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>m_total_real</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_back_bar_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_encoder_velocity</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_front_bar_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_k_virtual</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_leg_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_sagittal_loaded_torque</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_sagittal_unloaded_torque</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>max_torque_lateral</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>min_back_bar_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>min_front_bar_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>min_k_virtual</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>min_leg_angle</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>raibert_energy_injection</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sagittal_starting_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sagittal_torque_ramp_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sample_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sea_control_torque_cmd_small_threshold</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sea_coulomb_friction</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sea_coulomb_friction_direction_switch_sensitivity</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sea_extra_sliding_friction</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sea_offset_friction</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>sensor_start_time</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>simbicon_alpha0</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>simbicon_c1</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>simbicon_c2</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>stance_flight_torque_threshold</paramName>
+          <dim>[1,4]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>t_flight</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>target_energy</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>x_limit</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+              
+   <parameter>
+      <paramName>F_thrust</paramName>
+          <dim>[1,1]</dim>
+   </parameter>
+</block>
+</Root>
