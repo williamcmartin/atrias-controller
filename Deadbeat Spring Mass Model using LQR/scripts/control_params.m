@@ -1,3 +1,5 @@
+robot_is_attached_to_boom = true;
+
 %% Other parameter files to run
 model_params;
 actuator_control_params;
@@ -9,10 +11,9 @@ desired_initial_leg_roll_right = deg2rad(95);
 desired_initial_leg_roll_left = deg2rad(95);
 
 %% Lateral control params
-robot_is_attached_to_boom = true;
 max_torque_lateral = min(MTR_HIP_MAX_CURRENT, HIP_CURRENT_LIMIT)*HIP_MOTOR_CONSTANT*HIP_MTR_GEAR_RATIO;
-lateral_target_position_left = 0.25;
-lateral_target_position_right = -0.25;
+lateral_target_position_left = 0.15;
+lateral_target_position_right = -0.15;
 lateral_target_beta = deg2rad(95);
 minimum_lateral_beta = 75*pi/180;
 maximum_lateral_beta = 99*pi/180;
@@ -29,10 +30,10 @@ lambda1 = 10; % hip torque
 lambda2 = 1;  % leg force
 
 %% Leg Limits for commands
-min_front_bar_angle = 98.0*pi/180; % ~83 degrees
-max_front_bar_angle = 194.8*pi/180; % ~218 degrees
-min_back_bar_angle = 165.0*pi/180; % ~144 degrees
-max_back_bar_angle = 262.4*pi/180; % ~279 degrees
+min_front_bar_angle = MOTOR_POSITION_LIMITS_LOWER(1) + 5*pi/180;
+max_front_bar_angle = MOTOR_POSITION_LIMITS_UPPER(1) - 5*pi/180;
+min_back_bar_angle = MOTOR_POSITION_LIMITS_LOWER(2) + 5*pi/180;
+max_back_bar_angle = MOTOR_POSITION_LIMITS_UPPER(2) - 5*pi/180;
 max_leg_length = 0.95;
 min_leg_length = 0.5;
 
@@ -49,7 +50,7 @@ kp_velocity_swing_trajectory = 10;
 
 %% State machine
 fcut_contact = 95*(2*pi); % lowpass frequency on vertical GRF
-contact_threshold = 0.25; % initial GRF touchdown threshold
+contact_threshold = 0.50; % initial GRF touchdown threshold
 loaded_threshold = 0.50; % locked contact GRF threshold
 t_flight = 0.025; % time to wait before entering flight state
 
@@ -62,11 +63,11 @@ desired_lateral_symmetry_angle = 0*pi/180;
 %outer_loop_stance_sample_time = 4*sample_time;
 
 %% Spring-Mass gait parameters for vertical spring
-desired_com_forward_velocity = 0;
-velocity_target_step = 0.3; % m/s, maximum difference between current velocity and target velocity
+desired_com_forward_velocity = 0.5;
+velocity_target_step = 0.1; % m/s, maximum difference between current velocity and target velocity
 desired_com_lateral_velocity = 0.25;
 forward_velocity_target_step = 0.1;
-z_land = 0.86+d_vertical_com;
+z_land = 0.90+d_vertical_com;
 desired_com_apex_height = z_land + 0.04; 
 k_virtual = 13000;
 spring_frequency = sqrt(k_virtual/m_total_real);
@@ -81,7 +82,7 @@ dz_ref = @(t) z_amplitude*spring_frequency*cos(spring_frequency*t+phase_0);
 ddz_ref = @(t) -z_amplitude*spring_frequency^2*sin(spring_frequency*t+phase_0);
 dz_land = dz_ref(0);
 flight_duration = -dz_land/g*2;
-min_f_duration = 0.85*flight_duration;
+min_f_duration = 0.75*flight_duration;
 dimensionless_stiffness = k_virtual*z_land / (m_total_real*g);
 % figure('Name','Virtual Spring Z trajectory'); fplot(z_ref,[0,stance_duration]);
 fprintf('Minimum Pelvis Height: %f\n',z_rest_new-z_amplitude-d_vertical_com);
@@ -92,7 +93,7 @@ fprintf('Flight Time: %f\n',flight_duration);
 fprintf('Duty Factor: %f\n',stance_duration/(stance_duration+flight_duration));
 
 %% Bouncing While Standing
-standing_bounce_amplitude = 0.05;%;z_amplitude;
+standing_bounce_amplitude = 0.05;
 standing_bounce_frequency = (1/4)*2*pi;
 standing_bounce_chirp_length = 60;
 bounce_ddz = @(r,t) standing_bounce_amplitude*(2*standing_bounce_frequency*r*cos(t*standing_bounce_frequency) - (t*standing_bounce_frequency*r + standing_bounce_frequency).^2.*sin(t*standing_bounce_frequency));
@@ -106,22 +107,24 @@ A_vert = [0 1; 0 0];
 B_vert = [0; 1/m_total_real];
 Q_vert = diag([100 1]); R_vert = 0.00001;
 [k_LQR_vertical, P_LQR_vertical]  = lqr(A_vert, B_vert, Q_vert, R_vert);
+ti_z_stance = 1;
 %k_vertical_winch = [3162.3, 717.74];
 
 %% Forward LQR - Finite horizon
 t_const_dyn = stance_duration/2;
 t_sat_stance = @(t) max(min(t, stance_duration),0);
-A_sag_t = @(t) [0 0 1 0; 0 0 0 1; 0 0 0 0; -m_total_real*(g+ddz_ref(t_sat_stance(t)))/i_robot 0 0 0];
-B_sag_t = @(t) [0; 0; 1/m_total_real; z_ref(t_sat_stance(t))/i_robot];
+A_sag_t = @(t) [0 0 1 0; 0 0 0 1; 0 0 0 0; m_total_real*(g+ddz_ref(t_sat_stance(t)))/i_robot 0 0 0];
+B_sag_t = @(t) [0; 0; 1/m_total_real; -z_ref(t_sat_stance(t))/i_robot];
 A_sag = A_sag_t(stance_duration-t_const_dyn);
 B_sag = B_sag_t(stance_duration-t_const_dyn);
-Q_sag = diag([0,20,0,0]);
+Q_sag = diag([1,25,1,1]);
 R_sag = 0.5e-4;
 H_sag = 0.001*diag([0 0 0 1]) ...  % pitch velocity
       + 0*diag([0 0 1 0]) ...  % x velocity
       + 1*diag([0 1 0 0]) ...  % pitch
       + 0*diag([1 0 0 0]) ...  % x
       + 0.27*[0 0 0 0; 0 1 0 flight_duration; 0 0 0 0; 0 flight_duration 0 flight_duration^2];  % pitch at landing
+H_sag = diag([0,5,0,0]);
 [k_LQR_sagittal, P_LQR_sagittal] = lqr(A_sag, B_sag, Q_sag, R_sag);
 neg_dP = @(t,P) P*A_sag_t(t) + A_sag_t(t)'*P + Q_sag - P*B_sag_t(t)/R_sag*B_sag_t(t)'*P;
 neg_dP_vec = @(t,P) reshape(neg_dP(t, reshape(P, size(A_sag))), [numel(A_sag),1]); % assume P is a vector
@@ -137,9 +140,14 @@ for i = 1:length(T_lqr)
 end
 backwards_P_sag_of_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),backwards_P_of_t,'UniformOutput',false));
 backwards_K_sag_of_t = cell2mat(backwards_K_of_t);
-% figure('Name', 'Finite Horizon Gains - Sagittal');
-% plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]))
-% xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta');
+figure('Name', 'Finite Horizon Gains - Sagittal');
+plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]))
+hold on;
+plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*150);
+plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*30);
+xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
+
+
 
 %% Standing LQR for Forward - infinite horizon
 desired_standing_torso_pitch = -torso_centerline_pitch_offset_angle;
@@ -147,8 +155,8 @@ desired_standing_z = z_rest_new - z_amplitude;
 A_sag_infinite = [0 0 1 0; % x th dx dth
                   0 0 0 1;
                   0 0 0 0;
-                  -m_total_real*g/i_robot 0 0 0];
-B_sag_infinite = [0; 0; 1/m_total_real; desired_standing_z/i_robot];
+                  m_total_real*g/i_robot 0 0 0];
+B_sag_infinite = [0; 0; 1/m_total_real; -desired_standing_z/i_robot];
 Q_sag_infinite = diag([1 100 1 100]); 
 R_sag_infinite = 0.3;
 [k_LQR_sagittal_infinite, P_LQR_sagittal_infinite] = lqr(A_sag_infinite, B_sag_infinite, Q_sag_infinite, R_sag_infinite);
@@ -304,11 +312,27 @@ state_minus = traj(end,:)';
 state_plus = traj(end,:)';
 B_foot_placement = (state_plus-state_minus)/(2*delta_u);
 B_dx_versus_x0 = B_foot_placement(2);
-recorded_steps = 15;
+recorded_steps = 100;
+initial_dy_takeoff_history = NaN;
+initial_dy_touchdown_history = NaN;
+initial_target_dy_history = NaN;
+initial_y_foot_correction_history = NaN;
+if exist('adaptive_foot_x_data.mat', 'file') == 2
+    %load('adaptive_foot_x_data.mat');
+    initial_dx_takeoff_history = NaN;
+    initial_dx_touchdown_history = NaN;
+    initial_x_foot_correction_history = NaN;
+    initial_target_dx_history = NaN;
+else
+    initial_dx_takeoff_history = NaN;
+    initial_dx_touchdown_history = NaN;
+    initial_x_foot_correction_history = NaN;
+    initial_target_dx_history = NaN;
+end
 
 %% Swing leg placement
-max_parabolic_z_retraction = 0.05;
-z_retract_swing = 0.15;
+max_parabolic_z_retraction = 0.01;
+z_retract_swing = 0.10;
 
 %% Secondary leg parameters
 l_retract_swing_min = 0.55;
@@ -335,14 +359,15 @@ C_kalman_vertical = [1 0 0; 1 0 0; 0 0 1];
 G_kalman_vertical = B_kalman_vertical / sqrt(sample_time);
 % Covariances
 Q_kalman_GRF = 20^2; % N, error in GRF estimates
-Q_kalman_GRF_difference = 2^2;
-Q_kalman_lateral_GRF_difference = 10^2;
+Q_kalman_GRFz_difference = 5^2;
+Q_kalman_GRFx_difference = 5^2;
+Q_kalman_GRFy_difference = 10^2;
 R_kalman_accelerometer = 2.00^2;  % m/s^2
 R_kalman_foot_stance = 0.005^2 + 0.005^2;  % m, geometry error + ground error
 R_kalman_foot_slip = 0.005^2 + 1^2;
-kalman_stance_slip_threshold = 0.5;
+kalman_stance_slip_threshold = 0.1;
 % Initial estimates
-P0_kalman_transverse = diag([0.05^2, 0.1^2, 0.25^2]); % [m, m/s, m/s^2], initial state error covariance
+P0_kalman_transverse = diag([0.025^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
 P0_kalman_vertical = diag([0.05^2, 0.1^2, 0.25^2]); % [m, m/s, m/s^2], initial state error covariance
 
 %% Low pass filters for various signals
@@ -390,3 +415,18 @@ P0_kalman_swing_load = diag([(1e-6)^2, (1e-3)^2, 10^2]);
 % P0_kalman_fourbar_gear = diag([R_kalman_absolute_normal, 2*R_kalman_absolute_normal/sample_time^2]);
 % max_absolute_measurement_innovation = 15*pi/180;
 % kalman_load_to_deflect_transmission = 500; % Nm
+
+%% Low pass filters
+fcut_10hz_05d = 10*(2*pi);
+lpf_damping = 0.5;
+B1_lpf_10hz_05d = -2*exp(-lpf_damping*fcut_10hz_05d*sample_time)*cos(fcut_10hz_05d*sample_time*sqrt(1-lpf_damping^2));
+B2_lpf_10hz_05d = exp(-2*lpf_damping*fcut_10hz_05d*sample_time);
+A_lpf_10hz_05d = 1 + B1_lpf_10hz_05d + B2_lpf_10hz_05d;
+
+fcut_30hz_05d = 30*2*pi;
+lpf_damping = 0.5;
+B1_lpf_30hz_05d = -2*exp(-lpf_damping*fcut_30hz_05d*sample_time)*cos(fcut_30hz_05d*sample_time*sqrt(1-lpf_damping^2));
+B2_lpf_30hz_05d = exp(-2*lpf_damping*fcut_30hz_05d*sample_time);
+A_lpf_30hz_05d = 1 + B1_lpf_30hz_05d + B2_lpf_30hz_05d;
+
+%% 
