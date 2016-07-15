@@ -63,13 +63,12 @@ desired_lateral_symmetry_angle = 0*pi/180;
 %outer_loop_stance_sample_time = 4*sample_time;
 
 %% Spring-Mass gait parameters for vertical spring
-desired_com_forward_velocity = 0.5;
-velocity_target_step = 0.1; % m/s, maximum difference between current velocity and target velocity
+desired_com_forward_velocity = 1.0;
 desired_com_lateral_velocity = 0.25;
-forward_velocity_target_step = 0.1;
+forward_velocity_target_step = 0.2;
 z_land = 0.90+d_vertical_com;
-desired_com_apex_height = z_land + 0.04; 
-k_virtual = 13000;
+desired_com_apex_height = z_land + 0.03; 
+k_virtual = 16000;
 spring_frequency = sqrt(k_virtual/m_total_real);
 z_amplitude = sqrt(m_total_real^2*g^2 + 2*k_virtual*m_total_real*g*(desired_com_apex_height-z_land))/k_virtual;
 z_rest_new = z_land - g/spring_frequency^2; % loaded virtual spring rest length
@@ -95,7 +94,7 @@ fprintf('Duty Factor: %f\n',stance_duration/(stance_duration+flight_duration));
 %% Bouncing While Standing
 standing_bounce_amplitude = 0.05;
 standing_bounce_frequency = (1/4)*2*pi;
-standing_bounce_chirp_length = 60;
+standing_bounce_chirp_length = 40;
 bounce_ddz = @(r,t) standing_bounce_amplitude*(2*standing_bounce_frequency*r*cos(t*standing_bounce_frequency) - (t*standing_bounce_frequency*r + standing_bounce_frequency).^2.*sin(t*standing_bounce_frequency));
 standing_bounce_increase_rate = (spring_frequency/standing_bounce_frequency - 1)/standing_bounce_chirp_length;
 standing_bounce_max_chirp_scale = spring_frequency/standing_bounce_frequency;
@@ -140,12 +139,12 @@ for i = 1:length(T_lqr)
 end
 backwards_P_sag_of_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),backwards_P_of_t,'UniformOutput',false));
 backwards_K_sag_of_t = cell2mat(backwards_K_of_t);
-figure('Name', 'Finite Horizon Gains - Sagittal');
-plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]))
-hold on;
-plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*150);
-plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*30);
-xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
+% figure('Name', 'Finite Horizon Gains - Sagittal');
+% plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]));
+% hold on;
+% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*150);
+% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*30);
+% xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
 
 
 
@@ -332,7 +331,7 @@ end
 
 %% Swing leg placement
 max_parabolic_z_retraction = 0.01;
-z_retract_swing = 0.10;
+z_retract_swing = 0.20;
 
 %% Secondary leg parameters
 l_retract_swing_min = 0.55;
@@ -353,6 +352,10 @@ A_kalman_transverse = [1 sample_time 0; 0 1 sample_time; 0 0 1];
 B_kalman_transverse = [0; 0; 1/m_total_real];
 C_kalman_transverse = [1 0 0; 1 0 0; 0 0 1];
 G_kalman_transverse = B_kalman_transverse / sqrt(sample_time);
+A_kalman_no_position = [1 sample_time; 0 1];
+B_kalman_no_position = [0; 1/m_total_real];
+C_kalman_no_position = [1 0; 1 0; 0 1];
+G_kalman_no_position = B_kalman_no_position / sqrt(sample_time);
 A_kalman_vertical = [1 sample_time 0; 0 1 sample_time; 0 0 1];
 B_kalman_vertical = [0; 0; 1/m_total_real];
 C_kalman_vertical = [1 0 0; 1 0 0; 0 0 1];
@@ -365,9 +368,12 @@ Q_kalman_GRFy_difference = 10^2;
 R_kalman_accelerometer = 2.00^2;  % m/s^2
 R_kalman_foot_stance = 0.005^2 + 0.005^2;  % m, geometry error + ground error
 R_kalman_foot_slip = 0.005^2 + 1^2;
+R_kalman_dfoot_stance = 0.25^2; % m/s
+R_kalman_dfoot_slip = 5^2; % m/s
 kalman_stance_slip_threshold = 0.1;
 % Initial estimates
 P0_kalman_transverse = diag([0.025^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
+P0_kalman_no_position = diag([0.05^2, 0.125^2]); % [m/s, m/s^2], initial state error covariance
 P0_kalman_vertical = diag([0.05^2, 0.1^2, 0.25^2]); % [m, m/s, m/s^2], initial state error covariance
 
 %% Low pass filters for various signals
