@@ -63,7 +63,10 @@ desired_lateral_symmetry_angle = 0*pi/180;
 %outer_loop_stance_sample_time = 4*sample_time;
 
 %% Spring-Mass gait parameters for vertical spring
-desired_com_forward_velocity = 1.0;
+forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
+forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
+forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
+desired_com_forward_velocity = 0.5;
 desired_com_lateral_velocity = 0.25;
 forward_velocity_target_step = 0.2;
 z_land = 0.90+d_vertical_com;
@@ -117,13 +120,13 @@ B_sag_t = @(t) [0; 0; 1/m_total_real; -z_ref(t_sat_stance(t))/i_robot];
 A_sag = A_sag_t(stance_duration-t_const_dyn);
 B_sag = B_sag_t(stance_duration-t_const_dyn);
 Q_sag = diag([1,25,1,1]);
-R_sag = 0.5e-4;
+R_sag = 0.4e-4;
 H_sag = 0.001*diag([0 0 0 1]) ...  % pitch velocity
       + 0*diag([0 0 1 0]) ...  % x velocity
       + 1*diag([0 1 0 0]) ...  % pitch
       + 0*diag([1 0 0 0]) ...  % x
       + 0.27*[0 0 0 0; 0 1 0 flight_duration; 0 0 0 0; 0 flight_duration 0 flight_duration^2];  % pitch at landing
-H_sag = diag([0,5,0,0]);
+H_sag = diag([0,5,0,0.03]);
 [k_LQR_sagittal, P_LQR_sagittal] = lqr(A_sag, B_sag, Q_sag, R_sag);
 neg_dP = @(t,P) P*A_sag_t(t) + A_sag_t(t)'*P + Q_sag - P*B_sag_t(t)/R_sag*B_sag_t(t)'*P;
 neg_dP_vec = @(t,P) reshape(neg_dP(t, reshape(P, size(A_sag))), [numel(A_sag),1]); % assume P is a vector
@@ -230,11 +233,11 @@ if exist('ref_trajs.mat','file') && ~regenerate
   disp('loaded library of reference trajectories')
 else
     N_time = length(T_s);
-    target_dx_range = -1:0.05:1;
+    target_dx_range = -4:0.05:4;
     N_vels = length(target_dx_range);
     % for each desired speed, scan for symmetric gait
     sym_x0 = nan(N_vels,1);
-    rough_xend = -1:0.005:1;
+    rough_xend = -1.5:0.005:1.5;
     counter = 0;
     for i_target = 1:N_vels
       curr_target_dx = target_dx_range(i_target);
