@@ -66,6 +66,8 @@ desired_lateral_symmetry_angle = 0*pi/180;
 forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
 forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
 forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
+forward_velocity_test_4 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.6:3.0)',5,1); repelem((3.0:-0.6:0)',5,1)];
+
 desired_com_forward_velocity = 0.5;
 desired_com_lateral_velocity = 0.25;
 forward_velocity_target_step = 0.2;
