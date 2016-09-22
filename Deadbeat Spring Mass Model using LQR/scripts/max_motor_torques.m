@@ -1,15 +1,12 @@
 %% Compute relationship between virtual spring constant, system energy, and max motor torques
 
 % system params
-max_allowed_torque = 600;
-m = 64;
-%m_counter = 24.05;
+max_allowed_torque = 500;
+m = 66;
 g_real = 9.803;
-g = g_real;%(m-m_counter)/m*g_real;
-d = 0.1;
-l0_leg = 0.927; % leg length for computing l0_virtual
-phi0 = 130*pi/180;
-l0_virtual = 1.01;%sqrt(d^2+l0_leg^2-2*d*l0_leg*cos(phi0));
+g = g_real;
+d = 0.19;
+l0_virtual = 1.09;
 
 % search space
 k_virtual = 1000:100:30000;
@@ -62,6 +59,4 @@ ylabel('Spring Stiffness (kN/m)');
 %% Peak torque as a function
 syms m g k y l0 real
 tau_m = 0.5*(m*g + (m^2*g^2 + 2*k*m*g*y)^0.5)*sin(acos(l0 - (m*g + (m^2*g^2 + 2*k*m*g*y)^0.5)/k));
-% solve for y (????)
-% maximize
 

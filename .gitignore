@@ -7,6 +7,7 @@ atrias-matlab/
 ########
 *.fig
 data/
+ignore/
 
 # Simulink things #
 ###################
