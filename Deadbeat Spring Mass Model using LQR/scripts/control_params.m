@@ -1,5 +1,3 @@
-robot_is_attached_to_boom = true;
-
 %% Other parameter files to run
 model_params;
 actuator_control_params;
@@ -49,7 +47,6 @@ sea_trajectory_damping_scale = 0.75;
 kp_velocity_swing_trajectory = 10;
 
 %% State machine
-fcut_contact = 95*(2*pi); % lowpass frequency on vertical GRF
 contact_threshold = 0.50; % initial GRF touchdown threshold
 loaded_threshold = 0.50; % locked contact GRF threshold
 t_flight = 0.025; % time to wait before entering flight state
@@ -59,16 +56,16 @@ desired_torso_pitch = 0*pi/180;
 desired_torso_roll = 0*pi/180;
 desired_lateral_symmetry_angle = 0*pi/180;
 
-%% Cascade Control
-%outer_loop_stance_sample_time = 4*sample_time;
-
 %% Spring-Mass gait parameters for vertical spring
 forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
 forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
 forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
-forward_velocity_test_4 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.6:3.0)',5,1); repelem((3.0:-0.6:0)',5,1)];
+forward_velocity_test_max_speed = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:4.0)'; ones(10,1)*4; (4.0:-0.1:0)'];
+forward_velocity_nominal_gait = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:1.0)'; ones(30,1)*1.0; (1.0:-0.1:0)'];
+forward_velocity_ground_disturbance_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(50,1)*1.0; (1.0:-0.2:0)'];
+step_to_stop_adapting_return_map = 23;
 
-desired_com_forward_velocity = 0.5;
+desired_com_forward_velocity = 0;
 desired_com_lateral_velocity = 0.25;
 forward_velocity_target_step = 0.2;
 z_land = 0.90+d_vertical_com;
@@ -82,6 +79,7 @@ phase_0 = pi-phase_f;
 if phase_f < phase_0, phase_f = phase_f + 2*pi; end
 stance_duration = (phase_f-phase_0)/spring_frequency;
 z_ref = @(t) z_rest_new + z_amplitude*sin(spring_frequency*t+phase_0);
+z_ref_flight = @(t) -0.5*g*t.^2 + desired_com_apex_height;
 dz_ref = @(t) z_amplitude*spring_frequency*cos(spring_frequency*t+phase_0);
 ddz_ref = @(t) -z_amplitude*spring_frequency^2*sin(spring_frequency*t+phase_0);
 dz_land = dz_ref(0);
@@ -112,7 +110,6 @@ B_vert = [0; 1/m_total_real];
 Q_vert = diag([100 1]); R_vert = 0.00001;
 [k_LQR_vertical, P_LQR_vertical]  = lqr(A_vert, B_vert, Q_vert, R_vert);
 ti_z_stance = 1;
-%k_vertical_winch = [3162.3, 717.74];
 
 %% Forward LQR - Finite horizon
 t_const_dyn = stance_duration/2;
@@ -147,10 +144,9 @@ backwards_K_sag_of_t = cell2mat(backwards_K_of_t);
 % figure('Name', 'Finite Horizon Gains - Sagittal');
 % plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]));
 % hold on;
-% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*150);
-% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*30);
+% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*90);
+% plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*18);
 % xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
-
 
 
 %% Standing LQR for Forward - infinite horizon
@@ -235,7 +231,7 @@ if exist('ref_trajs.mat','file') && ~regenerate
   disp('loaded library of reference trajectories')
 else
     N_time = length(T_s);
-    target_dx_range = -4:0.05:4;
+    target_dx_range = -1:0.05:5;%target_dx_range = -1:0.05:1;
     N_vels = length(target_dx_range);
     % for each desired speed, scan for symmetric gait
     sym_x0 = nan(N_vels,1);
@@ -258,7 +254,7 @@ else
       end
       sym_x0(i_target) = interp1(initial_vels, initial_placements, curr_target_dx);
     end
-    base_x_end = -(-0.05:0.005:0.05);
+    base_x_end = -(-0.05:0.005:0.05);%base_x_end = -(-0.2:0.005:0.2);
     N_traj = length(base_x_end);
     forward_x_of_dxstar = nan(N_vels, N_traj, N_time);
     forward_dx_of_dxstar = nan(N_vels, N_traj, N_time);
@@ -335,7 +331,7 @@ else
 end
 
 %% Swing leg placement
-max_parabolic_z_retraction = 0.01;
+max_parabolic_z_retraction = 0.10;%0.01;
 z_retract_swing = 0.20;
 
 %% Secondary leg parameters
@@ -356,25 +352,22 @@ A_lpf_leg_spring = 1 + B1_lpf_leg_spring + B2_lpf_leg_spring;
 A_kalman_transverse = [1 sample_time 0; 0 1 sample_time; 0 0 1];
 B_kalman_transverse = [0; 0; 1/m_total_real];
 C_kalman_transverse = [1 0 0; 1 0 0; 0 0 1];
-G_kalman_transverse = B_kalman_transverse / sqrt(sample_time);
+G_kalman_transverse = B_kalman_transverse;
 A_kalman_no_position = [1 sample_time; 0 1];
 B_kalman_no_position = [0; 1/m_total_real];
 C_kalman_no_position = [1 0; 1 0; 0 1];
-G_kalman_no_position = B_kalman_no_position / sqrt(sample_time);
+G_kalman_no_position = B_kalman_no_position;
 A_kalman_vertical = [1 sample_time 0; 0 1 sample_time; 0 0 1];
 B_kalman_vertical = [0; 0; 1/m_total_real];
 C_kalman_vertical = [1 0 0; 1 0 0; 0 0 1];
-G_kalman_vertical = B_kalman_vertical / sqrt(sample_time);
+G_kalman_vertical = B_kalman_vertical;
 % Covariances
-Q_kalman_GRF = 20^2; % N, error in GRF estimates
-Q_kalman_GRFz_difference = 5^2;
-Q_kalman_GRFx_difference = 5^2;
-Q_kalman_GRFy_difference = 10^2;
+Q_kalman_GRFz_difference = 2*(20)^2/sample_time; % covariance of dF/dt = 2*cov(F)/dt
+Q_kalman_GRFx_difference = 2*(20)^2/sample_time;
+Q_kalman_GRFy_difference = 2*(40)^2/sample_time;
 R_kalman_accelerometer = 2.00^2;  % m/s^2
-R_kalman_foot_stance = 0.005^2 + 0.005^2;  % m, geometry error + ground error
-R_kalman_foot_slip = 0.005^2 + 1^2;
-R_kalman_dfoot_stance = 0.25^2; % m/s
-R_kalman_dfoot_slip = 5^2; % m/s
+R_kalman_foot_stance = 0.025^2 + 0.005^2;  % m, geometry error + ground error
+R_kalman_foot_slip = 0.025^2 + 1^2;
 kalman_stance_slip_threshold = 0.1;
 % Initial estimates
 P0_kalman_transverse = diag([0.025^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
@@ -387,57 +380,27 @@ lpf_damping = sqrt(2)/2;
 B1_lpf_lateral_angle = -2*exp(-lpf_damping*fcut_lateral_angle*sample_time)*cos(fcut_lateral_angle*sample_time*sqrt(1-lpf_damping^2));
 B2_lpf_lateral_angle = exp(-2*lpf_damping*fcut_lateral_angle*sample_time);
 A_lpf_lateral_angle = 1 + B1_lpf_lateral_angle + B2_lpf_lateral_angle;
-fcut_imu = 80*(2*pi);
-lpf_damping = sqrt(2)/2;
-B1_lpf_imu = -2*exp(-lpf_damping*fcut_imu*sample_time)*cos(fcut_imu*sample_time*sqrt(1-lpf_damping^2));
-B2_lpf_imu = exp(-2*lpf_damping*fcut_imu*sample_time);
-A_lpf_imu = 1 + B1_lpf_imu + B2_lpf_imu;
 fcut_fourbar_angles = 80*(2*pi);
 lpf_damping = sqrt(2)/2;
 B1_lpf_fourbar_angles = -2*exp(-lpf_damping*fcut_fourbar_angles*sample_time)*cos(fcut_fourbar_angles*sample_time*sqrt(1-lpf_damping^2));
 B2_lpf_fourbar_angles = exp(-2*lpf_damping*fcut_fourbar_angles*sample_time);
 A_lpf_fourbar_angles = 1 + B1_lpf_fourbar_angles + B2_lpf_fourbar_angles;
-fcut_accelerometer = 80*(2*pi);
-lpf_damping = sqrt(2)/2;
-B1_lpf_accelerometer = -2*exp(-lpf_damping*fcut_accelerometer*sample_time)*cos(fcut_accelerometer*sample_time*sqrt(1-lpf_damping^2));
-B2_lpf_accelerometer = exp(-2*lpf_damping*fcut_accelerometer*sample_time);
-A_lpf_accelerometer = 1 + B1_lpf_accelerometer + B2_lpf_accelerometer;
-
-%% SEA Swing Load Kalman Filter
-A_kalman_swing_load = [1 sample_time 0; 0 1 sample_time; 0 0 1];%
-B_kalman_swing_load = [0; 0; 1/mean(j_segments)];
-C_kalman_swing_load = [1 0 0; 0 0 mean(j_segments)];
-G_kalman_swing_load = B_kalman_swing_load / sqrt(sample_time);
-Q_kalman_SEA_torque_difference = 0.1^2;
-P0_kalman_swing_load = diag([(1e-6)^2, (1e-3)^2, 10^2]);
-
-%% Kalman Filtering parameters - Fourbar Gears
-% A_kalman_fourbar_gear = [1, sample_time; 0, 1];
-% B_kalman_fourbar_gear = [0, 0, 0; -1/j_motor, LEG_MTR_GEAR_RATIO/j_motor, -1/j_motor*(LEG_MTR_GEAR_RATIO-1)*j_rotor/i_robot]*sample_time;
-% C_kalman_fourbar_gear = [1, 0; 1, 0];
-% G_kalman_fourbar_gear = B_kalman_fourbar_gear / sqrt(sample_time);
-% R_kalman_absolute_fail = (90*pi/180)^2;
-% R_kalman_absolute_normal = (10^-3*pi/180)^2;
-% R_kalman_incremental_unloaded = (5*10^-3*pi/180)^2 + (LEG_INC_ENCODER_RAD_PER_TICK)^2;
-% R_kalman_incremental_loaded = (2.5*pi/180)^2 + (LEG_INC_ENCODER_RAD_PER_TICK)^2;
-% Q_kalman_spring_torque = 20^2;
-% Q_kalman_rotor_torque = 5^2;
-% Q_kalman_trunk_torque = 0.2^2*Q_kalman_GRF + 4*Q_kalman_rotor_torque + 4*Q_kalman_spring_torque;
-% P0_kalman_fourbar_gear = diag([R_kalman_absolute_normal, 2*R_kalman_absolute_normal/sample_time^2]);
-% max_absolute_measurement_innovation = 15*pi/180;
-% kalman_load_to_deflect_transmission = 500; % Nm
-
-%% Low pass filters
+% underdamped filters
 fcut_10hz_05d = 10*(2*pi);
 lpf_damping = 0.5;
 B1_lpf_10hz_05d = -2*exp(-lpf_damping*fcut_10hz_05d*sample_time)*cos(fcut_10hz_05d*sample_time*sqrt(1-lpf_damping^2));
 B2_lpf_10hz_05d = exp(-2*lpf_damping*fcut_10hz_05d*sample_time);
 A_lpf_10hz_05d = 1 + B1_lpf_10hz_05d + B2_lpf_10hz_05d;
-
 fcut_30hz_05d = 30*2*pi;
 lpf_damping = 0.5;
 B1_lpf_30hz_05d = -2*exp(-lpf_damping*fcut_30hz_05d*sample_time)*cos(fcut_30hz_05d*sample_time*sqrt(1-lpf_damping^2));
 B2_lpf_30hz_05d = exp(-2*lpf_damping*fcut_30hz_05d*sample_time);
 A_lpf_30hz_05d = 1 + B1_lpf_30hz_05d + B2_lpf_30hz_05d;
+% contact detection
+fcut_contact = 95*(2*pi); 
+lpf_damping = sqrt(2)/2;
+B1_lpf_contact = -2*exp(-lpf_damping*fcut_contact*sample_time)*cos(fcut_contact*sample_time*sqrt(1-lpf_damping^2));
+B2_lpf_contact = exp(-2*lpf_damping*fcut_contact*sample_time);
+A_lpf_contact = 1 + B1_lpf_contact + B2_lpf_contact;
 
-%% 
+
