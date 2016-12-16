@@ -27,13 +27,6 @@ max_torque_sagittal = min(MTR_MAX_CURRENT, LEG_CURRENT_LIMIT)*LEG_MOTOR_CONSTANT
 lambda1 = 10; % hip torque 
 lambda2 = 1;  % leg force
 
-%% Leg Limits for commands
-min_front_bar_angle = MOTOR_POSITION_LIMITS_LOWER(1) + 5*pi/180;
-max_front_bar_angle = MOTOR_POSITION_LIMITS_UPPER(1) - 5*pi/180;
-min_back_bar_angle = MOTOR_POSITION_LIMITS_LOWER(2) + 5*pi/180;
-max_back_bar_angle = MOTOR_POSITION_LIMITS_UPPER(2) - 5*pi/180;
-max_leg_length = 0.95;
-min_leg_length = 0.5;
 
 %% Sagittal motor PD control
 kp_motor = 2500*HarmonicDriveEfficiency(0,30); % Nm/rad 
@@ -48,7 +41,6 @@ kp_velocity_swing_trajectory = 10;
 
 %% State machine
 contact_threshold = 0.50; % initial GRF touchdown threshold
-loaded_threshold = 0.50; % locked contact GRF threshold
 t_flight = 0.025; % time to wait before entering flight state
 
 %% Posture control
@@ -60,13 +52,14 @@ desired_lateral_symmetry_angle = 0*pi/180;
 forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
 forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
 forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
-forward_velocity_test_max_speed = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:4.0)'; ones(10,1)*4; (4.0:-0.1:0)'];
+forward_velocity_max_speed = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:2.6)'; ones(5,1)*2.6; (2.6:-0.1:0)'];
 forward_velocity_nominal_gait = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:1.0)'; ones(30,1)*1.0; (1.0:-0.1:0)'];
 forward_velocity_ground_disturbance_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(50,1)*1.0; (1.0:-0.2:0)'];
-step_to_stop_adapting_return_map = 23;
-
+forward_velocity_flat_40cmps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
+forward_velocity_short_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'];
+step_to_stop_adapting_return_map = 300;
 desired_com_forward_velocity = 0;
-desired_com_lateral_velocity = 0.25;
+desired_com_lateral_velocity = 0;
 forward_velocity_target_step = 0.2;
 z_land = 0.90+d_vertical_com;
 desired_com_apex_height = z_land + 0.03; 
@@ -94,6 +87,15 @@ fprintf('Stance Time: %f\n',stance_duration);
 fprintf('Flight Time: %f\n',flight_duration);
 fprintf('Duty Factor: %f\n',stance_duration/(stance_duration+flight_duration));
 
+%% Leg Limits for commands
+min_front_bar_angle = MOTOR_POSITION_LIMITS_LOWER(1) + 3*pi/180;
+max_front_bar_angle = MOTOR_POSITION_LIMITS_UPPER(1) - 3*pi/180;
+min_back_bar_angle = MOTOR_POSITION_LIMITS_LOWER(2) + 3*pi/180;
+max_back_bar_angle = MOTOR_POSITION_LIMITS_UPPER(2) - 3*pi/180;
+max_leg_length = 0.97;
+min_leg_length = 0.5;
+max_x_touchdown = sqrt((max_leg_length)^2 - (z_land - d_vertical_com)^2);
+
 %% Bouncing While Standing
 standing_bounce_amplitude = 0.05;
 standing_bounce_frequency = (1/4)*2*pi;
@@ -107,7 +109,7 @@ enable_bouncing = true;
 %% Vertical LQR
 A_vert = [0 1; 0 0];
 B_vert = [0; 1/m_total_real];
-Q_vert = diag([100 1]); R_vert = 0.00001;
+Q_vert = diag([100 1]); R_vert = 2.5e-6;
 [k_LQR_vertical, P_LQR_vertical]  = lqr(A_vert, B_vert, Q_vert, R_vert);
 ti_z_stance = 1;
 
@@ -135,8 +137,10 @@ t_span = 0:dt:planned_end;
 [T_lqr,P_backwards_vec] = ode45(neg_dP_vec,t_span, reshape(H_sag,[numel(A_sag),1]));
 backwards_P_of_t = cell(length(T_lqr),1);
 backwards_K_of_t = cell(length(T_lqr),1);
+backwards_eig_of_P = zeros(4,length(T_lqr));
 for i = 1:length(T_lqr)
   backwards_P_of_t{i} = reshape(P_backwards_vec(i,:), size(A_sag));
+  backwards_eig_of_P(:,i) = eig(backwards_P_of_t{i});
   backwards_K_of_t{i} = R_sag\B_sag'*backwards_P_of_t{i};
 end
 backwards_P_sag_of_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),backwards_P_of_t,'UniformOutput',false));
@@ -231,11 +235,11 @@ if exist('ref_trajs.mat','file') && ~regenerate
   disp('loaded library of reference trajectories')
 else
     N_time = length(T_s);
-    target_dx_range = -1:0.05:5;%target_dx_range = -1:0.05:1;
+    target_dx_range = 0:0.1:2;
     N_vels = length(target_dx_range);
     % for each desired speed, scan for symmetric gait
     sym_x0 = nan(N_vels,1);
-    rough_xend = -1.5:0.005:1.5;
+    rough_xend = -1.0:0.005:1.0;
     counter = 0;
     for i_target = 1:N_vels
       curr_target_dx = target_dx_range(i_target);
@@ -254,7 +258,7 @@ else
       end
       sym_x0(i_target) = interp1(initial_vels, initial_placements, curr_target_dx);
     end
-    base_x_end = -(-0.05:0.005:0.05);%base_x_end = -(-0.2:0.005:0.2);
+    base_x_end = -(-0.30:0.01:0.30);
     N_traj = length(base_x_end);
     forward_x_of_dxstar = nan(N_vels, N_traj, N_time);
     forward_dx_of_dxstar = nan(N_vels, N_traj, N_time);
@@ -304,6 +308,7 @@ else
          'forward_x','forward_dx','sym_x0');
 end
 x0_sym = interp1(forward_dx(:,1), forward_x(:,1), target_dx); % find symmetric initial condition
+T_s = fliplr(stance_duration-T_s); % Flipped Ts spacing to match generated tables
 
 %% Closed loop feedback - compute velocity change per leg placement change
 [~,traj] = ode45(x_ref_dyn, T_s, [x0_sym-delta_u, target_dx]);
@@ -331,11 +336,11 @@ else
 end
 
 %% Swing leg placement
-max_parabolic_z_retraction = 0.10;%0.01;
-z_retract_swing = 0.20;
+max_parabolic_z_retraction = 0.11;
+z_retract_swing = 0.22;
 
 %% Secondary leg parameters
-l_retract_swing_min = 0.55;
+l_retract_swing_min = 0.50;
 l_retract_swing_max = 0.8;
 l_retract_delta = 0.15;
 fcut_leg_spring = 15*(2*pi); % Hz, low pass filter cutoff frequency for tracking the leg spring signal
@@ -362,17 +367,19 @@ B_kalman_vertical = [0; 0; 1/m_total_real];
 C_kalman_vertical = [1 0 0; 1 0 0; 0 0 1];
 G_kalman_vertical = B_kalman_vertical;
 % Covariances
-Q_kalman_GRFz_difference = 2*(20)^2/sample_time; % covariance of dF/dt = 2*cov(F)/dt
-Q_kalman_GRFx_difference = 2*(20)^2/sample_time;
-Q_kalman_GRFy_difference = 2*(40)^2/sample_time;
-R_kalman_accelerometer = 2.00^2;  % m/s^2
-R_kalman_foot_stance = 0.025^2 + 0.005^2;  % m, geometry error + ground error
-R_kalman_foot_slip = 0.025^2 + 1^2;
+Q_kalman_GRFz_difference = 2*(50)^2/sample_time; % covariance of dF/dt = 2*cov(F)/dt
+Q_kalman_GRFx_difference = 2*(50)^2/sample_time;
+Q_kalman_GRFy_difference = 2*(50)^2/sample_time;
+R_kalman_accelerometer = 1.00^2;  % m/s^2
+R_kalman_foot_stance = 0.01^2 + 0.005^2;  % m, geometry error + ground error
+R_kalman_foot_slip = 0.01^2 + 1^2;
+R_kalman_dfoot_stance = 0.25^2; % m/s
+R_kalman_dfoot_slip = 5^2; % m/s
 kalman_stance_slip_threshold = 0.1;
 % Initial estimates
-P0_kalman_transverse = diag([0.025^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
+P0_kalman_transverse = diag([0.015^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
 P0_kalman_no_position = diag([0.05^2, 0.125^2]); % [m/s, m/s^2], initial state error covariance
-P0_kalman_vertical = diag([0.05^2, 0.1^2, 0.25^2]); % [m, m/s, m/s^2], initial state error covariance
+P0_kalman_vertical = diag([0.015^2, 0.05^2, 0.125^2]); % [m, m/s, m/s^2], initial state error covariance
 
 %% Low pass filters for various signals
 fcut_lateral_angle = 80*(2*pi);
