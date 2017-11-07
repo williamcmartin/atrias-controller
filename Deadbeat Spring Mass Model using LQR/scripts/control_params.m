@@ -44,26 +44,41 @@ contact_threshold = 0.50; % initial GRF touchdown threshold
 t_flight = 0.025; % time to wait before entering flight state
 
 %% Posture control
-desired_torso_pitch = 0*pi/180;
+desired_torso_pitch = 0;%-10*pi/180;
 desired_torso_roll = 0*pi/180;
 desired_lateral_symmetry_angle = 0*pi/180;
 
 %% Spring-Mass gait parameters for vertical spring
-forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
-forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
-forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
-forward_velocity_max_speed = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:2.6)'; ones(5,1)*2.6; (2.6:-0.1:0)'];
-forward_velocity_nominal_gait = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:1.0)'; ones(30,1)*1.0; (1.0:-0.1:0)'];
-forward_velocity_ground_disturbance_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(50,1)*1.0; (1.0:-0.2:0)'];
-forward_velocity_flat_40cmps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
-forward_velocity_short_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'];
-step_to_stop_adapting_return_map = 300;
+% forward_velocity_test_1 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',5,1); repelem((1:-0.2:0)',5,1)];
+% forward_velocity_test_2 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
+% forward_velocity_test_3 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.2:1)',10,1); repelem((1:-0.2:0)',10,1)];
+% forward_velocity_max_speed = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:2.6)'; ones(5,1)*2.6; (2.6:-0.1:0)'];
+% forward_velocity_nominal_gait = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:1.0)'; ones(30,1)*1.0; (1.0:-0.1:0)'];
+% forward_velocity_ground_disturbance_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(50,1)*1.0; (1.0:-0.2:0)'];
+% forward_velocity_flat_40cmps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; repelem((0:0.4:1.6)',5,1); repelem((1.6:-0.4:0)',5,1)];
+% forward_velocity_short_test = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'];
+%forward_velocity_one_lap_at_1mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(24,1)*1.0; (1.0:-0.2:0)'];
+forward_velocity_up_to_1mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1)'; ones(8,1)*1; (1:-0.2:0)'];
+forward_velocity_up_to_2mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; ...
+                               (0:0.2:1)'; (1.1:0.1:2)'; (1.9:-0.1:1.1)'; (1:-0.2:0)'];
+forward_velocity_up_to_2_5mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; ...
+                               (0:0.2:1)'; (1.1:0.1:2.5)'; (2.4:-0.1:1.1)'; (1:-0.2:0)'];
+forward_velocity_up_to_3mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; ...
+                               (0:0.2:1)'; (1.1:0.1:3)'; ones(8,1)*3; (3:-0.1:1.1)'; (1:-0.2:0)'];
+forward_velocity_up_to_4mps = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:4)'; ones(8,1)*4; (14:-0.2:0)'];
+forward_velocity_one_lap_at_1mps_32000 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.2:1.0)'; ones(30,1)*1.0; (1.0:-0.2:0)'];
+forward_velocity_one_lap_at_0_5mps_32000 = [zeros(5,1); (0:0.1:0.5)'; (0.5:-0.1:0)'; (0:0.1:0.5)'; ones(30,1)*0.5; (0.5:-0.2:0)'];
+
+step_to_turn_off_smm_velocity_feedback = 31;
+step_to_turn_on_smm_velocity_feedback = 42;
+step_to_stop_adapting_return_map = 20;
+
 desired_com_forward_velocity = 0;
 desired_com_lateral_velocity = 0;
 forward_velocity_target_step = 0.2;
-z_land = 0.90+d_vertical_com;
-desired_com_apex_height = z_land + 0.03; 
-k_virtual = 16000;
+z_land = 0.90+d_vertical_com;%0.89+d_vertical_com;%
+desired_com_apex_height = z_land + 0.02;% + 0.025; 
+k_virtual = 32000;% %16000;%45000;%
 spring_frequency = sqrt(k_virtual/m_total_real);
 z_amplitude = sqrt(m_total_real^2*g^2 + 2*k_virtual*m_total_real*g*(desired_com_apex_height-z_land))/k_virtual;
 z_rest_new = z_land - g/spring_frequency^2; % loaded virtual spring rest length
@@ -78,8 +93,12 @@ ddz_ref = @(t) -z_amplitude*spring_frequency^2*sin(spring_frequency*t+phase_0);
 dz_land = dz_ref(0);
 flight_duration = -dz_land/g*2;
 min_f_duration = 0.75*flight_duration;
+t_stance_offset = (pi-asin((contact_threshold*g-g)/(-z_amplitude*spring_frequency^2)) - phase_0) / spring_frequency;
+if t_stance_offset < 0, t_stance_offset = 0; end
 dimensionless_stiffness = k_virtual*z_land / (m_total_real*g);
 % figure('Name','Virtual Spring Z trajectory'); fplot(z_ref,[0,stance_duration]);
+% figure('Name','Virtual Spring dZ trajectory'); fplot(dz_ref,[0,stance_duration]);
+% figure('Name','Virtual Spring ddZ trajectory'); plot(0:0.0001:stance_duration,ddz_ref(0:0.0001:stance_duration));
 fprintf('Minimum Pelvis Height: %f\n',z_rest_new-z_amplitude-d_vertical_com);
 fprintf('Max Required Leg Length: %f\n',z_land-d_vertical_com);
 fprintf('Dimensionless Stiffness: %f\n',dimensionless_stiffness);
@@ -87,12 +106,15 @@ fprintf('Stance Time: %f\n',stance_duration);
 fprintf('Flight Time: %f\n',flight_duration);
 fprintf('Duty Factor: %f\n',stance_duration/(stance_duration+flight_duration));
 
+
+
 %% Leg Limits for commands
-min_front_bar_angle = MOTOR_POSITION_LIMITS_LOWER(1) + 3*pi/180;
-max_front_bar_angle = MOTOR_POSITION_LIMITS_UPPER(1) - 3*pi/180;
-min_back_bar_angle = MOTOR_POSITION_LIMITS_LOWER(2) + 3*pi/180;
-max_back_bar_angle = MOTOR_POSITION_LIMITS_UPPER(2) - 3*pi/180;
-max_leg_length = 0.97;
+delta_from_mechanical_limits = 0.05 + 6*pi/180;
+min_front_bar_angle = MOTOR_POSITION_LIMITS_LOWER(1) + delta_from_mechanical_limits;
+max_front_bar_angle = MOTOR_POSITION_LIMITS_UPPER(1) - delta_from_mechanical_limits;
+min_back_bar_angle = MOTOR_POSITION_LIMITS_LOWER(2) + delta_from_mechanical_limits;
+max_back_bar_angle = MOTOR_POSITION_LIMITS_UPPER(2) - delta_from_mechanical_limits;
+max_leg_length = cos(0.5/2);
 min_leg_length = 0.5;
 max_x_touchdown = sqrt((max_leg_length)^2 - (z_land - d_vertical_com)^2);
 
@@ -103,7 +125,7 @@ standing_bounce_chirp_length = 40;
 bounce_ddz = @(r,t) standing_bounce_amplitude*(2*standing_bounce_frequency*r*cos(t*standing_bounce_frequency) - (t*standing_bounce_frequency*r + standing_bounce_frequency).^2.*sin(t*standing_bounce_frequency));
 standing_bounce_increase_rate = (spring_frequency/standing_bounce_frequency - 1)/standing_bounce_chirp_length;
 standing_bounce_max_chirp_scale = spring_frequency/standing_bounce_frequency;
-%figure('Name','Z Acceleration During Chirp'); fplot(@(t) bounce_ddz(standing_bounce_increase_rate,t),[0,standing_bounce_chirp_length],0.1e-3);
+figure('Name','Z Acceleration During Chirp'); fplot(@(t) bounce_ddz(standing_bounce_increase_rate,t),[0,standing_bounce_chirp_length],0.1e-3);
 enable_bouncing = true;
 
 %% Vertical LQR
@@ -114,44 +136,80 @@ Q_vert = diag([100 1]); R_vert = 2.5e-6;
 ti_z_stance = 1;
 
 %% Forward LQR - Finite horizon
-t_const_dyn = stance_duration/2;
-t_sat_stance = @(t) max(min(t, stance_duration),0);
-A_sag_t = @(t) [0 0 1 0; 0 0 0 1; 0 0 0 0; m_total_real*(g+ddz_ref(t_sat_stance(t)))/i_robot 0 0 0];
-B_sag_t = @(t) [0; 0; 1/m_total_real; -z_ref(t_sat_stance(t))/i_robot];
-A_sag = A_sag_t(stance_duration-t_const_dyn);
-B_sag = B_sag_t(stance_duration-t_const_dyn);
-Q_sag = diag([1,25,1,1]);
-R_sag = 0.4e-4;
-H_sag = 0.001*diag([0 0 0 1]) ...  % pitch velocity
-      + 0*diag([0 0 1 0]) ...  % x velocity
-      + 1*diag([0 1 0 0]) ...  % pitch
-      + 0*diag([1 0 0 0]) ...  % x
-      + 0.27*[0 0 0 0; 0 1 0 flight_duration; 0 0 0 0; 0 flight_duration 0 flight_duration^2];  % pitch at landing
-H_sag = diag([0,5,0,0.03]);
-[k_LQR_sagittal, P_LQR_sagittal] = lqr(A_sag, B_sag, Q_sag, R_sag);
-neg_dP = @(t,P) P*A_sag_t(t) + A_sag_t(t)'*P + Q_sag - P*B_sag_t(t)/R_sag*B_sag_t(t)'*P;
-neg_dP_vec = @(t,P) reshape(neg_dP(t, reshape(P, size(A_sag))), [numel(A_sag),1]); % assume P is a vector
-dt = 0.01; 
-planned_end = 3.5; 
-t_span = 0:dt:planned_end;
-[T_lqr,P_backwards_vec] = ode45(neg_dP_vec,t_span, reshape(H_sag,[numel(A_sag),1]));
-backwards_P_of_t = cell(length(T_lqr),1);
-backwards_K_of_t = cell(length(T_lqr),1);
-backwards_eig_of_P = zeros(4,length(T_lqr));
-for i = 1:length(T_lqr)
-  backwards_P_of_t{i} = reshape(P_backwards_vec(i,:), size(A_sag));
-  backwards_eig_of_P(:,i) = eig(backwards_P_of_t{i});
-  backwards_K_of_t{i} = R_sag\B_sag'*backwards_P_of_t{i};
-end
-backwards_P_sag_of_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),backwards_P_of_t,'UniformOutput',false));
-backwards_K_sag_of_t = cell2mat(backwards_K_of_t);
+% t_const_dyn = stance_duration/2;
+% t_sat_stance = @(t) max(min(t, stance_duration),0);
+% A_sag_t = @(t) [0 0 1 0; 0 0 0 1; 0 0 0 0; m_total_real*(g+ddz_ref(t_sat_stance(t)))/i_robot 0 0 0];
+% B_sag_t = @(t) [0; 0; 1/m_total_real; -z_ref(t_sat_stance(t))/i_robot];
+% A_sag = A_sag_t(stance_duration-t_const_dyn);
+% B_sag = B_sag_t(stance_duration-t_const_dyn);
+% Q_sag = diag([1,25,1,1]);
+% R_sag = 0.75e-4;
+% H_sag = 0.001*diag([0 0 0 1]) ...  % pitch velocity
+%       + 0*diag([0 0 1 0]) ...  % x velocity
+%       + 1*diag([0 1 0 0]) ...  % pitch
+%       + 0*diag([1 0 0 0]) ...  % x
+%       + 0.27*[0 0 0 0; 0 1 0 flight_duration; 0 0 0 0; 0 flight_duration 0 flight_duration^2];  % pitch at landing
+% H_sag = diag([0,5,0,0.03]);
+% dt = 0.01; 
+% planned_end = 3.5;
+% t_span = 0:dt:planned_end;
+% [k_LQR_sagittal, P_LQR_sagittal] = lqr(A_sag, B_sag, Q_sag, R_sag);
+% neg_dP = @(t,P) P*A_sag_t(t) + A_sag_t(t)'*P + Q_sag - P*B_sag_t(t)/R_sag*B_sag_t(t)'*P;
+% neg_dP_vec = @(t,P) reshape(neg_dP(t, reshape(P, size(A_sag))), [numel(A_sag),1]); % assume P is a vector
+% [T_lqr,P_backwards_vec] = ode45(neg_dP_vec,t_span, reshape(H_sag,[numel(A_sag),1]));
+% backwards_P_of_t = cell(length(T_lqr),1);
+% backwards_K_of_t = cell(length(T_lqr),1);
+% backwards_eig_of_P = zeros(4,length(T_lqr));
+% for i = 1:length(T_lqr)
+%   backwards_P_of_t{i} = reshape(P_backwards_vec(i,:), size(A_sag));
+%   backwards_eig_of_P(:,i) = eig(backwards_P_of_t{i});
+%   backwards_K_of_t{i} = R_sag\B_sag'*backwards_P_of_t{i};
+%   %backwards_K_of_t{i} = R_sag\B_sag_t(t_sat_stance(T_lqr(i)))'*backwards_P_of_t{i};
+% end
+% backwards_P_sag_of_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),backwards_P_of_t,'UniformOutput',false));
+% backwards_K_sag_of_t = cell2mat(backwards_K_of_t);
 % figure('Name', 'Finite Horizon Gains - Sagittal');
 % plot([planned_end:-0.01:0],interp1(T_lqr, backwards_K_sag_of_t, [0:0.01:planned_end]));
 % hold on;
 % plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*90);
 % plot([planned_end-stance_duration:dt:planned_end],-i_robot./z_ref(t_sat_stance(0:dt:stance_duration))*18);
-% xlim([planned_end-stance_duration,planned_end]); ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
+% xlim([planned_end-stance_duration,planned_end]); 
+% ylim('auto'); legend('x','theta','dx','dtheta','theta, GRF tilting', 'dtheta, GRF tilting');
 
+%% Discrete Finite Horizon LQR
+t_sat_stance = @(t) max(min(t, stance_duration),0);
+dt = 0.001;
+A_sag_t = @(t) [1 0 dt 0; ... % x, theta, dx dtheta
+                0 1 0 dt; ...
+                0 0 1 0; ...
+                dt*m_total_real*(g+ddz_ref(t_sat_stance(t)))/i_robot 0 0 1];
+B_sag_t = @(t) [0; 0; 1/m_total_real; -z_ref(t_sat_stance(t))/i_robot]*dt;
+Q_sag = diag([1,30,1,1]);
+R_sag = 1e-4;
+H_sag = diag([0,5,0,0.03]);
+ms_in_stance = ceil(stance_duration*1000);
+t_final = 3; %ms_in_stance/1000.0;
+t_span_lqr = 0:dt:t_final;
+number_of_t = length(t_span_lqr);
+P_sag_cell = cell(number_of_t,1);
+P_sag_cell{end} = H_sag;
+K_sag_cell = cell(number_of_t,1);
+K_sag_cell{end} = [0 0 0 0];
+for k=number_of_t-1:-1:1
+    t = t_span_lqr(k);
+    A = A_sag_t(t_sat_stance(t)); 
+    B = B_sag_t(t_sat_stance(t));
+    K_sag_cell{k} = (R_sag + B'*P_sag_cell{k+1}*B) \ (B'*P_sag_cell{k+1}*A);
+    P_sag_cell{k} = A'*P_sag_cell{k+1}*A - (A'*P_sag_cell{k+1}*B) / (R_sag+B'*P_sag_cell{k+1}*B) * (B'*P_sag_cell{k+1}*A) + Q_sag;
+end
+K_sag_t = cell2mat(K_sag_cell);
+P_sag_t = cell2mat(arrayfun(@(x)permute(x{:},[3 1 2]),P_sag_cell,'UniformOutput',false));
+K_sag_t = K_sag_t(1:ms_in_stance+1,:);
+P_sag_t = P_sag_t(1:ms_in_stance+1,:,:);
+t_span_lqr = 0:dt:ms_in_stance/1000.0;
+%figure('Name', 'Finite Horizon Gains - Sagittal');
+%plot(t_span_lqr,interp1(t_span_lqr, K_sag_t, t_span_lqr));
+%legend('x','theta','dx','dtheta');
 
 %% Standing LQR for Forward - infinite horizon
 desired_standing_torso_pitch = -torso_centerline_pitch_offset_angle;
@@ -166,7 +224,7 @@ R_sag_infinite = 0.3;
 [k_LQR_sagittal_infinite, P_LQR_sagittal_infinite] = lqr(A_sag_infinite, B_sag_infinite, Q_sag_infinite, R_sag_infinite);
 
 %% Lateral stabilization during stance
-max_primary_lateral_stance_torque = 2*HIP_MTR_MAX_CONT_TORQUE;
+max_primary_lateral_stance_torque = 3*HIP_MTR_MAX_CONT_TORQUE;
 desired_standing_roll_direction = 2*initial_leg_selection - 1;
 desired_standing_torso_roll = desired_standing_roll_direction * 4*pi/180;
 desired_stance_beta2 = pi/2;
@@ -223,6 +281,7 @@ u_z_ref = @(t,s) m_total_real*g + m_total_real*ddz_ref(t);
 u_x_ref = @(t,s) 1*u_z_ref(t)*s(1)/z_ref(t);
 ddx_r = @(t,s) u_x_ref(t,s)/m_total_real;
 x_ref_dyn = @(t,s_x) [s_x(2); ddx_r(t,s_x)]; % s_x = [x dx];
+dt = 0.01;
 T_s = 0:dt:stance_duration;
 if T_s(end) ~= stance_duration
   T_s = [T_s, stance_duration]; 
@@ -235,7 +294,7 @@ if exist('ref_trajs.mat','file') && ~regenerate
   disp('loaded library of reference trajectories')
 else
     N_time = length(T_s);
-    target_dx_range = 0:0.1:2;
+    target_dx_range = 0:0.1:1;
     N_vels = length(target_dx_range);
     % for each desired speed, scan for symmetric gait
     sym_x0 = nan(N_vels,1);
@@ -258,7 +317,7 @@ else
       end
       sym_x0(i_target) = interp1(initial_vels, initial_placements, curr_target_dx);
     end
-    base_x_end = -(-0.30:0.01:0.30);
+    base_x_end = -(-0.36:0.01:0.36);%-(-0.30:0.01:0.30);
     N_traj = length(base_x_end);
     forward_x_of_dxstar = nan(N_vels, N_traj, N_time);
     forward_dx_of_dxstar = nan(N_vels, N_traj, N_time);
@@ -336,7 +395,7 @@ else
 end
 
 %% Swing leg placement
-max_parabolic_z_retraction = 0.11;
+max_parabolic_z_retraction = 0.11+0.04;
 z_retract_swing = 0.22;
 
 %% Secondary leg parameters
